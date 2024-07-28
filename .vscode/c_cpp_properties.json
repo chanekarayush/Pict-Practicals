@@ -1,0 +1,43 @@
+{
+    "configurations": [
+        {
+            "name": "PracticeDebug",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "windows-gcc-x86",
+            "compilerPath": "D:/Coding-practice/C++/MinGW/bin/gcc.exe"
+        },
+        {
+            "name": "PracticeDebug1",
+            "includePath": [
+                "d:/Coding-practice/PICT_Practicals/Pict-Practicals/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c11",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "windows-gcc-x86",
+            "mergeConfigurations": false,
+            "compilerPath": "D:/Coding-practice/C++/MinGW/bin/g++.exe",
+            "browse": {
+                "path": [
+                    "d:/Coding-practice/PICT_Practicals/Pict-Practicals/**",
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
+        }
+    ],
+    "version": 4
+}
