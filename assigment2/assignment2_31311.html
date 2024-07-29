@@ -659,6 +659,94 @@ mysql&gt; <span class="hljs-keyword">select</span> Proj_name,Proj_location ,Proj
 +<span class="hljs-comment">--------------------------------+---------------+-----------+-----------+</span>
 3 rows in <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
 </div></code></pre>
+<h2 id="additional-queries">Additional Queries</h2>
+<h3 id="all-employee-names-above-earning-more-than-5000-in-computer-dept">All employee names above earning more than 5000 in Computer Dept</h3>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-keyword">select</span> Emp_fname, Emp_lname <span class="hljs-keyword">FROM</span> Employee <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> Dept <span class="hljs-keyword">ON</span> Employee.Dept_id = Dept.Dept_id <span class="hljs-keyword">WHERE</span> Emp_salary &gt; <span class="hljs-number">5000</span> <span class="hljs-keyword">AND</span> Dept.Dept_name = <span class="hljs-string">'Computer'</span>;
++<span class="hljs-comment">-----------+-----------+</span>
+| Emp_fname | Emp_lname |
++<span class="hljs-comment">-----------+-----------+</span>
+| Harish    | Hegde     |
+| Sanjay    | Singh     |
+| Prakash   | Patil     |
+| Parth     | Pandya    |
+| Palash    | Pathak    |
+| Satish    | Sarkar    |
+| Sagar     | Sharma    |
+| Shyam     | Sharma    |
++<span class="hljs-comment">-----------+-----------+</span>
+8 rows in <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+</div></code></pre>
+<h3 id="projects-which-have-names-containing-k">Projects which have names containing <code>K</code></h3>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> <span class="hljs-keyword">Project</span> <span class="hljs-keyword">where</span> Proj_name <span class="hljs-keyword">LIKE</span> <span class="hljs-string">'%K%'</span>;
++<span class="hljs-comment">---------+---------+-----------------------------+---------------+-----------+-----------+</span>
+| Proj_id | Dept_id | Proj_name                   | Proj_Location | Proj_cost | Proj_year |
++<span class="hljs-comment">---------+---------+-----------------------------+---------------+-----------+-----------+</span>
+|       5 |       5 | Market Expansion Plan       | Chennai       | 175000.00 |      2008 |
+|      10 |      10 | Customer Feedback System    | Jaipur        |  99000.00 |      2018 |
+|      24 |      24 | Risk Management Framework   | Hyderabad     | 240000.00 |      2007 |
+|      50 |      50 | Workforce Planning Strategy | Jaipur        | 220000.00 |      2024 |
++<span class="hljs-comment">---------+---------+-----------------------------+---------------+-----------+-----------+</span>
+4 rows in <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+</div></code></pre>
+<h3 id="dept-name-and-id-with-project-before-2010">Dept name and id with project before 2010</h3>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-keyword">select</span> Dept.Dept_id, Dept_name, Proj_year <span class="hljs-keyword">from</span> dept <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> <span class="hljs-keyword">project</span> <span class="hljs-keyword">on</span> Dept.Dept_id = Project.Dept_id <span class="hljs-keyword">WHERE</span> Project.Proj_year &lt;= <span class="hljs-number">2010</span>;
++<span class="hljs-comment">---------+---------------------------------+-----------+</span>
+| Dept_id | Dept_name                       | Proj_year |
++<span class="hljs-comment">---------+---------------------------------+-----------+</span>
+|       1 | HR                              |      2005 |
+|       2 | Finance                         |      2010 |
+|       3 | IT                              |      2000 |
+|       5 | Marketing                       |      2008 |
+|       6 | Sales                           |      1998 |
+|       8 | Operations                      |      2005 |
+|      13 | Product Development             |      1995 |
+|      16 | Engineering                     |      1990 |
+|      18 | Business Development            |      2003 |
+|      22 | IT                              |      2010 |
+|      24 | Risk Management                 |      2007 |
+|      25 | Computer                        |      1995 |
+|      27 | Investor Relations              |      2006 |
+|      30 | Finance and Accounting          |      2002 |
+|      32 | Manufacturing                   |      2001 |
+|      34 | Corporate Development           |      1999 |
+|      36 | Corporate Social Responsibility |      2000 |
+|      45 | Performance Management          |      1997 |
+|      46 | IT                              |      2009 |
+|      47 | HR Operations                   |      2010 |
+|      48 | IT                              |      1998 |
++<span class="hljs-comment">---------+---------------------------------+-----------+</span>
+21 rows in <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+</div></code></pre>
+<h3 id="employees-joined-after-01-01-2004-in-it-department">Employees joined after 01-01-2004 in IT department</h3>
+<pre class="hljs"><code><div>ERROR 1525 (HY000): Incorrect DATE value: '01-01-2004'
+mysql&gt; <span class="hljs-keyword">select</span> Employee.Emp_id, Emp_fname, Emp_lname, Emp_joinDate <span class="hljs-keyword">FROM</span> Employee <span class="hljs-keyword">left</span> <span class="hljs-keyword">join</span> Dept <span class="hljs-keyword">ON</span> Employee.Dept_id = Dept.Dept_id <span class="hljs-keyword">WHERE</span> Emp_joinDate &gt; <span class="hljs-string">'2004-01-01'</span> <span class="hljs-keyword">AND</span> Dept_name = <span class="hljs-string">'IT'</span>;
++<span class="hljs-comment">--------+-----------+-----------+--------------+</span>
+| Emp_id | Emp_fname | Emp_lname | Emp_joinDate |
++<span class="hljs-comment">--------+-----------+-----------+--------------+</span>
+|     11 | Puneet    | Pandey    | 2014-01-16   |
+|     22 | Harshal   | Handa     | 2013-02-11   |
+|     28 | Rahul     | Reddy     | 2004-08-02   |
++<span class="hljs-comment">--------+-----------+-----------+--------------+</span>
+3 rows in <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+</div></code></pre>
+<h3 id="top-10-employees-with-highest-pay">Top 10 Employees with highest pay</h3>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-keyword">select</span> * <span class="hljs-keyword">from</span> Employee <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> Emp_salary <span class="hljs-keyword">DESC</span> <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">10</span>;
++<span class="hljs-comment">--------+---------+-----------+-----------+--------------------------+------------+--------------+</span>
+| Emp_id | Dept_id | Emp_fname | Emp_lname | Emp_position             | Emp_salary | Emp_joinDate |
++<span class="hljs-comment">--------+---------+-----------+-----------+--------------------------+------------+--------------+</span>
+|     22 |      22 | Harshal   | Handa     | Corporate Strategist     |   96000.00 | 2013-02-11   |
+|      8 |       8 | Hemant    | Hooda     | Operations Manager       |   95000.00 | 2018-04-27   |
+|     38 |      38 | Himanshu  | Hooda     | IT Service Lead          |   93000.00 | 1993-03-12   |
+|     16 |      16 | Rohit     | Rathore   | Engineer                 |   92000.00 | 2005-01-10   |
+|     24 |      24 | Rohan     | Roy       | Risk Manager             |   91000.00 | 1987-03-12   |
+|     13 |      13 | Siddharth | Soni      | Product Developer        |   90000.00 | 1999-08-04   |
+|      4 |       4 | Harish    | Hegde     | Researcher               |   88000.00 | 1983-07-12   |
+|     46 |      46 | Harsh     | Hegde     | Organizational Developer |   87000.00 | 2000-08-29   |
+|     20 |      20 | Ritik     | Raj       | Procurement Specialist   |   87000.00 | 1996-06-11   |
+|     33 |      33 | Sagar     | Sharma    | Supply Chain Manager     |   87000.00 | 1990-10-09   |
++<span class="hljs-comment">--------+---------+-----------+-----------+--------------------------+------------+--------------+</span>
+10 rows in <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+</div></code></pre>
 
 </body>
 </html>

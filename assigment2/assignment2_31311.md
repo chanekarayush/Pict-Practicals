@@ -321,3 +321,105 @@ mysql> select Proj_name,Proj_location ,Proj_cost, Proj_year from Project where P
 +--------------------------------+---------------+-----------+-----------+
 3 rows in set (0.00 sec)
 ```
+
+## Additional Queries
+### All employee names above earning more than 5000 in Computer Dept
+
+```sql
+mysql> select Emp_fname, Emp_lname FROM Employee LEFT JOIN Dept ON Employee.Dept_id = Dept.Dept_id WHERE Emp_salary > 5000 AND Dept.Dept_name = 'Computer';
++-----------+-----------+
+| Emp_fname | Emp_lname |
++-----------+-----------+
+| Harish    | Hegde     |
+| Sanjay    | Singh     |
+| Prakash   | Patil     |
+| Parth     | Pandya    |
+| Palash    | Pathak    |
+| Satish    | Sarkar    |
+| Sagar     | Sharma    |
+| Shyam     | Sharma    |
++-----------+-----------+
+8 rows in set (0.00 sec)
+```
+
+### Projects which have names containing `K`
+```sql
+mysql> select * from Project where Proj_name LIKE '%K%';
++---------+---------+-----------------------------+---------------+-----------+-----------+
+| Proj_id | Dept_id | Proj_name                   | Proj_Location | Proj_cost | Proj_year |
++---------+---------+-----------------------------+---------------+-----------+-----------+
+|       5 |       5 | Market Expansion Plan       | Chennai       | 175000.00 |      2008 |
+|      10 |      10 | Customer Feedback System    | Jaipur        |  99000.00 |      2018 |
+|      24 |      24 | Risk Management Framework   | Hyderabad     | 240000.00 |      2007 |
+|      50 |      50 | Workforce Planning Strategy | Jaipur        | 220000.00 |      2024 |
++---------+---------+-----------------------------+---------------+-----------+-----------+
+4 rows in set (0.00 sec)
+```
+
+### Dept name and id with project before 2010
+
+```sql
+mysql> select Dept.Dept_id, Dept_name, Proj_year from dept left join project on Dept.Dept_id = Project.Dept_id WHERE Project.Proj_year <= 2010;
++---------+---------------------------------+-----------+
+| Dept_id | Dept_name                       | Proj_year |
++---------+---------------------------------+-----------+
+|       1 | HR                              |      2005 |
+|       2 | Finance                         |      2010 |
+|       3 | IT                              |      2000 |
+|       5 | Marketing                       |      2008 |
+|       6 | Sales                           |      1998 |
+|       8 | Operations                      |      2005 |
+|      13 | Product Development             |      1995 |
+|      16 | Engineering                     |      1990 |
+|      18 | Business Development            |      2003 |
+|      22 | IT                              |      2010 |
+|      24 | Risk Management                 |      2007 |
+|      25 | Computer                        |      1995 |
+|      27 | Investor Relations              |      2006 |
+|      30 | Finance and Accounting          |      2002 |
+|      32 | Manufacturing                   |      2001 |
+|      34 | Corporate Development           |      1999 |
+|      36 | Corporate Social Responsibility |      2000 |
+|      45 | Performance Management          |      1997 |
+|      46 | IT                              |      2009 |
+|      47 | HR Operations                   |      2010 |
+|      48 | IT                              |      1998 |
++---------+---------------------------------+-----------+
+21 rows in set (0.00 sec)
+```
+
+### Employees joined after 01-01-2004 in IT department
+
+```sql
+ERROR 1525 (HY000): Incorrect DATE value: '01-01-2004'
+mysql> select Employee.Emp_id, Emp_fname, Emp_lname, Emp_joinDate FROM Employee left join Dept ON Employee.Dept_id = Dept.Dept_id WHERE Emp_joinDate > '2004-01-01' AND Dept_name = 'IT';
++--------+-----------+-----------+--------------+
+| Emp_id | Emp_fname | Emp_lname | Emp_joinDate |
++--------+-----------+-----------+--------------+
+|     11 | Puneet    | Pandey    | 2014-01-16   |
+|     22 | Harshal   | Handa     | 2013-02-11   |
+|     28 | Rahul     | Reddy     | 2004-08-02   |
++--------+-----------+-----------+--------------+
+3 rows in set (0.00 sec)
+```
+
+### Top 10 Employees with highest pay
+
+```sql
+mysql> select * from Employee order by Emp_salary DESC LIMIT 10;
++--------+---------+-----------+-----------+--------------------------+------------+--------------+
+| Emp_id | Dept_id | Emp_fname | Emp_lname | Emp_position             | Emp_salary | Emp_joinDate |
++--------+---------+-----------+-----------+--------------------------+------------+--------------+
+|     22 |      22 | Harshal   | Handa     | Corporate Strategist     |   96000.00 | 2013-02-11   |
+|      8 |       8 | Hemant    | Hooda     | Operations Manager       |   95000.00 | 2018-04-27   |
+|     38 |      38 | Himanshu  | Hooda     | IT Service Lead          |   93000.00 | 1993-03-12   |
+|     16 |      16 | Rohit     | Rathore   | Engineer                 |   92000.00 | 2005-01-10   |
+|     24 |      24 | Rohan     | Roy       | Risk Manager             |   91000.00 | 1987-03-12   |
+|     13 |      13 | Siddharth | Soni      | Product Developer        |   90000.00 | 1999-08-04   |
+|      4 |       4 | Harish    | Hegde     | Researcher               |   88000.00 | 1983-07-12   |
+|     46 |      46 | Harsh     | Hegde     | Organizational Developer |   87000.00 | 2000-08-29   |
+|     20 |      20 | Ritik     | Raj       | Procurement Specialist   |   87000.00 | 1996-06-11   |
+|     33 |      33 | Sagar     | Sharma    | Supply Chain Manager     |   87000.00 | 1990-10-09   |
++--------+---------+-----------+-----------+--------------------------+------------+--------------+
+10 rows in set (0.00 sec)
+```
