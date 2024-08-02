@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>assignment1.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="cns-assignment-1">CNS Assignment 1</h1>
+<h2 id="problem-statement">Problem Statement:</h2>
+<p>Setup a wired LAN using Layer 2 Switch. It includes preparation of cable, testing of cable using line tester, configuration machine using IP addresses, testing using PING utility &amp; demonstrating the PING packets captured traces using Wireshark Packet Analyzer Tool.</p>
+<h2 id="requirements">Requirements:</h2>
+<ul>
+<li>Cat 3, Cat 5, Cat 5e Cat 6a Cables and RJ45 Connectors</li>
+<li>Crimping Tool</li>
+<li>Line Tester</li>
+<li>One server Node with Open Source and Internet Support</li>
+<li>HTTP Server (Apache) with Website pages of your Institute</li>
+<li>Four Client Nodes with Wi-Fi Support</li>
+<li>Wireshark Protocol Analyzer on all nodes</li>
+<li>Layer-II Switch</li>
+<li>IP Address Configuration Chart</li>
+</ul>
+<h2 id="computer-networks">Computer Networks:</h2>
+<p>A computer network can be defined as a collection of computing devices (nodes) interconnected by wires or wireless means and governed by a set of standards(protocols) in order to share data and resources.</p>
+<h2 id="comparison-between-lan-man-wan">Comparison between LAN, MAN, WAN:</h2>
+<table>
+<thead>
+<tr>
+<th>Characteristic</th>
+<th>LAN</th>
+<th>MAN</th>
+<th>WAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Definition</td>
+<td>Local area network</td>
+<td>Metropolitan area network</td>
+<td>Wide area network</td>
+</tr>
+<tr>
+<td>Coverage</td>
+<td>Building/Campus</td>
+<td>City/Large campus</td>
+<td>Multiple cities/countries</td>
+</tr>
+<tr>
+<td>Design and maintenance</td>
+<td>Easy</td>
+<td>Moderate</td>
+<td>Difficult</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>High (100 Mbps to 10 Gbps)</td>
+<td>Moderate to High (10 Mbps to 1 Gbps)</td>
+<td>Variable (1 Mbps to several hundred Mbps)</td>
+</tr>
+<tr>
+<td>Propagation delay</td>
+<td>Short</td>
+<td>Moderate</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>Technology</td>
+<td>Ethernet, Wi-Fi</td>
+<td>Ethernet, FDDI, ATM</td>
+<td>MPLS, Frame Relay, ATM, VSAT</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Low</td>
+<td>Moderate</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Use Cases</td>
+<td>Offices, Schools</td>
+<td>Government, Universities</td>
+<td>Internet, Corporate Networks</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Easier to secure</td>
+<td>Moderately challenging</td>
+<td>Most challenging</td>
+</tr>
+<tr>
+<td>Fault tolerant</td>
+<td>More tolerant</td>
+<td>Less tolerant</td>
+<td>Less tolerant</td>
+</tr>
+<tr>
+<td>Congestion</td>
+<td>Less</td>
+<td>More</td>
+<td>More</td>
+</tr>
+</tbody>
+</table>
+<h2 id="osi--tcpip-layers">OSI &amp; TCP/IP Layers:</h2>
+<table>
+<thead>
+<tr>
+<th>Layer No.</th>
+<th>OSI Model Layers</th>
+<th>TCP/IP Model Stages</th>
+<th>Devices</th>
+<th>Protocols</th>
+<th>Services</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Physical</td>
+<td>Network Access</td>
+<td>Hubs, Repeaters, Cables</td>
+<td>Ethernet, USB</td>
+<td>Bit transmission</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Data Link</td>
+<td>Network Access</td>
+<td>Switches, Bridges</td>
+<td>Ethernet, PPP, Frame Relay, MAC, ARP</td>
+<td>Data framing, MAC addressing, Error detection</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Network</td>
+<td>Internet</td>
+<td>Routers</td>
+<td>IP (IPv4, IPv6), ICMP, IPSec, ARP</td>
+<td>Logical addressing, Routing</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Transport</td>
+<td>Transport</td>
+<td>-</td>
+<td>TCP, UDP</td>
+<td>End-to-end communication, Flow control, Error correction</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Session</td>
+<td>Application</td>
+<td>-</td>
+<td>NetBIOS, PPTP, RPC	Session management, Authentication</td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Presentation</td>
+<td>Application</td>
+<td>-</td>
+<td>SSL/TLS, FTP, JPEG, MPEG, GIF</td>
+<td>Data translation, Encryption/Decryption</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Application</td>
+<td>Application</td>
+<td>-</td>
+<td>HTTP, HTTPS, FTP, SMTP, DNS, Telnet, POP3, IMAP, SNMP</td>
+<td>Network services to end-users</td>
+</tr>
+</tbody>
+</table>
+<h2 id="popular-sniffing-tools">Popular Sniffing Tools</h2>
+<ul>
+<li>BetterCAP</li>
+<li>Ettercap</li>
+<li>Wireshark</li>
+<li>Tcpdump</li>
+<li>WinDump</li>
+<li>OmniPeek</li>
+<li>Dsniff</li>
+<li>EtherApe</li>
+<li>MSN Sniffer</li>
+<li>NetWitness</li>
+<li>NextGen</li>
+</ul>
+<h2 id="features-of-wireshark">Features of Wireshark</h2>
+<ul>
+<li>Available for UNIX &amp; Windows</li>
+<li>Capture live packet data from network interface</li>
+<li>Display packets with very detailed protocol information</li>
+<li>Open &amp; Save packet data captured</li>
+<li>Import &amp; Export packet data from &amp; to a lot of other capture programs</li>
+<li>Filter packets, search for packets on many criteria</li>
+<li>Colorize packet display based on filters</li>
+<li>Create various statistics</li>
+</ul>
+<h2 id="commands-used">Commands used:</h2>
+<ol>
+<li><code>ifconfig</code> command
+The ifconfig (interface configuration) command is used to configure, manage, and query network interface parameters in Unix-based systems, including Linux. It's a powerful tool for network management, allowing users to view and change the configuration of network interfaces.<br>
+This command displays all active network interfaces and their configurations, such as IP addresses, netmask, and broadcast addresses.</li>
+<li><code>sudo wireshark</code> Command
+wireshark is a powerful network protocol analyser that allows users to capture and interactively browse the traffic running on a computer network. \
+Running it with sudo (superuser do) grants the necessary permissions to capture packets on network interfaces.</li>
+</ol>
+<h2 id="types-of-connectors">Types of Connectors:</h2>
+<ul>
+<li><strong>RJ45 (Registered Jack 45):</strong>  An eight-pin connector commonly used for Ethernet networking.</li>
+<li><strong>RJ11 (Registered Jack 11):</strong>  A four or six-pin connector commonly used for telephone connections.</li>
+<li><strong>RJ14 (Registered Jack 14):</strong>  A six-pin connector similar to RJ11 but used for two telephone lines.</li>
+<li><strong>RJ21 (Registered Jack 21):</strong>  A 50-pin connector often referred to as a &quot;telco&quot; connector.</li>
+<li><strong>BNC (Bayonet Neill–Concelman):</strong>  A quick connect/disconnect RF connector.</li>
+<li><strong>USB (Universal Serial Bus):</strong>  A standard connector for peripheral devices.</li>
+<li><strong>HDMI (High-Definition Multimedia Interface):</strong>  A connector for transmitting audio and video signals.</li>
+<li><strong>Thunderbolt:</strong>  A high-speed interface developed by Intel and Apple.</li>
+</ul>
+<h2 id="ping-command-packet-internet-groper">PING command (Packet Internet Groper):</h2>
+<p>The ping command is a network utility used to test the reachability of a host on an Internet Protocol (IP) network. <br>
+It is also used to measure the round-trip time for messages sent from the originating host to a destination computer.<br>
+<code>ping</code> uses the ICMP protocol’s mandatory ECHO_REQUEST datagram to elicit an ICMP ECHO_RESPONSE from a host or gateway.<br>
+ECHO_REQUEST datagrams (<code>‘’ping’’</code>) have an IP and ICMP header, followed by a <code>struct timeval</code> and then an arbitrary number of <code>“pad”</code> bytes used to fill out the packet.</p>
+<ul>
+<li><code>-c</code> count: Send count number of packets and then stop.</li>
+<li><code>-i</code> interval: Wait interval seconds between sending each packet. The default is one second.</li>
+<li><code>-s</code> packetsize: Specify the number of data bytes to be sent.
+The default is 56, which translates into 64 ICMP data bytes when combined with the 8 bytes of ICMP header data.</li>
+<li><code>-t</code> ttl: Set the Time To Live (TTL) value for the packets.</li>
+<li><code>-W</code> timeout: Time to wait for a response, in seconds.</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting:</h2>
+<p>When a ping is made from machine A to machine B which are connected through a switch through the wireshark sniffing tool and</p>
+<ul>
+<li><strong>Case 1:</strong> The IP of machine B isn’t correctly mentioned while pinging through A then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.</li>
+<li><strong>Case 2:</strong> The wireshark on machine B is closed during the process then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.</li>
+<li><strong>Case 3:</strong> The machine B is shut down in between the process then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.</li>
+<li><strong>Case 4:</strong> The class of IPs of the machines aren’t same then the wireshark on machine A shows ‘Network Unreachable’ error message.</li>
+</ul>
+<h2 id="graphic-symbols-in-cisco-packet-tracer">Graphic Symbols in Cisco Packet Tracer:</h2>
+<ol>
+<li>Bridge</li>
+<li>Switch</li>
+<li>Router</li>
+<li>Access switch</li>
+<li>Personal computer</li>
+<li>Web server</li>
+<li>VLAN</li>
+<li>Ethernet</li>
+<li>Serial line</li>
+<li>Hub</li>
+</ol>
+<h2 id="lan-topology-used">LAN Topology Used</h2>
+<p><img src="image.png" alt="LAN Setup"></p>
+<h2 id="pinging-the-other-device">PINGING the other device</h2>
+<p><img src="image-2.png" alt="PING"></p>
+<h2 id="wireshark-connection">Wireshark Connection</h2>
+<p><img src="image-3.png" alt="WIRESHARK"></p>
+
+</body>
+</html>
