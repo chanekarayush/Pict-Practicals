@@ -365,10 +365,30 @@ code {
           : 'default'
     });
   </script>
-<h1 id="cns-assignment-1">CNS Assignment 1</h1>
+<center>
+<h1 id="cns-assignment-no-1">CNS Assignment No. 1</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Basic Network Configuration</th>
+<th><!--  --></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Instructor's Name: Prof. B.P. Masram</strong></td>
+<td><strong>Student's Name: Ayush Chanekar</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Objectives: To learn and understand configuring IP Addresses and related network devices as well as setting up a LAN.</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</center>
 <h2 id="problem-statement">Problem Statement:</h2>
 <p>Setup a wired LAN using Layer 2 Switch. It includes preparation of cable, testing of cable using line tester, configuration machine using IP addresses, testing using PING utility &amp; demonstrating the PING packets captured traces using Wireshark Packet Analyzer Tool.</p>
-<h2 id="requirements">Requirements:</h2>
+<h2 id="equipment--software">Equipment &amp; Software:</h2>
 <ul>
 <li>Cat 3, Cat 5, Cat 5e Cat 6a Cables and RJ45 Connectors</li>
 <li>Crimping Tool</li>
@@ -380,9 +400,10 @@ code {
 <li>Layer-II Switch</li>
 <li>IP Address Configuration Chart</li>
 </ul>
-<h2 id="computer-networks">Computer Networks:</h2>
+<h2 id="theorybackground">Theory/Background</h2>
+<h3 id="computer-networks">Computer Networks:</h3>
 <p>A computer network can be defined as a collection of computing devices (nodes) interconnected by wires or wireless means and governed by a set of standards(protocols) in order to share data and resources.</p>
-<h2 id="comparison-between-lan-man-wan">Comparison between LAN, MAN, WAN:</h2>
+<h3 id="comparison-between-lan-man-wan">Comparison between LAN, MAN, WAN:</h3>
 <table>
 <thead>
 <tr>
@@ -461,7 +482,7 @@ code {
 </tr>
 </tbody>
 </table>
-<h2 id="osi--tcpip-layers">OSI &amp; TCP/IP Layers:</h2>
+<h3 id="osi--tcpip-layers">OSI &amp; TCP/IP Layers:</h3>
 <table>
 <thead>
 <tr>
@@ -511,7 +532,7 @@ code {
 <td>Session</td>
 <td>Application</td>
 <td>-</td>
-<td>NetBIOS, PPTP, RPC	Session management, Authentication</td>
+<td>NetBIOS, PPTP, RPC Session management, Authentication</td>
 <td></td>
 </tr>
 <tr>
@@ -532,7 +553,70 @@ code {
 </tr>
 </tbody>
 </table>
-<h2 id="popular-sniffing-tools">Popular Sniffing Tools</h2>
+<h3 id="switch-vs-router-vs-bridge-vs-hub">Switch vs Router vs Bridge vs Hub</h3>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Switch</th>
+<th>Router</th>
+<th>Bridge</th>
+<th>Hub</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Layer</td>
+<td>Data Link (Layer 2)</td>
+<td>Network (Layer 3)</td>
+<td>Data Link (Layer 2)</td>
+<td>Physical (layer 1)</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>Connects devices within a LAN, forwards data based on MAC addresses</td>
+<td>Connects multiple networks, routes data between them based on IP addresses</td>
+<td>Connects 2 or more network segments, filters traffic based on MAC addresses</td>
+<td>Connects multiple Ethernet devices, broadcasts data to all ports</td>
+</tr>
+<tr>
+<td>Addressing</td>
+<td>MAC addresses</td>
+<td>IP addresses</td>
+<td>MAC addresses</td>
+<td>None</td>
+</tr>
+<tr>
+<td>Traffic isolation</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Plug and play</td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Optimal routing</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Cut through</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="popular-sniffing-tools">Popular Sniffing Tools</h3>
 <ul>
 <li>BetterCAP</li>
 <li>Ettercap</li>
@@ -546,7 +630,7 @@ code {
 <li>NetWitness</li>
 <li>NextGen</li>
 </ul>
-<h2 id="features-of-wireshark">Features of Wireshark</h2>
+<h3 id="features-of-wireshark">Features of Wireshark</h3>
 <ul>
 <li>Available for UNIX &amp; Windows</li>
 <li>Capture live packet data from network interface</li>
@@ -557,27 +641,70 @@ code {
 <li>Colorize packet display based on filters</li>
 <li>Create various statistics</li>
 </ul>
-<h2 id="commands-used">Commands used:</h2>
+<h2 id="network-topology">Network Topology</h2>
+<ol>
+<li>
+<p><strong>Mesh Topology :</strong> In a mesh topology, every device is connected to another device via a particular channel.Communication is very fast between the nodes, it is very robust and security and privacy is provided as well. However, Installation, configuration and the cost of maintenance is high for this topology.</p>
+<ul>
+<li>Every device is connected to every other device.</li>
+<li>Very fast, reliable, and secure communication.</li>
+<li>High installation, configuration, and maintenance costs.</li>
+<li>Ideal for critical systems like military, government, and power grids.</li>
+</ul>
+</li>
+<li>
+<p><strong>Star Topology :</strong> In Star Topology, all the devices are connected to a single hub through a cable, the Hub is the central node and can be passive. Star topology is cost effective but the performance is based on the quality of the Hub.</p>
+<ul>
+<li>All devices connect to a central hub or switch.</li>
+<li>Easy to set up and manage.</li>
+<li>If one device fails, the rest of the network is unaffected.</li>
+<li>Dependent on the central hub for performance.</li>
+<li>Commonly used in homes, offices, and small networks.</li>
+</ul>
+</li>
+<li>
+<p><strong>Bus Topology :</strong> Bus Topology is a network type in which every computer and network device is connected to a single cable. It is bi-directional. It is a multi-point connection and a non-robust topology because if the backbone fails the topology crashes.</p>
+<ul>
+<li>All devices are connected to a single cable.</li>
+<li>Simple and cheap to set up.</li>
+<li>Vulnerable to network failures if the main cable breaks.</li>
+<li>Can experience performance issues due to data collisions.</li>
+<li>Best suited for small, basic networks.</li>
+</ul>
+</li>
+<li>
+<p><strong>Ring Topology :</strong> A ring topology is a network architecture in which devices are connected in a ring structure and send information to each other based on their ring node's neighbouring node. Compared to the bus topology, a ring topology is highly efficient and can handle heavier loads. As packets may only travel in one direction it is also called <code>uni-directional ring network</code>.</p>
+<ul>
+<li>Devices are connected in a circular pattern.</li>
+<li>Data travels from device to device around the ring.</li>
+<li>Offers better performance than bus topology.</li>
+<li>More complex to set up and manage.</li>
+<li>Vulnerable to failures if any device or connection breaks.</li>
+</ul>
+</li>
+</ol>
+<center><img src="image-4.png" width=500px height=350px></center>
+<h3 id="commands-used">Commands used:</h3>
 <ol>
 <li><code>ifconfig</code> command
 The ifconfig (interface configuration) command is used to configure, manage, and query network interface parameters in Unix-based systems, including Linux. It's a powerful tool for network management, allowing users to view and change the configuration of network interfaces.<br>
 This command displays all active network interfaces and their configurations, such as IP addresses, netmask, and broadcast addresses.</li>
 <li><code>sudo wireshark</code> Command
-wireshark is a powerful network protocol analyser that allows users to capture and interactively browse the traffic running on a computer network. \
+wireshark is a powerful network protocol analyser that allows users to capture and interactively browse the traffic running on a computer network. <br>
 Running it with sudo (superuser do) grants the necessary permissions to capture packets on network interfaces.</li>
 </ol>
-<h2 id="types-of-connectors">Types of Connectors:</h2>
+<h3 id="types-of-connectors">Types of Connectors:</h3>
 <ul>
-<li><strong>RJ45 (Registered Jack 45):</strong>  An eight-pin connector commonly used for Ethernet networking.</li>
-<li><strong>RJ11 (Registered Jack 11):</strong>  A four or six-pin connector commonly used for telephone connections.</li>
-<li><strong>RJ14 (Registered Jack 14):</strong>  A six-pin connector similar to RJ11 but used for two telephone lines.</li>
-<li><strong>RJ21 (Registered Jack 21):</strong>  A 50-pin connector often referred to as a &quot;telco&quot; connector.</li>
-<li><strong>BNC (Bayonet Neill–Concelman):</strong>  A quick connect/disconnect RF connector.</li>
-<li><strong>USB (Universal Serial Bus):</strong>  A standard connector for peripheral devices.</li>
-<li><strong>HDMI (High-Definition Multimedia Interface):</strong>  A connector for transmitting audio and video signals.</li>
-<li><strong>Thunderbolt:</strong>  A high-speed interface developed by Intel and Apple.</li>
+<li><strong>RJ45 (Registered Jack 45):</strong> An eight-pin connector commonly used for Ethernet networking.</li>
+<li><strong>RJ11 (Registered Jack 11):</strong> A four or six-pin connector commonly used for telephone connections.</li>
+<li><strong>RJ14 (Registered Jack 14):</strong> A six-pin connector similar to RJ11 but used for two telephone lines.</li>
+<li><strong>RJ21 (Registered Jack 21):</strong> A 50-pin connector often referred to as a &quot;telco&quot; connector.</li>
+<li><strong>BNC (Bayonet Neill–Concelman):</strong> A quick connect/disconnect RF connector.</li>
+<li><strong>USB (Universal Serial Bus):</strong> A standard connector for peripheral devices.</li>
+<li><strong>HDMI (High-Definition Multimedia Interface):</strong> A connector for transmitting audio and video signals.</li>
+<li><strong>Thunderbolt:</strong> A high-speed interface developed by Intel and Apple.</li>
 </ul>
-<h2 id="ping-command-packet-internet-groper">PING command (Packet Internet Groper):</h2>
+<h3 id="ping-command-packet-internet-groper">PING command (Packet Internet Groper):</h3>
 <p>The ping command is a network utility used to test the reachability of a host on an Internet Protocol (IP) network. <br>
 It is also used to measure the round-trip time for messages sent from the originating host to a destination computer.<br>
 <code>ping</code> uses the ICMP protocol’s mandatory ECHO_REQUEST datagram to elicit an ICMP ECHO_RESPONSE from a host or gateway.<br>
@@ -590,7 +717,7 @@ The default is 56, which translates into 64 ICMP data bytes when combined with t
 <li><code>-t</code> ttl: Set the Time To Live (TTL) value for the packets.</li>
 <li><code>-W</code> timeout: Time to wait for a response, in seconds.</li>
 </ul>
-<h2 id="troubleshooting">Troubleshooting:</h2>
+<h3 id="troubleshooting">Troubleshooting:</h3>
 <p>When a ping is made from machine A to machine B which are connected through a switch through the wireshark sniffing tool and</p>
 <ul>
 <li><strong>Case 1:</strong> The IP of machine B isn’t correctly mentioned while pinging through A then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.</li>
@@ -598,7 +725,7 @@ The default is 56, which translates into 64 ICMP data bytes when combined with t
 <li><strong>Case 3:</strong> The machine B is shut down in between the process then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.</li>
 <li><strong>Case 4:</strong> The class of IPs of the machines aren’t same then the wireshark on machine A shows ‘Network Unreachable’ error message.</li>
 </ul>
-<h2 id="graphic-symbols-in-cisco-packet-tracer">Graphic Symbols in Cisco Packet Tracer:</h2>
+<h3 id="graphic-symbols-in-cisco-packet-tracer">Graphic Symbols in Cisco Packet Tracer:</h3>
 <ol>
 <li>Bridge</li>
 <li>Switch</li>
@@ -617,6 +744,233 @@ The default is 56, which translates into 64 ICMP data bytes when combined with t
 <p><img src="image-2.png" alt="PING"></p>
 <h2 id="wireshark-connection">Wireshark Connection</h2>
 <p><img src="image-3.png" alt="WIRESHARK"></p>
+<h3 id="procedure">Procedure</h3>
+<ol>
+<li>
+<p><strong>Cable Preparation:</strong></p>
+<ul>
+<li>Cut Cat 5e cables to length, strip outer jackets, arrange wires, and crimp RJ45 connectors onto ends.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cable Testing:</strong></p>
+<ul>
+<li>Test cables with a line tester to ensure proper wiring and connectivity.</li>
+</ul>
+</li>
+<li>
+<p><strong>IP Address Configuration:</strong></p>
+<ul>
+<li>Assign unique IP addresses to devices, configure settings, and verify using <code>ifconfig</code> or <code>ipconfig</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>LAN Setup:</strong></p>
+<ul>
+<li>Connect devices to the Layer 2 switch with prepared cables, ensure switch ports are active, and verify connections.</li>
+</ul>
+</li>
+<li>
+<p><strong>Testing Connectivity with PING Utility:</strong></p>
+<ul>
+<li>Use the <code>ping</code> command to test device connectivity and observe results for successful communication.</li>
+</ul>
+</li>
+<li>
+<p><strong>Packet Analysis with Wireshark:</strong></p>
+<ul>
+<li>Install and start Wireshark on devices, capture packets during ping tests, and analyze ICMP messages.</li>
+</ul>
+</li>
+<li>
+<p><strong>Troubleshooting:</strong></p>
+<ul>
+<li>Simulate network issues (incorrect IPs, closed Wireshark, device shutdown), capture traffic with Wireshark, and resolve issues based on analysis.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="observations-and-outcomes">Observations and Outcomes</h2>
+<h3 id="observations">Observations:</h3>
+<ol>
+<li>
+<p><strong>Cable Preparation and Testing:</strong></p>
+<ul>
+<li><strong>Preparation:</strong> Wires were arranged and crimped correctly.</li>
+<li><strong>Testing:</strong> All cables passed connectivity tests.</li>
+</ul>
+</li>
+<li>
+<p><strong>IP Address Configuration:</strong></p>
+<ul>
+<li>Devices were assigned unique IPs within the same subnet and verified with <code>ifconfig</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>LAN Setup:</strong></p>
+<ul>
+<li>Devices connected to the switch were active and verified for proper configuration.</li>
+</ul>
+</li>
+<li>
+<p><strong>Testing Connectivity:</strong></p>
+<ul>
+<li>Devices pinged each other successfully with low RTT.</li>
+</ul>
+</li>
+<li>
+<p><strong>Wireshark Packet Analysis:</strong></p>
+<ul>
+<li>Captured packets showed successful ICMP Echo Request/Reply messages with no packet loss.</li>
+</ul>
+</li>
+<li>
+<p><strong>Troubleshooting:</strong></p>
+<ul>
+<li>Wireshark captured and identified errors (e.g., &quot;Destination Host Unreachable,&quot; &quot;Network Unreachable&quot;) accurately.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="outcomes">Outcomes:</h3>
+<ol>
+<li>
+<p><strong>Successful LAN Setup:</strong></p>
+<ul>
+<li>Demonstrated understanding of network configuration and device connectivity.</li>
+</ul>
+</li>
+<li>
+<p><strong>Effective Cable Management:</strong></p>
+<ul>
+<li>Proper cable preparation ensured reliable connections.</li>
+</ul>
+</li>
+<li>
+<p><strong>IP Address Configuration Proficiency:</strong></p>
+<ul>
+<li>Reinforced correct IP address assignment to avoid conflicts.</li>
+</ul>
+</li>
+<li>
+<p><strong>Network Testing and Verification:</strong></p>
+<ul>
+<li>PING utility validated network connectivity and performance.</li>
+</ul>
+</li>
+<li>
+<p><strong>Proficiency in Packet Analysis:</strong></p>
+<ul>
+<li>Hands-on Wireshark use enhanced understanding of network protocols and troubleshooting.</li>
+</ul>
+</li>
+<li>
+<p><strong>Troubleshooting Skills:</strong></p>
+<ul>
+<li>Developed ability to diagnose and resolve network issues using Wireshark.</li>
+</ul>
+</li>
+</ol>
+<h2 id="analysis">Analysis</h2>
+<h3 id="interpretation-of-the-results">Interpretation of the Results</h3>
+<ul>
+<li>
+<p><strong>Network Setup and Connectivity:</strong></p>
+<ul>
+<li>The LAN setup was successful, with devices connecting through the Layer 2 switch and passing PING tests, indicating proper communication.</li>
+</ul>
+</li>
+<li>
+<p><strong>Packet Analysis:</strong></p>
+<ul>
+<li>Wireshark captured ICMP Echo Request and Reply packets as expected, with no packet loss or delays, showing that the network functioned correctly.</li>
+</ul>
+</li>
+</ul>
+<h3 id="comparison-with-expected-results">Comparison with Expected Results</h3>
+<ul>
+<li>
+<p><strong>Expected Results:</strong></p>
+<ul>
+<li>Devices should communicate through the switch, pings should succeed with low latency, and Wireshark should capture ICMP packets without issues.</li>
+</ul>
+</li>
+<li>
+<p><strong>Observed Results:</strong></p>
+<ul>
+<li>Results aligned with expectations: successful communication, pings, and packet capture.</li>
+</ul>
+</li>
+</ul>
+<h3 id="analysis">Analysis</h3>
+<h4 id="interpretation-of-the-results">Interpretation of the Results</h4>
+<ul>
+<li>
+<p><strong>Network Setup and Connectivity:</strong></p>
+<ul>
+<li>The LAN setup was successful, with devices connecting through the Layer 2 switch and passing PING tests, indicating proper communication.</li>
+</ul>
+</li>
+<li>
+<p><strong>Packet Analysis:</strong></p>
+<ul>
+<li>Wireshark captured ICMP Echo Request and Reply packets as expected, with no packet loss or delays, showing that the network functioned correctly.</li>
+</ul>
+</li>
+</ul>
+<h4 id="comparison-with-expected-results">Comparison with Expected Results</h4>
+<ul>
+<li>
+<p><strong>Expected Results:</strong></p>
+<ul>
+<li>Devices should communicate through the switch, pings should succeed with low latency, and Wireshark should capture ICMP packets without issues.</li>
+</ul>
+</li>
+<li>
+<p><strong>Observed Results:</strong></p>
+<ul>
+<li>Results aligned with expectations: successful communication, pings, and packet capture.</li>
+</ul>
+</li>
+</ul>
+<h4 id="possible-reasons-for-any-discrepancies">Possible Reasons for Any Discrepancies</h4>
+<ul>
+<li>
+<p><strong>Incorrect IP Configuration:</strong></p>
+<ul>
+<li>Incorrect IPs or subnets would cause ping failures and errors in Wireshark.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cable Issues:</strong></p>
+<ul>
+<li>Faulty or improperly crimped cables could result in connectivity issues or packet loss.</li>
+</ul>
+</li>
+<li>
+<p><strong>Device Malfunctions:</strong></p>
+<ul>
+<li>Issues with the switch or devices could cause network problems or incomplete packet captures.</li>
+</ul>
+</li>
+<li>
+<p><strong>Wireshark Configuration:</strong></p>
+<ul>
+<li>Incorrect Wireshark settings could lead to missing packets or capture errors.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="references">References</h3>
+<ol>
+<li><strong>Cisco Networking Academy.</strong> &quot;Introduction to Networks.&quot; Cisco Systems, 2023.</li>
+<li><a href="https://www.javatpoint.com/computer-network-topologies"><strong>Computer Networking Topology and its Types</strong> &quot;Javatpoint.com&quot;</a></li>
+<li><strong>Forouzan, Behrouz A.</strong> &quot;Data Communications and Networking.&quot; McGraw-Hill Education, 2021.</li>
+<li><strong>Wireshark Documentation.</strong> &quot;User's Guide.&quot; Wireshark Foundation, 2024. <a href="https://www.wireshark.org/docs/wsug_html_chunked/">Wireshark Documentation</a></li>
+<li><strong>TechTarget.</strong> &quot;Network Troubleshooting Tips and Tools.&quot; TechTarget, 2024. <a href="https://www.techtarget.com/searchnetworking/definition/network-troubleshooting">TechTarget Network Troubleshooting</a></li>
+</ol>
+<h3 id="conclusion">Conclusion</h3>
+<p>The experiment demonstrated the basic setup and configuration of a network. The objectives were met as the devices communicated successfully.</p>
 
 </body>
 </html>
