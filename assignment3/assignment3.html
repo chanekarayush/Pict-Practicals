@@ -1,14 +1,377 @@
-# Assignment 3
+<!DOCTYPE html>
+<html>
+<head>
+<title>assignment3.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 
-## **Queries**
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
 
-## 1. Find Employee details and Department details using NATURAL JOIN.
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
 
-```sql
-mysql> SELECT * FROM EMPLOYEE NATURAL JOIN DEPT;
-+---------+--------+-------------+-----------+-------------------------------------------+------------+--------------+-----------+-----------+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="assignment-3">Assignment 3</h1>
+<h2 id="queries"><strong>Queries</strong></h2>
+<h2 id="1-find-employee-details-and-department-details-using-natural-join">1. Find Employee details and Department details using NATURAL JOIN.</h2>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> EMPLOYEE <span class="hljs-keyword">NATURAL</span> <span class="hljs-keyword">JOIN</span> DEPT;
++<span class="hljs-comment">---------+--------+-------------+-----------+-------------------------------------------+------------+--------------+-----------+-----------+</span>
 | Dept_id | Emp_id | Emp_fname   | Emp_lname | Emp_Position                              | Emp_salary | Emp_JoinDate | Dept_name | location  |
-+---------+--------+-------------+-----------+-------------------------------------------+------------+--------------+-----------+-----------+
++<span class="hljs-comment">---------+--------+-------------+-----------+-------------------------------------------+------------+--------------+-----------+-----------+</span>
 |       1 |     15 | Andrea      | Simmons   | Horticultural therapist                   |   94541.91 | 2019-12-12   | HR        | Pune      |
 |       1 |     16 | Jasmine     | Young     | Naval architect                           |   87026.10 | 2020-01-02   | HR        | Pune      |
 |       1 |     23 | Jeffrey     | Good      | Animator                                  |   80860.01 | 2023-05-07   | HR        | Pune      |
@@ -59,17 +422,14 @@ mysql> SELECT * FROM EMPLOYEE NATURAL JOIN DEPT;
 |       5 |     37 | James       | Davis     | Armed forces operational officer          |   65759.86 | 2024-04-24   | Finance   | Pune      |
 |       5 |     38 | Diane       | Aguilar   | Facilities manager                        |   80203.22 | 2020-11-28   | Finance   | Pune      |
 |       5 |     45 | Dominic     | Hudson    | Medical physicist                         |   79721.15 | 2023-11-29   | Finance   | Pune      |
-+---------+--------+-------------+-----------+-------------------------------------------+------------+--------------+-----------+-----------+
-50 rows in set (0.01 sec)
-```
-
-## 2. Find the emp_fname,Emp_position,location,Emp_JoinDate who have same Dept id.
-
-```sql
-mysql> SELECT employee.Dept_id, employee.Emp_fname,employee.Emp_position,Dept.location,employee.Emp_JoinDate FROM employee LEFT JOIN dept ON employee.Dept_id = dept.Dept_id ORDER BY Dept_id;
-+---------+-------------+-------------------------------------------+-----------+--------------+
++<span class="hljs-comment">---------+--------+-------------+-----------+-------------------------------------------+------------+--------------+-----------+-----------+</span>
+50 rows in <span class="hljs-keyword">set</span> (<span class="hljs-number">0.01</span> sec)
+</div></code></pre>
+<h2 id="2-find-the-empfnameemppositionlocationempjoindate-who-have-same-dept-id">2. Find the emp_fname,Emp_position,location,Emp_JoinDate who have same Dept id.</h2>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-keyword">SELECT</span> employee.Dept_id, employee.Emp_fname,employee.Emp_position,Dept.location,employee.Emp_JoinDate <span class="hljs-keyword">FROM</span> employee <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> dept <span class="hljs-keyword">ON</span> employee.Dept_id = dept.Dept_id <span class="hljs-keyword">ORDER</span> <span class="hljs-keyword">BY</span> Dept_id;
++<span class="hljs-comment">---------+-------------+-------------------------------------------+-----------+--------------+</span>
 | Dept_id | Emp_fname   | Emp_position                              | location  | Emp_JoinDate |
-+---------+-------------+-------------------------------------------+-----------+--------------+
++<span class="hljs-comment">---------+-------------+-------------------------------------------+-----------+--------------+</span>
 |       1 | Steven      | Counselling psychologist                  | Pune      | 2020-01-17   |
 |       1 | Kimberly    | Engineer, electrical                      | Pune      | 2023-12-01   |
 |       1 | Andrea      | Horticultural therapist                   | Pune      | 2019-12-12   |
@@ -120,17 +480,14 @@ mysql> SELECT employee.Dept_id, employee.Emp_fname,employee.Emp_position,Dept.lo
 |       5 | Elizabeth   | Producer, radio                           | Pune      | 2020-06-10   |
 |       5 | Melissa     | Designer, interior/spatial                | Pune      | 2022-01-28   |
 |       5 | Diane       | Facilities manager                        | Pune      | 2020-11-28   |
-+---------+-------------+-------------------------------------------+-----------+--------------+
-50 rows in set (0.35 sec)
-```
-
-## 3. Find the Employee details, Proj_id,Project cost who does not have Project location as ‘Hyderabad’
-
-```sql
-mysql> select  employee.Emp_id, employee.Dept_id, Emp_fname, Emp_lname, Emp_Position, Emp_salary, Emp_JoinDate, project.Proj_id, project.Proj_cost FROM employee LEFT JOIN project ON employee.Dept_id = project.Dept_id WHERE project.Proj_Location!='Hyderabad';
-+--------+---------+-------------+-----------+-------------------------------------------+------------+--------------+---------+-----------+
++<span class="hljs-comment">---------+-------------+-------------------------------------------+-----------+--------------+</span>
+50 rows in <span class="hljs-keyword">set</span> (<span class="hljs-number">0.35</span> sec)
+</div></code></pre>
+<h2 id="3-find-the-employee-details-projidproject-cost-who-does-not-have-project-location-as-hyderabad">3. Find the Employee details, Proj_id,Project cost who does not have Project location as ‘Hyderabad’</h2>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-keyword">select</span>  employee.Emp_id, employee.Dept_id, Emp_fname, Emp_lname, Emp_Position, Emp_salary, Emp_JoinDate, project.Proj_id, project.Proj_cost <span class="hljs-keyword">FROM</span> employee <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <span class="hljs-keyword">project</span> <span class="hljs-keyword">ON</span> employee.Dept_id = project.Dept_id <span class="hljs-keyword">WHERE</span> project.Proj_Location!=<span class="hljs-string">'Hyderabad'</span>;
++<span class="hljs-comment">--------+---------+-------------+-----------+-------------------------------------------+------------+--------------+---------+-----------+</span>
 | Emp_id | Dept_id | Emp_fname   | Emp_lname | Emp_Position                              | Emp_salary | Emp_JoinDate | Proj_id | Proj_cost |
-+--------+---------+-------------+-----------+-------------------------------------------+------------+--------------+---------+-----------+
++<span class="hljs-comment">--------+---------+-------------+-----------+-------------------------------------------+------------+--------------+---------+-----------+</span>
 |      2 |       5 | Dawn        | Price     | Colour technologist                       |  101283.37 | 2021-01-23   |       1 |  52255.36 |
 |     10 |       5 | Laura       | Mosley    | Neurosurgeon                              |   62466.80 | 2020-11-05   |       1 |  52255.36 |
 |     13 |       5 | Walter      | Hamilton  | Scientist, product/process development    |   75472.34 | 2022-01-07   |       1 |  52255.36 |
@@ -180,17 +537,14 @@ mysql> select  employee.Emp_id, employee.Dept_id, Emp_fname, Emp_lname, Emp_Posi
 |     48 |       4 | Austin      | Estes     | Ecologist                                 |  118381.60 | 2022-06-03   |       4 | 706312.02 |
 |     49 |       4 | Amber       | Peterson  | Architectural technologist                |  101187.98 | 2023-02-12   |       4 | 706312.02 |
 ...
-+--------+---------+-------------+-----------+-------------------------------------------+------------+--------------+---------+-----------+
-490 rows in set (0.09 sec)
-```
-
-## 4. Find Department Name ,employee name, Emp_position for which project year is 2020
-
-```sql
-mysql> select dept.Dept_name, employee.Emp_fname, employee.Emp_lname, employee.Emp_position, project.Proj_year FROM employee LEFT JOIN dept ON employee.Dept_id = dept.Dept_id LEFT JOIN project ON project.Dept_id = dept.Dept_id WHERE project.Proj_year = 2020;
-+-----------+-------------+-----------+-------------------------------------------+-----------+
++<span class="hljs-comment">--------+---------+-------------+-----------+-------------------------------------------+------------+--------------+---------+-----------+</span>
+490 rows in <span class="hljs-keyword">set</span> (<span class="hljs-number">0.09</span> sec)
+</div></code></pre>
+<h2 id="4-find-department-name-employee-name-empposition-for-which-project-year-is-2020">4. Find Department Name ,employee name, Emp_position for which project year is 2020</h2>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-keyword">select</span> dept.Dept_name, employee.Emp_fname, employee.Emp_lname, employee.Emp_position, project.Proj_year <span class="hljs-keyword">FROM</span> employee <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> dept <span class="hljs-keyword">ON</span> employee.Dept_id = dept.Dept_id <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <span class="hljs-keyword">project</span> <span class="hljs-keyword">ON</span> project.Dept_id = dept.Dept_id <span class="hljs-keyword">WHERE</span> project.Proj_year = <span class="hljs-number">2020</span>;
++<span class="hljs-comment">-----------+-------------+-----------+-------------------------------------------+-----------+</span>
 | Dept_name | Emp_fname   | Emp_lname | Emp_position                              | Proj_year |
-+-----------+-------------+-----------+-------------------------------------------+-----------+
++<span class="hljs-comment">-----------+-------------+-----------+-------------------------------------------+-----------+</span>
 | Marketing | Sean        | Dixon     | Engineer, structural                      |      2020 |
 | Marketing | Jessica     | Acosta    | Minerals surveyor                         |      2020 |
 | Marketing | Rachel      | Kelly     | Transport planner                         |      2020 |
@@ -243,16 +597,13 @@ mysql> select dept.Dept_name, employee.Emp_fname, employee.Emp_lname, employee.E
 | HR        | Steven      | Bates     | Counselling psychologist                  |      2020 |
 | HR        | Kimberly    | Hardin    | Engineer, electrical                      |      2020 |
 | HR        | William     | Wood      | Sports coach                              |      2020 |
-+-----------+-------------+-----------+-------------------------------------------+-----------+
-52 rows in set (0.00 sec)
-```
-
-## 5. Display emp_position, D_name who have Project cost >30000
-
-```sql
-mysql> select DISTINCT Emp_Position, Dept_name FROM employee JOIN dept ON employee.Dept_id = dept.Dept_id LEFT JOIN project ON dept.Dept_id = project.Dept_id AND employee.Dept_id = project.Dept_id;                                                   +-------------------------------------------+-----------+
++<span class="hljs-comment">-----------+-------------+-----------+-------------------------------------------+-----------+</span>
+52 rows in <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+</div></code></pre>
+<h2 id="5-display-empposition-dname-who-have-project-cost-30000">5. Display emp_position, D_name who have Project cost &gt;30000</h2>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-keyword">select</span> <span class="hljs-keyword">DISTINCT</span> Emp_Position, Dept_name <span class="hljs-keyword">FROM</span> employee <span class="hljs-keyword">JOIN</span> dept <span class="hljs-keyword">ON</span> employee.Dept_id = dept.Dept_id <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> <span class="hljs-keyword">project</span> <span class="hljs-keyword">ON</span> dept.Dept_id = project.Dept_id <span class="hljs-keyword">AND</span> employee.Dept_id = project.Dept_id;                                                   +<span class="hljs-comment">-------------------------------------------+-----------+</span>
 | Emp_Position                              | Dept_name |
-+-------------------------------------------+-----------+
++<span class="hljs-comment">-------------------------------------------+-----------+</span>
 | Horticultural therapist                   | HR        |
 | Naval architect                           | HR        |
 | Animator                                  | HR        |
@@ -301,61 +652,49 @@ mysql> select DISTINCT Emp_Position, Dept_name FROM employee JOIN dept ON employ
 | Armed forces operational officer          | Finance   |
 | Facilities manager                        | Finance   |
 | Medical physicist                         | Finance   |
-+-------------------------------------------+-----------+
-48 rows in set (0.00 sec)
-```
-
-## 6. Find the names of all the Projects that started in the year 2015.
-
-```sql
-mysql> SELECT project.Proj_Name FROM project WHERE Proj_year = 2015;
-+-----------------------------------------+
++<span class="hljs-comment">-------------------------------------------+-----------+</span>
+48 rows in <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+</div></code></pre>
+<h2 id="6-find-the-names-of-all-the-projects-that-started-in-the-year-2015">6. Find the names of all the Projects that started in the year 2015.</h2>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-keyword">SELECT</span> project.Proj_Name <span class="hljs-keyword">FROM</span> <span class="hljs-keyword">project</span> <span class="hljs-keyword">WHERE</span> Proj_year = <span class="hljs-number">2015</span>;
++<span class="hljs-comment">-----------------------------------------+</span>
 | Proj_Name                               |
-+-----------------------------------------+
++<span class="hljs-comment">-----------------------------------------+</span>
 | redefine magnetic networks              |
 | maximize 24/365 systems                 |
 | repurpose innovative schemas            |
 | re-intermediate extensible applications |
 | generate value-added models             |
-+-----------------------------------------+
-5 rows in set (0.00 sec)
-```
-
-## 7. List the Dept_name having no_of_emp>=10
-
-```sql
-mysql> SELECT dept.Dept_name FROM employee LEFT JOIN dept ON employee.Dept_id = dept.Dept_id GROUP BY dept.Dept_name HAVING COUNT(employee.Emp_id) >= 10 ;
-+-----------+
++<span class="hljs-comment">-----------------------------------------+</span>
+5 rows in <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+</div></code></pre>
+<h2 id="7-list-the-deptname-having-noofemp10">7. List the Dept_name having no_of_emp&gt;=10</h2>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-keyword">SELECT</span> dept.Dept_name <span class="hljs-keyword">FROM</span> employee <span class="hljs-keyword">LEFT</span> <span class="hljs-keyword">JOIN</span> dept <span class="hljs-keyword">ON</span> employee.Dept_id = dept.Dept_id <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> dept.Dept_name <span class="hljs-keyword">HAVING</span> <span class="hljs-keyword">COUNT</span>(employee.Emp_id) &gt;= <span class="hljs-number">10</span> ;
++<span class="hljs-comment">-----------+</span>
 | Dept_name |
-+-----------+
++<span class="hljs-comment">-----------+</span>
 | Marketing |
 | Sales     |
 | Finance   |
-+-----------+
-3 rows in set (0.00 sec)
-```
-
-## 8. Display the total number of employee who have joined any project before 2019
-
-```sql
-mysql> SELECT COUNT(DISTINCT e.Emp_id) FROM employee e JOIN project p ON e.Dept_id = p.Dept_id AND p.Proj_year < 2019;
-+--------------------------+
++<span class="hljs-comment">-----------+</span>
+3 rows in <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+</div></code></pre>
+<h2 id="8-display-the-total-number-of-employee-who-have-joined-any-project-before-2019">8. Display the total number of employee who have joined any project before 2019</h2>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">COUNT</span>(<span class="hljs-keyword">DISTINCT</span> e.Emp_id) <span class="hljs-keyword">FROM</span> employee e <span class="hljs-keyword">JOIN</span> <span class="hljs-keyword">project</span> p <span class="hljs-keyword">ON</span> e.Dept_id = p.Dept_id <span class="hljs-keyword">AND</span> p.Proj_year &lt; <span class="hljs-number">2019</span>;
++<span class="hljs-comment">--------------------------+</span>
 | COUNT(DISTINCT e.Emp_id) |
-+--------------------------+
++<span class="hljs-comment">--------------------------+</span>
 |                       50 |
-+--------------------------+
-1 row in set (1.62 sec)
-```
-
-## 9. Create a view showing the employee and Department details.
-
-```sql
-mysql> CREATE VIEW empDetail AS SELECT * FROM employee NATURAL JOIN dept;
++<span class="hljs-comment">--------------------------+</span>
+1 row in <span class="hljs-keyword">set</span> (<span class="hljs-number">1.62</span> sec)
+</div></code></pre>
+<h2 id="9-create-a-view-showing-the-employee-and-department-details">9. Create a view showing the employee and Department details.</h2>
+<pre class="hljs"><code><div>mysql&gt; <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> empDetail <span class="hljs-keyword">AS</span> <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> employee <span class="hljs-keyword">NATURAL</span> <span class="hljs-keyword">JOIN</span> dept;
 Query OK, 0 rows affected (0.14 sec)
-mysql> SELECT * FROM empDetail LIMIT 20;
-+---------+--------+-----------+-----------+---------------------------------+------------+--------------+-----------+-----------+
+mysql&gt; <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> empDetail <span class="hljs-keyword">LIMIT</span> <span class="hljs-number">20</span>;
++<span class="hljs-comment">---------+--------+-----------+-----------+---------------------------------+------------+--------------+-----------+-----------+</span>
 | Dept_id | Emp_id | Emp_fname | Emp_lname | Emp_Position                    | Emp_salary | Emp_JoinDate | Dept_name | location  |
-+---------+--------+-----------+-----------+---------------------------------+------------+--------------+-----------+-----------+
++<span class="hljs-comment">---------+--------+-----------+-----------+---------------------------------+------------+--------------+-----------+-----------+</span>
 |       1 |     15 | Andrea    | Simmons   | Horticultural therapist         |   94541.91 | 2019-12-12   | HR        | Pune      |
 |       1 |     16 | Jasmine   | Young     | Naval architect                 |   87026.10 | 2020-01-02   | HR        | Pune      |
 |       1 |     23 | Jeffrey   | Good      | Animator                        |   80860.01 | 2023-05-07   | HR        | Pune      |
@@ -376,23 +715,23 @@ mysql> SELECT * FROM empDetail LIMIT 20;
 |       3 |     26 | Ashley    | Becker    | Doctor, general practice        |   52927.94 | 2020-12-03   | Marketing | Hyderabad |
 |       3 |     28 | Paul      | Dorsey    | Programmer, systems             |  117457.77 | 2019-12-28   | Marketing | Hyderabad |
 |       3 |     39 | Joseph    | Rodriguez | Runner, broadcasting/film/video |   78683.76 | 2022-04-19   | Marketing | Hyderabad |
-+---------+--------+-----------+-----------+---------------------------------+------------+--------------+-----------+-----------+
-20 rows in set (0.00 sec)
-```
-
-## 10. Perform Manipulation on simple view-Insert, update, delete, drop view.
-
-```sql
-CREATE VIEW empDetail as SELECT * FROM employee;
++<span class="hljs-comment">---------+--------+-----------+-----------+---------------------------------+------------+--------------+-----------+-----------+</span>
+20 rows in <span class="hljs-keyword">set</span> (<span class="hljs-number">0.00</span> sec)
+</div></code></pre>
+<h2 id="10-perform-manipulation-on-simple-view-insert-update-delete-drop-view">10. Perform Manipulation on simple view-Insert, update, delete, drop view.</h2>
+<pre class="hljs"><code><div><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> empDetail <span class="hljs-keyword">as</span> <span class="hljs-keyword">SELECT</span> * <span class="hljs-keyword">FROM</span> employee;
 Query OK, 0 rows affected (0.01 sec)
 
-mysql> INSERT INTO empDetail (Emp_id, Dept_id, Emp_fname, Emp_lname, Emp_Position, Emp_salary , Emp_JoinDate)
-    -> VALUES(51, 5, 'John','Krazinsky', 'Game Developer', 250000, '2020-11-05');
+mysql&gt; <span class="hljs-keyword">INSERT</span> <span class="hljs-keyword">INTO</span> empDetail (Emp_id, Dept_id, Emp_fname, Emp_lname, Emp_Position, Emp_salary , Emp_JoinDate)
+    -&gt; <span class="hljs-keyword">VALUES</span>(<span class="hljs-number">51</span>, <span class="hljs-number">5</span>, <span class="hljs-string">'John'</span>,<span class="hljs-string">'Krazinsky'</span>, <span class="hljs-string">'Game Developer'</span>, <span class="hljs-number">250000</span>, <span class="hljs-string">'2020-11-05'</span>);
 Query OK, 1 row affected (1.72 sec)
 
-mysql> DELETE FROM employee WHERE employee.Emp_id = 51;  -- Deleting John Krazinsky
-Query OK, 1 row affected (0.01 sec)                      -- Due to some reasons the view did not have delete permissions
+mysql&gt; <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">FROM</span> employee <span class="hljs-keyword">WHERE</span> employee.Emp_id = <span class="hljs-number">51</span>;  <span class="hljs-comment">-- Deleting John Krazinsky</span>
+Query OK, 1 row affected (0.01 sec)                      <span class="hljs-comment">-- Due to some reasons the view did not have delete permissions</span>
 
-mysql> DROP VIEW IF EXISTS empDetail;
+mysql&gt; <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">VIEW</span> <span class="hljs-keyword">IF</span> <span class="hljs-keyword">EXISTS</span> empDetail;
 Query OK, 0 rows affected (0.01 sec)
-```
+</div></code></pre>
+
+</body>
+</html>
