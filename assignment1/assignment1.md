@@ -47,6 +47,8 @@ A computer network can be defined as a collection of computing devices (nodes) i
 | Fault tolerant         | More tolerant              | Less tolerant                        | Less tolerant                             |
 | Congestion             | Less                       | More                                 | More                                      |
 
+<br><br>
+
 ### OSI & TCP/IP Layers:
 
 | Layer No. | OSI Model Layers | TCP/IP Model Stages | Devices                 | Protocols                            | Services                                                 |
@@ -70,20 +72,6 @@ A computer network can be defined as a collection of computing devices (nodes) i
 | Plug and play     | Yes                                                                 | No                                                                         | Yes                                                                         | Yes                                                              |
 | Optimal routing   | No                                                                  | Yes                                                                        | No                                                                          | No                                                               |
 | Cut through       | Yes                                                                 | No                                                                         | No                                                                          | Yes                                                              |
-
-### Popular Sniffing Tools
-
-- BetterCAP
-- Ettercap
-- Wireshark
-- Tcpdump
-- WinDump
-- OmniPeek
-- Dsniff
-- EtherApe
-- MSN Sniffer
-- NetWitness
-- NextGen
 
 ### Features of Wireshark
 
@@ -135,17 +123,6 @@ A computer network can be defined as a collection of computing devices (nodes) i
    wireshark is a powerful network protocol analyser that allows users to capture and interactively browse the traffic running on a computer network. \
    Running it with sudo (superuser do) grants the necessary permissions to capture packets on network interfaces.
 
-### Types of Connectors:
-
-- **RJ45 (Registered Jack 45):** An eight-pin connector commonly used for Ethernet networking.
-- **RJ11 (Registered Jack 11):** A four or six-pin connector commonly used for telephone connections.
-- **RJ14 (Registered Jack 14):** A six-pin connector similar to RJ11 but used for two telephone lines.
-- **RJ21 (Registered Jack 21):** A 50-pin connector often referred to as a "telco" connector.
-- **BNC (Bayonet Neill–Concelman):** A quick connect/disconnect RF connector.
-- **USB (Universal Serial Bus):** A standard connector for peripheral devices.
-- **HDMI (High-Definition Multimedia Interface):** A connector for transmitting audio and video signals.
-- **Thunderbolt:** A high-speed interface developed by Intel and Apple.
-
 ### PING command (Packet Internet Groper):
 
 The ping command is a network utility used to test the reachability of a host on an Internet Protocol (IP) network. \
@@ -160,14 +137,18 @@ ECHO_REQUEST datagrams (`‘’ping’’`) have an IP and ICMP header, followed
 - `-t` ttl: Set the Time To Live (TTL) value for the packets.
 - `-W` timeout: Time to wait for a response, in seconds.
 
-### Troubleshooting:
+### Types of Connectors:
 
-When a ping is made from machine A to machine B which are connected through a switch through the wireshark sniffing tool and
+- **RJ45 (Registered Jack 45):** An eight-pin connector commonly used for Ethernet networking.
+- **RJ11 (Registered Jack 11):** A four or six-pin connector commonly used for telephone connections.
+- **RJ14 (Registered Jack 14):** A six-pin connector similar to RJ11 but used for two telephone lines.
+- **RJ21 (Registered Jack 21):** A 50-pin connector often referred to as a "telco" connector.
+- **BNC (Bayonet Neill–Concelman):** A quick connect/disconnect RF connector.
+- **USB (Universal Serial Bus):** A standard connector for peripheral devices.
+- **HDMI (High-Definition Multimedia Interface):** A connector for transmitting audio and video signals.
+- **Thunderbolt:** A high-speed interface developed by Intel and Apple.
 
-- **Case 1:** The IP of machine B isn’t correctly mentioned while pinging through A then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.
-- **Case 2:** The wireshark on machine B is closed during the process then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.
-- **Case 3:** The machine B is shut down in between the process then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.
-- **Case 4:** The class of IPs of the machines aren’t same then the wireshark on machine A shows ‘Network Unreachable’ error message.
+
 
 ### Graphic Symbols in Cisco Packet Tracer:
 
@@ -316,6 +297,14 @@ When a ping is made from machine A to machine B which are connected through a sw
   - Incorrect Wireshark settings could lead to missing packets or capture errors.
 
 ---
+### Troubleshooting:
+
+When a ping is made from machine A to machine B which are connected through a switch through the wireshark sniffing tool and
+
+- **Case 1:** The IP of machine B isn’t correctly mentioned while pinging through A then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.
+- **Case 2:** The wireshark on machine B is closed during the process then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.
+- **Case 3:** The machine B is shut down in between the process then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.
+- **Case 4:** The class of IPs of the machines aren’t same then the wireshark on machine A shows ‘Network Unreachable’ error message.
 
 ### References
 

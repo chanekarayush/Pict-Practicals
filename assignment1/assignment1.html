@@ -482,6 +482,7 @@ code {
 </tr>
 </tbody>
 </table>
+<p><br><br></p>
 <h3 id="osi--tcpip-layers">OSI &amp; TCP/IP Layers:</h3>
 <table>
 <thead>
@@ -616,20 +617,6 @@ code {
 </tr>
 </tbody>
 </table>
-<h3 id="popular-sniffing-tools">Popular Sniffing Tools</h3>
-<ul>
-<li>BetterCAP</li>
-<li>Ettercap</li>
-<li>Wireshark</li>
-<li>Tcpdump</li>
-<li>WinDump</li>
-<li>OmniPeek</li>
-<li>Dsniff</li>
-<li>EtherApe</li>
-<li>MSN Sniffer</li>
-<li>NetWitness</li>
-<li>NextGen</li>
-</ul>
 <h3 id="features-of-wireshark">Features of Wireshark</h3>
 <ul>
 <li>Available for UNIX &amp; Windows</li>
@@ -693,17 +680,6 @@ This command displays all active network interfaces and their configurations, su
 wireshark is a powerful network protocol analyser that allows users to capture and interactively browse the traffic running on a computer network. <br>
 Running it with sudo (superuser do) grants the necessary permissions to capture packets on network interfaces.</li>
 </ol>
-<h3 id="types-of-connectors">Types of Connectors:</h3>
-<ul>
-<li><strong>RJ45 (Registered Jack 45):</strong> An eight-pin connector commonly used for Ethernet networking.</li>
-<li><strong>RJ11 (Registered Jack 11):</strong> A four or six-pin connector commonly used for telephone connections.</li>
-<li><strong>RJ14 (Registered Jack 14):</strong> A six-pin connector similar to RJ11 but used for two telephone lines.</li>
-<li><strong>RJ21 (Registered Jack 21):</strong> A 50-pin connector often referred to as a &quot;telco&quot; connector.</li>
-<li><strong>BNC (Bayonet Neill–Concelman):</strong> A quick connect/disconnect RF connector.</li>
-<li><strong>USB (Universal Serial Bus):</strong> A standard connector for peripheral devices.</li>
-<li><strong>HDMI (High-Definition Multimedia Interface):</strong> A connector for transmitting audio and video signals.</li>
-<li><strong>Thunderbolt:</strong> A high-speed interface developed by Intel and Apple.</li>
-</ul>
 <h3 id="ping-command-packet-internet-groper">PING command (Packet Internet Groper):</h3>
 <p>The ping command is a network utility used to test the reachability of a host on an Internet Protocol (IP) network. <br>
 It is also used to measure the round-trip time for messages sent from the originating host to a destination computer.<br>
@@ -717,13 +693,16 @@ The default is 56, which translates into 64 ICMP data bytes when combined with t
 <li><code>-t</code> ttl: Set the Time To Live (TTL) value for the packets.</li>
 <li><code>-W</code> timeout: Time to wait for a response, in seconds.</li>
 </ul>
-<h3 id="troubleshooting">Troubleshooting:</h3>
-<p>When a ping is made from machine A to machine B which are connected through a switch through the wireshark sniffing tool and</p>
+<h3 id="types-of-connectors">Types of Connectors:</h3>
 <ul>
-<li><strong>Case 1:</strong> The IP of machine B isn’t correctly mentioned while pinging through A then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.</li>
-<li><strong>Case 2:</strong> The wireshark on machine B is closed during the process then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.</li>
-<li><strong>Case 3:</strong> The machine B is shut down in between the process then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.</li>
-<li><strong>Case 4:</strong> The class of IPs of the machines aren’t same then the wireshark on machine A shows ‘Network Unreachable’ error message.</li>
+<li><strong>RJ45 (Registered Jack 45):</strong> An eight-pin connector commonly used for Ethernet networking.</li>
+<li><strong>RJ11 (Registered Jack 11):</strong> A four or six-pin connector commonly used for telephone connections.</li>
+<li><strong>RJ14 (Registered Jack 14):</strong> A six-pin connector similar to RJ11 but used for two telephone lines.</li>
+<li><strong>RJ21 (Registered Jack 21):</strong> A 50-pin connector often referred to as a &quot;telco&quot; connector.</li>
+<li><strong>BNC (Bayonet Neill–Concelman):</strong> A quick connect/disconnect RF connector.</li>
+<li><strong>USB (Universal Serial Bus):</strong> A standard connector for peripheral devices.</li>
+<li><strong>HDMI (High-Definition Multimedia Interface):</strong> A connector for transmitting audio and video signals.</li>
+<li><strong>Thunderbolt:</strong> A high-speed interface developed by Intel and Apple.</li>
 </ul>
 <h3 id="graphic-symbols-in-cisco-packet-tracer">Graphic Symbols in Cisco Packet Tracer:</h3>
 <ol>
@@ -961,6 +940,14 @@ The default is 56, which translates into 64 ICMP data bytes when combined with t
 </li>
 </ul>
 <hr>
+<h3 id="troubleshooting">Troubleshooting:</h3>
+<p>When a ping is made from machine A to machine B which are connected through a switch through the wireshark sniffing tool and</p>
+<ul>
+<li><strong>Case 1:</strong> The IP of machine B isn’t correctly mentioned while pinging through A then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.</li>
+<li><strong>Case 2:</strong> The wireshark on machine B is closed during the process then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.</li>
+<li><strong>Case 3:</strong> The machine B is shut down in between the process then the wireshark on machine A shows ‘Destination Host Unreachable’ error message.</li>
+<li><strong>Case 4:</strong> The class of IPs of the machines aren’t same then the wireshark on machine A shows ‘Network Unreachable’ error message.</li>
+</ul>
 <h3 id="references">References</h3>
 <ol>
 <li><strong>Cisco Networking Academy.</strong> &quot;Introduction to Networks.&quot; Cisco Systems, 2023.</li>
