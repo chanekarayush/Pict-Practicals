@@ -158,7 +158,7 @@ int main()
 	ofstream ic, st, lt;
 	// Saving the output of pass1 into pass2 source code directory. Since it will be the input for pass2.cpp
 	// The paths may change accordingly
-	const char *path1 = "ic.txt"; // empty space is filled with "NAN"
+	const char *path1 = "ic.txt"; 
 	const char *path2 = "symtable.txt";
 	const char *path3 = "littable.txt";
 	ic.open(path1);

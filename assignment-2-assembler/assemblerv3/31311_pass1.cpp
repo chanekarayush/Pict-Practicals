@@ -183,15 +183,12 @@ struct PoolTable
     string literal_number;
 };
 
-struct PoolTable pooltab[10]; // Pool table array
+struct PoolTable pooltab[10]; 
 
 int main()
 {
-    // std::filesystem::path folderPath = "path/to/your/folder";
-    // std::filesystem::create_directory(folderPath);
-
     ifstream inputFile;
-    inputFile.open("input.txt"); // Open input file
+    inputFile.open("input2.txt"); 
 
     ofstream intermediateCodeFile, symbolTableFile, literalTableFile;
     const char *path1 = "intermediateCode.txt";

@@ -1,8 +1,8 @@
 {
     "files.associations": {
-        "*.py": "python",
-        "*.csv": "csv (pipe)",
+        "fstream": "cpp",
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "*.tcc": "cpp"
     }
 }
