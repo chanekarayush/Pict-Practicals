@@ -21,7 +21,7 @@ int main()
 {
 	ifstream ic, st, lt;
 	// pass1 output files as input to pass2
-	ic.open("intermediateCode.txt");
+	ic.open("ic.txt");
 	st.open("symtable.txt");
 	lt.open("littable.txt");
 
