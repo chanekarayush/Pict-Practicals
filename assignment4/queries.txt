@@ -1,0 +1,97 @@
+CREATE TABLE Borrower (
+        Rollin INT,
+        Name VARCHAR(100),
+        DateofIssue DATE,
+        NameofBook VARCHAR(100),
+        Status CHAR(1),
+        PRIMARY KEY (Rollin, NameofBook)
+    );
+
+CREATE TABLE Fine (
+    Roll_no INT,
+    Date DATE,
+    Amt DECIMAL(10, 2),
+    PRIMARY KEY (Roll_no, Date),
+    FOREIGN KEY (Roll_no) REFERENCES Borrower(Rollin)
+);
+DELIMITER //
+
+CREATE PROCEDURE ReturnBook(IN p_roll_no INT, IN p_name_of_book VARCHAR(100))
+    BEGIN
+        DECLARE v_date_of_issue DATE;
+        DECLARE v_current_date DATE;
+        DECLARE v_days INT;
+        DECLARE v_fine_amount DECIMAL(10, 2) DEFAULT 0;
+        DECLARE v_book_exists INT;
+        DECLARE v_error_code VARCHAR(5);
+        DECLARE v_error_message TEXT;
+    
+        
+        DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
+        BEGIN
+           
+            GET DIAGNOSTICS CONDITION 1
+                v_error_code = RETURNED_SQLSTATE,
+                v_error_message = MESSAGE_TEXT;
+            ROLLBACK;
+            SELECT CONCAT('An error occurred. Error Code: ', v_error_code, ', Message: ', v_error_message) AS ErrorMessage;
+        END;
+    
+        
+        DECLARE CONTINUE HANDLER FOR NOT FOUND
+        BEGIN
+            ROLLBACK;
+            SELECT 'The book record was not found for the provided Roll Number and Book Name' AS ErrorMessage;
+        END;
+    
+        SET v_current_date = CURDATE();
+        
+        
+        SELECT COUNT(*) INTO v_book_exists
+        FROM Borrower
+        WHERE Rollin = p_roll_no AND NameofBook = p_name_of_book AND Status = 'I';
+        
+        IF v_book_exists = 0 THEN
+            SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No book record found or book is not issued.';
+        END IF;
+    
+        
+        SELECT DateofIssue INTO v_date_of_issue
+        FROM Borrower
+        WHERE Rollin = p_roll_no AND NameofBook = p_name_of_book AND Status = 'I';
+    
+        
+        SET v_days = DATEDIFF(v_current_date, v_date_of_issue);
+        
+        
+        IF v_days > 30 THEN
+            SET v_fine_amount = (v_days - 30) * 50 + (30 * 5);
+        ELSEIF v_days >= 15 THEN
+            SET v_fine_amount = v_days * 5;
+        ELSE
+            SET v_fine_amount = 0;
+        END IF;
+    
+        
+        UPDATE Borrower
+        SET Status = 'R'
+        WHERE Rollin = p_roll_no AND NameofBook = p_name_of_book AND Status = 'I';
+        
+        
+        IF v_fine_amount > 0 THEN
+            INSERT INTO Fine (Roll_no, Date, Amt)
+            VALUES (p_roll_no, v_current_date, v_fine_amount);
+        END IF;
+    
+        COMMIT;
+        
+        
+        SELECT CONCAT('Book returned. Fine amount: Rs ', v_fine_amount) AS ResultMessage;
+    
+    END //
+
+    CALL ReturnBook(201, 'Fundamentals of Database Systems');
+
+    DELIMITER ;
+
+    CALL ReturnBook(999, 'Nonexistent Book');
