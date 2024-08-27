@@ -1,7 +1,4 @@
-# Author: Shantanu Wable
-
 import re as regex
-import itertools
 import json
 import os
 
@@ -20,7 +17,6 @@ file.close()
 
 # Input File(s)
 inputFile = open('Macro-Assembler/Pass-1/input/program.txt', 'r')
-# inputFile = open('Macro-Assembler/Pass-1/input/program2.asm', 'r')
 
 # Output File(s)
 mdtFile = open('Macro-Assembler/Pass-1/output/mdt.asm', 'a')
