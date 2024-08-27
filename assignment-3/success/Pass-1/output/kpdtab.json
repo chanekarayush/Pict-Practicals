@@ -1,0 +1,26 @@
+{
+    "1": {
+        "macro": "M1",
+        "index": 1,
+        "name": "A",
+        "value": "AREG"
+    },
+    "2": {
+        "macro": "M1",
+        "index": 2,
+        "name": "B",
+        "value": "---"
+    },
+    "3": {
+        "macro": "M2",
+        "index": 3,
+        "name": "U",
+        "value": "CREG"
+    },
+    "4": {
+        "macro": "M2",
+        "index": 4,
+        "name": "V",
+        "value": "DREG"
+    }
+}

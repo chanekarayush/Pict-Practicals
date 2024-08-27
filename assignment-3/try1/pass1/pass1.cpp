@@ -5,6 +5,7 @@
 #include <map>
 #include <vector>
 #include <regex>
+#include <iomanip> // Include for formatting
 
 using namespace std;
 
@@ -21,7 +22,7 @@ string get_key(const string& val, const map<int, string>& dict) {
 // Function to print stuff fancily
 template<typename T> void printElement(T t, const int& width)
 {
-    cout << left << setw(width) << setfill(separator) << t;
+    cout << left << setw(width) << setfill(' ') << t;
 }
 
 int main() {
@@ -33,7 +34,7 @@ int main() {
     #endif
 
     // File paths
-    const string inputFilePath = "program2.txt";
+    const string inputFilePath = "program.txt";
     const string mdtFilePath = "mdt.txt";
     const string mntFilePath = "mnt.txt";
     const string pntabFilePath = "pntab.txt";
@@ -199,41 +200,113 @@ int main() {
     inputFile.close();
     mdtFile.close();
 
-    // Write MNT file
+    // Write MNT file in a tabular format
+    ofstream mntFileFormatted(mntFilePath); // Create a new file stream for the formatted MNT file
+    if (!mntFileFormatted) {
+        cerr << "Error opening MNT file for formatting!" << endl;
+        return 1;
+    }
+
+    // Define column widths
+    const int indexWidth = 5;
+    const int nameWidth = 15;
+    const int ppWidth = 10;
+    const int kpWidth = 10;
+    const int mdtpWidth = 10;
+    const int kpdtpWidth = 10;
+
+    // Header for MNT
+    mntFileFormatted << left
+                     << setw(indexWidth) << "Index"
+                     << setw(nameWidth) << "Name"
+                     << setw(ppWidth) << "PP"
+                     << setw(kpWidth) << "KP"
+                     << setw(mdtpWidth) << "MDTP"
+                     << setw(kpdtpWidth) << "KPDTP"
+                     << endl;
+    mntFileFormatted << string(indexWidth + nameWidth + ppWidth + kpWidth + mdtpWidth + kpdtpWidth, '-') << endl;
+
+    // Write MNT table content
     for (const auto& pair : mnt) {
         int key = pair.first;
         const map<string, string>& value = pair.second;
-        mntFile << "Index: " << key << endl;
-        for (const auto& kv : value) {
-            mntFile << kv.first << ": " << kv.second << endl;
-        }
-        mntFile << endl;
+        mntFileFormatted << left
+                         << setw(indexWidth) << value.at("index")
+                         << setw(nameWidth) << value.at("name")
+                         << setw(ppWidth) << value.at("pp")
+                         << setw(kpWidth) << value.at("kp")
+                         << setw(mdtpWidth) << value.at("mdtp")
+                         << setw(kpdtpWidth) << value.at("kpdtp")
+                         << endl;
     }
-    mntFile.close();
 
-    // Write PNTAB file
+    mntFileFormatted.close();
+
+    // Write PNTAB file in a tabular format
+    ofstream pntabFileFormatted(pntabFilePath);
+    if (!pntabFileFormatted) {
+        cerr << "Error opening PNTAB file for formatting!" << endl;
+        return 1;
+    }
+
+    // Define column widths for PNTAB
+    const int pntabIndexWidth = 10;
+    const int pntabParamWidth = 20;
+
+    // Write PNTAB table content
+    pntabFileFormatted << left
+                       << setw(pntabIndexWidth) << "Macro"
+                       << setw(pntabIndexWidth) << "Param Number"
+                       << setw(pntabParamWidth) << "Param Name"
+                       << endl;
+    pntabFileFormatted << string(pntabIndexWidth + pntabIndexWidth + pntabParamWidth, '-') << endl;
+
     for (const auto& pair : pntab) {
         const string& macro = pair.first;
         const map<int, string>& params = pair.second;
-        pntabFile << "Macro: " << macro << endl;
         for (const auto& kv : params) {
-            pntabFile << "Param " << kv.first << ": " << kv.second << endl;
+            pntabFileFormatted << left
+                               << setw(pntabIndexWidth) << macro
+                               << setw(pntabIndexWidth) << kv.first
+                               << setw(pntabParamWidth) << kv.second
+                               << endl;
         }
-        pntabFile << endl;
+        pntabFileFormatted << endl;
     }
-    pntabFile.close();
 
-    // Write KPD TAB file
+    pntabFileFormatted.close();
+
+    // Write KPD TAB file in a tabular format
+    ofstream kpdtabFileFormatted(kpdtabFilePath);
+    if (!kpdtabFileFormatted) {
+        cerr << "Error opening KPD TAB file for formatting!" << endl;
+        return 1;
+    }
+
+    // Define column widths for KPD TAB
+    const int kpdIndexWidth = 5;
+    const int kpdNameWidth = 20;
+    const int kpdValueWidth = 20;
+
+    // Write KPD TAB table content
+    kpdtabFileFormatted << left
+                        << setw(kpdIndexWidth) << "Index"
+                        << setw(kpdNameWidth) << "Name"
+                        << setw(kpdValueWidth) << "Value"
+                        << endl;
+    kpdtabFileFormatted << string(kpdIndexWidth + kpdNameWidth + kpdValueWidth, '-') << endl;
+
     for (const auto& pair : kpdtab) {
         int key = pair.first;
         const map<string, string>& value = pair.second;
-        kpdtabFile << "Index: " << key << endl;
-        for (const auto& kv : value) {
-            kpdtabFile << kv.first << ": " << kv.second << endl;
-        }
-        kpdtabFile << endl;
+        kpdtabFileFormatted << left
+                            << setw(kpdIndexWidth) << value.at("index")
+                            << setw(kpdNameWidth) << value.at("name")
+                            << setw(kpdValueWidth) << value.at("value")
+                            << endl;
     }
-    kpdtabFile.close();
+
+    kpdtabFileFormatted.close();
 
     return 0;
 }

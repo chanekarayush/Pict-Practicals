@@ -1,0 +1,14 @@
+Macro     Param NumberParam Name          
+----------------------------------------
+INCR      1         MEM_VAL             
+INCR      2         INCR_VAL            
+INCR      3         REG                 
+
+INCR_D    1         MEM_VAL             
+INCR_D    2         INCR_VAL            
+INCR_D    3         REG                 
+
+INCR_M    1         MEM_VAL             
+INCR_M    2         INCR_VAL            
+INCR_M    3         REG                 
+
