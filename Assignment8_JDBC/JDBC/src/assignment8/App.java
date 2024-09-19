@@ -17,13 +17,13 @@ public class App {
         String query = "";
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
             db = DriverManager.getConnection(url, user, password);
 
             Statement st1 = db.createStatement();
             if (db != null && !db.isClosed()) {
-                System.out.println("Database Connection Successful");
+                System.out.println("Successfully Connected to database" + url + "! \n");
             } else {
                 System.out.println("An Error Occured while opening the database");
                 throw new SQLException("Invalid Database url or state");
@@ -83,11 +83,10 @@ public class App {
                     ps.setString(4, email);
 
                     int rowsInserted = ps.executeUpdate();
-                    System.out.println(rowsInserted + "Record(s) Inserted Sucessfully");
+                    System.out.println(rowsInserted + " Record(s) Inserted Sucessfully");
 
                     break;
                 case 3:
-
                     // UPDATE
 
                     query = "UPDATE test SET name = ?, age = ?, email = ? WHERE id = ?";
@@ -105,12 +104,13 @@ public class App {
                     System.out.println();
                     sc.nextLine(); // clears input buffer
 
-                    ps.setInt(1, id);
-                    ps.setString(2, name);
-                    ps.setInt(3, age);
-                    ps.setString(4, email);
+                    ps.setString(1, name);
+                    ps.setInt(2, age);
+                    ps.setString(3, email);
+                    ps.setInt(4, id);
                     int rowsUpdated = ps.executeUpdate();
-                    System.out.println(rowsUpdated + "Record(s) Updated Sucessfully");
+                    System.out.println(rowsUpdated + " Record(s) Updated Sucessfully");
+
                     break;
                 case 4:
                     // DELETE
