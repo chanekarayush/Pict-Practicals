@@ -3,6 +3,7 @@
         "Assignment8_JDBC\\JDBC\\src"
     ],
     "java.project.referencedLibraries": [
-        "Assignment8_JDBC\\JDBC\\lib\\mysql-connector-j-9.0.0\\mysql-connector-j-9.0.0\\mysql-connector-j-9.0.0.jar"
-    ]
+        "Assignment8_JDBC\\JDBC\\lib\\mysql-connector-j-8.0.33.jar"
+    ],
+    "java.format.settings.url": ".vscode/java-formatter.xml"
 }
