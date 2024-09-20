@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>assignment2.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<center>
+<h1 id="cns-assignment-no-2">CNS Assignment No. 2</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">WAN Network Configuration</th>
+<th><!--  --></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Instructor's Name: Prof. B.P. Masram</strong></td>
+<td><strong>Student's Name: Ayush Chanekar</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Objectives: To learn &amp; understand configuring IP Addresses, related network devices &amp; access points as well as setting up a WAN.</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</center>
+<h2 id="problem-statement">Problem Statement:</h2>
+<p>Setup a WAN which contains wired as well as wireless LAN by using <code>packet tracer tool</code>. <br>
+Demonstrate transfer of a packet from LAN 1 (wired LAN) to LAN2 Wireless LAN.</p>
+<h2 id="equipment--software">Equipment &amp; Software:</h2>
+<ul>
+<li>Cisco Packet Tracer Software.</li>
+<li>Microsoft Windows 8.1, 10, 11 (64bit), Ubuntu 20.04, 22.04 LTS (64bit) or macOS 10.14 or newer</li>
+<li>amd64(x86-64) CPU</li>
+<li>4GB of free RAM</li>
+<li>1.4 GB of free disk space</li>
+</ul>
+<h2 id="theory--background">Theory / Background</h2>
+<h3 id="comparison-between-lan-man-wan">Comparison between LAN, MAN, WAN:</h3>
+<center>
+<table>
+<thead>
+<tr>
+<th>Characteristic</th>
+<th>LAN</th>
+<th>MAN</th>
+<th>WAN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Definition</td>
+<td>Local area network</td>
+<td>Metropolitan area network</td>
+<td>Wide area network</td>
+</tr>
+<tr>
+<td>Coverage</td>
+<td>Building/Campus</td>
+<td>City/Large campus</td>
+<td>Multiple cities/countries</td>
+</tr>
+<tr>
+<td>Design and maintenance</td>
+<td>Easy</td>
+<td>Moderate</td>
+<td>Difficult</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>High (100 Mbps to 10 Gbps)</td>
+<td>Moderate to High (10 Mbps to 1 Gbps)</td>
+<td>Variable (1 Mbps to several hundred Mbps)</td>
+</tr>
+<tr>
+<td>Propagation delay</td>
+<td>Short</td>
+<td>Moderate</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>Technology</td>
+<td>Ethernet, Wi-Fi</td>
+<td>Ethernet, FDDI, ATM</td>
+<td>MPLS, Frame Relay, ATM, VSAT</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Low</td>
+<td>Moderate</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Use Cases</td>
+<td>Offices, Schools</td>
+<td>Government, Universities</td>
+<td>Internet, Corporate Networks</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Easier to secure</td>
+<td>Moderately challenging</td>
+<td>Most challenging</td>
+</tr>
+<tr>
+<td>Fault tolerant</td>
+<td>More tolerant</td>
+<td>Less tolerant</td>
+<td>Less tolerant</td>
+</tr>
+<tr>
+<td>Congestion</td>
+<td>Less</td>
+<td>More</td>
+<td>More</td>
+</tr>
+</tbody>
+</table>
+</center>
+<h2 id="wide-area-network-wan">Wide Area Network (WAN)</h2>
+<p>A Wide Area Network (WAN) is a network that extends over a large geographical area, often connecting multiple Local Area Networks (LANs). WANs are essential for organizations that need to communicate across different locations, such as branch offices in different cities or countries. Unlike LANs, which are confined to a single location, WANs connect these geographically dispersed networks, enabling data sharing, communication, and resource access across vast distances.</p>
+<h2 id="protocols-in-wide-area-networks-wan">Protocols in Wide Area Networks (WAN)</h2>
+<h3 id="1-transmission-control-protocolinternet-protocol-tcpip">1. <strong>Transmission Control Protocol/Internet Protocol (TCP/IP)</strong></h3>
+<p>TCP/IP is the foundational suite of protocols for communication over the Internet and most WANs. It includes several protocols like:</p>
+<ul>
+<li><strong>TCP</strong>: Ensures reliable data transmission with error checking and recovery.</li>
+<li><strong>IP</strong>: Handles the addressing and routing of packets across networks.</li>
+</ul>
+<h3 id="2-open-shortest-path-first-ospf">2. <strong>Open Shortest Path First (OSPF)</strong></h3>
+<p>OSPF is a link-state routing protocol used within an Autonomous System (AS). It operates within a single administrative domain and uses Dijkstra's algorithm to find the shortest path for data transmission.</p>
+<h3 id="3-border-gateway-protocol-bgp">3. <strong>Border Gateway Protocol (BGP)</strong></h3>
+<p>BGP is a path-vector protocol used to manage routing between different ASes on the Internet. It is critical for WANs that span across different networks and need efficient, scalable routing.</p>
+<h3 id="4-frame-relay">4. <strong>Frame Relay</strong></h3>
+<p>Frame Relay is a packet-switched WAN protocol that operates at the data link layer. It is used for connecting local area networks (LANs) and transferring data between WAN endpoints using virtual circuits.</p>
+<h3 id="5-multiprotocol-label-switching-mpls">5. <strong>Multiprotocol Label Switching (MPLS)</strong></h3>
+<p>MPLS is a method of ensuring efficient data packet forwarding in a WAN. It operates between the data link layer and network layer and is known for improving the speed and efficiency of routing.</p>
+<h3 id="6-point-to-point-protocol-ppp">6. <strong>Point-to-Point Protocol (PPP)</strong></h3>
+<p>PPP is a data link layer protocol used to establish a direct connection between two network nodes. It is commonly used for internet connections over serial links and supports authentication, encryption, and compression.</p>
+<h3 id="7-synchronous-optical-networking-sonet">7. <strong>Synchronous Optical Networking (SONET)</strong></h3>
+<p>SONET is a standard for transmitting digital data over optical fiber. It is widely used in WANs due to its high-speed capabilities and ability to multiplex multiple streams of data onto a single optical fiber.</p>
+<h3 id="8-asynchronous-transfer-mode-atm">8. <strong>Asynchronous Transfer Mode (ATM)</strong></h3>
+<p>ATM is a cell-based switching technique that uses fixed-size packets, called cells, to transmit data across a network. It is used in WANs for high-speed data transfer and can handle real-time traffic like voice and video.</p>
+<h3 id="9-internet-protocol-security-ipsec">9. <strong>Internet Protocol Security (IPsec)</strong></h3>
+<p>IPsec is a protocol suite for securing IP communications by authenticating and encrypting each IP packet in a communication session. It is widely used in VPNs for securing data transfer over WANs.</p>
+<h3 id="10-dynamic-host-configuration-protocol-dhcp">10. <strong>Dynamic Host Configuration Protocol (DHCP)</strong></h3>
+<p>DHCP is a network management protocol used to automatically assign IP addresses and other network configuration parameters to devices on a network, making it easier to manage and configure devices in a WAN.</p>
+<h3 id="11-simple-network-management-protocol-snmp">11. <strong>Simple Network Management Protocol (SNMP)</strong></h3>
+<p>SNMP is a protocol used for managing devices on IP networks. It is widely used in WANs to monitor and manage network devices like routers, switches, and servers.</p>
+<h3 id="12-file-transfer-protocol-ftp">12. <strong>File Transfer Protocol (FTP)</strong></h3>
+<p>FTP is a standard network protocol used for transferring files from one host to another over a TCP-based network like the Internet. It is commonly used in WANs for the reliable transfer of large files.</p>
+<h3 id="13-hypertext-transfer-protocol-httphttps">13. <strong>Hypertext Transfer Protocol (HTTP/HTTPS)</strong></h3>
+<p>HTTP is the foundation of data communication for the web. HTTPS is the secure version of HTTP, using encryption to protect data in transit, which is crucial in WAN environments.</p>
+<h3 id="14-voice-over-internet-protocol-voip">14. <strong>Voice over Internet Protocol (VoIP)</strong></h3>
+<p>VoIP is a protocol used for delivering voice communications and multimedia sessions over IP networks, including the Internet and WANs. It is essential for integrating voice services into WANs.</p>
+<h3 id="15-virtual-private-network-vpn-protocols">15. <strong>Virtual Private Network (VPN) Protocols</strong></h3>
+<p>VPN protocols like PPTP, L2TP, and SSL/TLS are used to create secure connections over a WAN. They encrypt data and ensure privacy and security for users accessing a WAN remotely.</p>
+<h2 id="layer-3-routers">Layer 3 Routers</h2>
+<p>Routers operating at Layer 3 of the OSI model (the Network layer) are key components in WAN configurations. <br> These routers handle the task of forwarding data packets between different networks by analyzing the destination IP addresses. By using routing tables, a Layer 3 router determines the most efficient path to send packets to their intended destination across the WAN. <br> This routing capability is crucial for managing traffic between distant networks and ensuring that data reaches its endpoint efficiently.</p>
+<h2 id="ip-addressing-in-wans">IP Addressing in WANs</h2>
+<p>IP addressing is a fundamental aspect of configuring WANs. Each interface on a router must be assigned a unique IP address to facilitate communication across the network. WAN configurations often involve the use of both public and private IP addresses. <br> Public IP addresses are typically used on the WAN side to connect to the broader internet, while private IP addresses are used within the internal LANs. Subnetting may be employed to optimize IP address allocation and enhance network organization.</p>
+<h2 id="wan-link-configuration">WAN Link Configuration</h2>
+<p>WAN links are the connections between routers in a WAN, and they can be physical or logical. These links are established using various technologies, including leased lines, MPLS (Multiprotocol Label Switching), VPNs (Virtual Private Networks), or internet-based connections. <br> Configuring WAN links involves setting up the interfaces on each router, assigning IP addresses, and enabling the necessary protocols to ensure reliable data transmission between remote sites.</p>
+<h2 id="routing-protocols">Routing Protocols</h2>
+<p>Routing protocols are essential in WAN configurations, as they determine how routers communicate with each other to discover and maintain routes. <br> These protocols ensure that data is forwarded through the most efficient paths across the WAN. Several routing protocols can be used in WAN setups, each with its unique characteristics:</p>
+<h3 id="1-ospf-open-shortest-path-first">1. OSPF (Open Shortest Path First)</h3>
+<ul>
+<li><strong>Type</strong>: Link-state routing protocol.</li>
+<li><strong>Function</strong>: OSPF calculates the shortest path for data packets based on the link states within the network. It rapidly adjusts to changes in the network topology, making it suitable for large and complex networks.</li>
+<li><strong>Usage</strong>: Commonly used in enterprise networks due to its scalability and efficiency.</li>
+</ul>
+<h3 id="2-bgp-border-gateway-protocol">2. BGP (Border Gateway Protocol)</h3>
+<ul>
+<li><strong>Type</strong>: Path-vector routing protocol.</li>
+<li><strong>Function</strong>: BGP is the protocol that governs how packets are routed across the internet. It manages the exchange of routing information between different autonomous systems (ASes) and makes routing decisions based on path, network policies, and rule-sets.</li>
+<li><strong>Usage</strong>: Critical for internet service providers (ISPs) and large organizations that connect to multiple ISPs.</li>
+</ul>
+<h3 id="3-eigrp-enhanced-interior-gateway-routing-protocol">3. EIGRP (Enhanced Interior Gateway Routing Protocol)</h3>
+<ul>
+<li><strong>Type</strong>: Advanced distance-vector routing protocol.</li>
+<li><strong>Function</strong>: EIGRP combines the best features of link-state and distance-vector protocols. It uses metrics such as bandwidth, delay, load, and reliability to determine the best path for data transmission.</li>
+<li><strong>Usage</strong>: Primarily used in Cisco networks due to its proprietary nature.</li>
+</ul>
+<h3 id="4-rip-routing-information-protocol">4. RIP (Routing Information Protocol)</h3>
+<ul>
+<li><strong>Type</strong>: Distance-vector routing protocol.</li>
+<li><strong>Function</strong>: RIP uses hop count as its routing metric to determine the best path to a destination. It is one of the oldest routing protocols and is relatively simple to configure but less efficient in large networks.</li>
+<li><strong>Usage</strong>: Suitable for smaller networks with simpler configurations.</li>
+</ul>
+<h3 id="5-mpls-multiprotocol-label-switching">5. MPLS (Multiprotocol Label Switching)</h3>
+<ul>
+<li><strong>Type</strong>: Data-carrying technique for high-performance telecommunications networks.</li>
+<li><strong>Function</strong>: MPLS directs data from one network node to the next based on short path labels rather than long network addresses. This reduces the complexity of lookups in a routing table and speeds up the process.</li>
+<li><strong>Usage</strong>: Often used by service providers to offer efficient and scalable networking solutions.</li>
+</ul>
+<p><img src="image.png" alt="alt text"></p>
+<h2 id="observations">Observations</h2>
+<ol>
+<li>
+<p><strong>Successful LAN Configuration:</strong></p>
+<ul>
+<li>Two distinct LAN networks were created using Cisco Packet Tracer.</li>
+<li>Each LAN was connected to a separate Layer 3 router.</li>
+<li>The IP addressing scheme was correctly configured for both LANs, ensuring unique IP addresses within each subnet.</li>
+</ul>
+</li>
+<li>
+<p><strong>Router Configuration:</strong></p>
+<ul>
+<li>The routers were configured with appropriate IP addresses on their interfaces, connecting to each LAN.</li>
+<li>Routing protocols (such as RIP or OSPF) were used to enable communication between the two LANs.</li>
+</ul>
+</li>
+<li>
+<p><strong>Packet Transmission within LAN:</strong></p>
+<ul>
+<li>Packets were successfully transmitted within each LAN.</li>
+<li>Devices within the same LAN were able to communicate with each other using the configured IP addresses.</li>
+<li>Ping tests and packet analysis confirmed low latency and no packet loss within the same LAN.</li>
+</ul>
+</li>
+<li>
+<p><strong>Packet Transmission across LANs:</strong></p>
+<ul>
+<li>Packets sent from one LAN to the other successfully traversed the router.</li>
+<li>Routing tables were accurately updated, allowing for seamless inter-LAN communication.</li>
+<li>Ping tests showed successful responses from devices in the other LAN, indicating proper router configuration and WAN setup.</li>
+</ul>
+</li>
+</ol>
+<h2 id="outcomes">Outcomes</h2>
+<ol>
+<li>
+<p><strong>Understanding of LAN and WAN Setup:</strong></p>
+<ul>
+<li>Gained hands-on experience in setting up and configuring LANs and interconnecting them using routers.</li>
+<li>Developed a clear understanding of the role of routers in a WAN setup.</li>
+</ul>
+</li>
+<li>
+<p><strong>Proficiency in Router Configuration:</strong></p>
+<ul>
+<li>Enhanced skills in configuring routers, including interface setup, IP addressing, and routing protocols.</li>
+<li>Successfully applied theoretical knowledge of routing to practical scenarios.</li>
+</ul>
+</li>
+<li>
+<p><strong>Troubleshooting and Optimization:</strong></p>
+<ul>
+<li>Identified and resolved potential configuration issues during the setup process.</li>
+<li>Learned how to optimize network performance and ensure reliable communication across the network.</li>
+</ul>
+</li>
+</ol>
+<h1 id="conclusion">Conclusion</h1>
+<ul>
+<li><strong>We have learnt &amp; understood configuring IP Addresses, related network devices &amp; access points as well as setting up a WAN</strong></li>
+<li><strong>We have setup a WAN which contains wired as well as wireless LAN by using <code>packet tracer tool</code>.</strong> <br></li>
+<li><strong>We have demonstrated the transfer of a packet from LAN 1 (wired LAN) to LAN2 Wireless LAN.</strong></li>
+</ul>
+
+</body>
+</html>

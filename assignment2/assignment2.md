@@ -171,3 +171,8 @@ Routing protocols are essential in WAN configurations, as they determine how rou
    - Identified and resolved potential configuration issues during the setup process.
    - Learned how to optimize network performance and ensure reliable communication across the network.
 
+# Conclusion
+
+- **We have learnt & understood configuring IP Addresses, related network devices & access points as well as setting up a WAN**
+- **We have setup a WAN which contains wired as well as wireless LAN by using `packet tracer tool`.** <br>
+- **We have demonstrated the transfer of a packet from LAN 1 (wired LAN) to LAN2 Wireless LAN.**
