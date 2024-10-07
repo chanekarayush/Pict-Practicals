@@ -135,12 +135,104 @@ db.items.mapReduce(
 
 ## Calculate the total revenue generated from all items (price * quantity).
 
+```js
+db.items.mapReduce(
+  function() {
+    emit(null, this.price * this.quantity);
+  },
+  function(key, values) {
+    return Array.sum(values);
+  },
+  {
+    out: "total_revenue"
+  }
+)
+
+```
+
 ## Find the item with the highest quantity in stock.
+
+```js
+db.items.mapReduce(
+  function() {
+    emit(this.name, this.quantity);
+  },
+  function(key, values) {
+    return values[0]; // only one value, so return it directly
+  },
+  {
+    out: "max_quantity_item",
+    query: {},
+    sort: { quantity: -1 },
+    limit: 1
+  }
+)
+```
 
 ## List the total number of unique items across all categories.
 
+```js
+db.items.mapReduce(
+  function() {
+    emit(this.category, 1);
+  },
+  function(key, values) {
+    return Array.sum(values);
+  },
+  {
+    out: "unique_items_per_category"
+  }
+)
+```
+
 ## Count how many items have a price greater than $2.00.
+
+```js
+db.items.mapReduce(
+  function() {
+    if (this.price > 2.00) {
+      emit(null, 1);
+    }
+  },
+  function(key, values) {
+    return Array.sum(values);
+  },
+  {
+    out: "items_above_2_dollars"
+  }
+)
+```
 
 ## Group items by supplier (if added) and calculate total stock for each supplier.
 
-## Calculate the total number of items below a certain price threshold (e.g., $1.00).   
+```js
+// I don't  have the supplier field added 
+db.items.mapReduce(
+  function() {
+    emit(this.category, this.quantity);
+  },
+  function(key, values) {
+    return Array.sum(values);
+  },
+  {
+    out: "total_stock_per_category"
+  }
+)
+```
+
+## Calculate the total number of items below a certain price threshold (e.g., $10000.00).   
+```js
+db.items.mapReduce(
+  function() {
+    if (this.price < 10000.00) {
+      emit(null, 1);
+    }
+  },
+  function(key, values) {
+    return Array.sum(values);
+  },
+  {
+    out: "items_below_10000_dollar"
+  }
+)
+```

@@ -1,0 +1,2088 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>assignment9.md</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+	<style>
+		/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+		/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+		body {
+			font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+			font-size: var(--vscode-markdown-font-size, 14px);
+			padding: 0 26px;
+			line-height: var(--vscode-markdown-line-height, 22px);
+			word-wrap: break-word;
+		}
+
+		#code-csp-warning {
+			position: fixed;
+			top: 0;
+			right: 0;
+			color: white;
+			margin: 16px;
+			text-align: center;
+			font-size: 12px;
+			font-family: sans-serif;
+			background-color: #444444;
+			cursor: pointer;
+			padding: 6px;
+			box-shadow: 1px 1px 1px rgba(0, 0, 0, .25);
+		}
+
+		#code-csp-warning:hover {
+			text-decoration: none;
+			background-color: #007acc;
+			box-shadow: 2px 2px 2px rgba(0, 0, 0, .25);
+		}
+
+		body.scrollBeyondLastLine {
+			margin-bottom: calc(100vh - 22px);
+		}
+
+		body.showEditorSelection .code-line {
+			position: relative;
+		}
+
+		body.showEditorSelection .code-active-line:before,
+		body.showEditorSelection .code-line:hover:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: -12px;
+			height: 100%;
+		}
+
+		body.showEditorSelection li.code-active-line:before,
+		body.showEditorSelection li.code-line:hover:before {
+			left: -30px;
+		}
+
+		.vscode-light.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.15);
+		}
+
+		.vscode-light.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.40);
+		}
+
+		.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		.vscode-dark.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.4);
+		}
+
+		.vscode-dark.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.60);
+		}
+
+		.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 160, 0, 0.7);
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 160, 0, 1);
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		a:focus,
+		input:focus,
+		select:focus,
+		textarea:focus {
+			outline: 1px solid -webkit-focus-ring-color;
+			outline-offset: -1px;
+		}
+
+		hr {
+			border: 0;
+			height: 2px;
+			border-bottom: 2px solid;
+		}
+
+		h1 {
+			padding-bottom: 0.3em;
+			line-height: 1.2;
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+		}
+
+		h1,
+		h2,
+		h3 {
+			font-weight: normal;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		table>thead>tr>th {
+			text-align: left;
+			border-bottom: 1px solid;
+		}
+
+		table>thead>tr>th,
+		table>thead>tr>td,
+		table>tbody>tr>th,
+		table>tbody>tr>td {
+			padding: 5px 10px;
+		}
+
+		table>tbody>tr+tr>td {
+			border-top: 1px solid;
+		}
+
+		blockquote {
+			margin: 0 7px 0 5px;
+			padding: 0 16px 0 10px;
+			border-left-width: 5px;
+			border-left-style: solid;
+		}
+
+		code {
+			font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+			font-size: 1em;
+			line-height: 1.357em;
+		}
+
+		body.wordWrap pre {
+			white-space: pre-wrap;
+		}
+
+		pre:not(.hljs),
+		pre.hljs code>div {
+			padding: 16px;
+			border-radius: 3px;
+			overflow: auto;
+		}
+
+		pre code {
+			color: var(--vscode-editor-foreground);
+			tab-size: 4;
+		}
+
+		/** Theming */
+
+		.vscode-light pre {
+			background-color: rgba(220, 220, 220, 0.4);
+		}
+
+		.vscode-dark pre {
+			background-color: rgba(10, 10, 10, 0.4);
+		}
+
+		.vscode-high-contrast pre {
+			background-color: rgb(0, 0, 0);
+		}
+
+		.vscode-high-contrast h1 {
+			border-color: rgb(0, 0, 0);
+		}
+
+		.vscode-light table>thead>tr>th {
+			border-color: rgba(0, 0, 0, 0.69);
+		}
+
+		.vscode-dark table>thead>tr>th {
+			border-color: rgba(255, 255, 255, 0.69);
+		}
+
+		.vscode-light h1,
+		.vscode-light hr,
+		.vscode-light table>tbody>tr+tr>td {
+			border-color: rgba(0, 0, 0, 0.18);
+		}
+
+		.vscode-dark h1,
+		.vscode-dark hr,
+		.vscode-dark table>tbody>tr+tr>td {
+			border-color: rgba(255, 255, 255, 0.18);
+		}
+	</style>
+
+	<style>
+		/* Tomorrow Theme */
+		/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+		/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+		/* Tomorrow Comment */
+		.hljs-comment,
+		.hljs-quote {
+			color: #8e908c;
+		}
+
+		/* Tomorrow Red */
+		.hljs-variable,
+		.hljs-template-variable,
+		.hljs-tag,
+		.hljs-name,
+		.hljs-selector-id,
+		.hljs-selector-class,
+		.hljs-regexp,
+		.hljs-deletion {
+			color: #c82829;
+		}
+
+		/* Tomorrow Orange */
+		.hljs-number,
+		.hljs-built_in,
+		.hljs-builtin-name,
+		.hljs-literal,
+		.hljs-type,
+		.hljs-params,
+		.hljs-meta,
+		.hljs-link {
+			color: #f5871f;
+		}
+
+		/* Tomorrow Yellow */
+		.hljs-attribute {
+			color: #eab700;
+		}
+
+		/* Tomorrow Green */
+		.hljs-string,
+		.hljs-symbol,
+		.hljs-bullet,
+		.hljs-addition {
+			color: #718c00;
+		}
+
+		/* Tomorrow Blue */
+		.hljs-title,
+		.hljs-section {
+			color: #4271ae;
+		}
+
+		/* Tomorrow Purple */
+		.hljs-keyword,
+		.hljs-selector-tag {
+			color: #8959a8;
+		}
+
+		.hljs {
+			display: block;
+			overflow-x: auto;
+			color: #4d4d4c;
+			padding: 0.5em;
+		}
+
+		.hljs-emphasis {
+			font-style: italic;
+		}
+
+		.hljs-strong {
+			font-weight: bold;
+		}
+	</style>
+
+	<style>
+		/*
+ * Markdown PDF CSS
+ */
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+			padding: 0 12px;
+		}
+
+		pre {
+			background-color: #f8f8f8;
+			border: 1px solid #cccccc;
+			border-radius: 3px;
+			overflow-x: auto;
+			white-space: pre-wrap;
+			overflow-wrap: break-word;
+		}
+
+		pre:not(.hljs) {
+			padding: 23px;
+			line-height: 19px;
+		}
+
+		blockquote {
+			background: rgba(127, 127, 127, 0.1);
+			border-color: rgba(0, 122, 204, 0.5);
+		}
+
+		.emoji {
+			height: 1.4em;
+		}
+
+		code {
+			font-size: 14px;
+			line-height: 19px;
+		}
+
+		/* for inline code */
+		:not(pre):not(.hljs)>code {
+			color: #C9AE75;
+			/* Change the old color so it seems less like an error */
+			font-size: inherit;
+		}
+
+		/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+		.page {
+			page-break-after: always;
+		}
+	</style>
+
+	<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+
+<body>
+	<script>
+		mermaid.initialize({
+			startOnLoad: true,
+			theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+				? 'dark'
+				: 'default'
+		});
+	</script>
+	<h1 id="assignment-9">Assignment 9</h1>
+	<h2 id="roll-no-31311">Roll no. <code>31311</code></h2>
+	<h2 id="mongo-db-crud-operations">Mongo DB CRUD Operations</h2>
+	<pre class="hljs"><code><div>&gt; use db
+switched to db db
+&gt; db.createCollection(&quot;st&quot;);
+{ &quot;ok&quot; : 1 }
+&gt; show dbs
+31413_mock_db  0.000GB
+Assignment_10  0.000GB
+Assignment_9   0.000GB
+admin          0.000GB
+config         0.000GB
+db             0.000GB
+local          0.000GB
+mock_db        0.000GB
+mock_db_2      0.000GB
+test           0.000GB
+</div></code></pre>
+	<pre class="hljs"><code><div>&gt; db.st.insert({studId:<span class="hljs-number">100</span>, studName:<span class="hljs-string">"XYZ"</span>, studAge:<span class="hljs-number">16</span>, studBranch:<span class="hljs-string">"COMP"</span>, studCity:<span class="hljs-string">"Pune"</span>, subjects:[<span class="hljs-string">"Database"</span>,<span class="hljs-string">"Computer Network"</span>]});
+WriteResult({ <span class="hljs-attr">"nInserted"</span> : <span class="hljs-number">1</span> })
+&gt; db.st.insert({studId:<span class="hljs-number">101</span>, studName:<span class="hljs-string">"ABC"</span>, studAge:<span class="hljs-number">17</span>, studBranch:<span class="hljs-string">"COMP"</span>, studCity:<span class="hljs-string">"Pune"</span>, subjects:[<span class="hljs-string">"DSA"</span>,<span class="hljs-string">"Computer Network"</span>]});
+WriteResult({ <span class="hljs-attr">"nInserted"</span> : <span class="hljs-number">1</span> })
+&gt; db.st.insert({ <span class="hljs-attr">"studId"</span>: <span class="hljs-number">102</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"BCD"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">19</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">" ENTC"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Delhi"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Microcontrollers"</span>, <span class="hljs-string">"Embedded Systems"</span>] });
+WriteResult({ <span class="hljs-attr">"nInserted"</span> : <span class="hljs-number">1</span> })
+db.st.insertMany([
+    { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">103</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"PQR"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">19</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"ENTC"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Bangalore"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Microprocessor"</span>, <span class="hljs-string">"Computer Graphics"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">104</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"LMN"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">17</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"COMP"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Chennai"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Algorithms"</span>, <span class="hljs-string">"Web Development"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">105</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"EFG"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">18</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"IT"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Hyderabad"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Computer Networks"</span>, <span class="hljs-string">"Operating System"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">106</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"HIJ"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">19</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"ENTC"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Delhi"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Digital Logic"</span>, <span class="hljs-string">"Computer Architecture"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">107</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"KLM"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">17</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"COMP"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Pune"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Data Structures"</span>, <span class="hljs-string">"Database Management"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">108</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"NOP"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">18</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"IT"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Mumbai"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Artificial Intelligence"</span>, <span class="hljs-string">"Machine Learning"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">109</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"QRS"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">19</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"ENTC"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Bangalore"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Computer Vision"</span>, <span class="hljs-string">"Robotics"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">110</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"TUV"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">17</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"COMP"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Chennai"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Web Development"</span>, <span class="hljs-string">"Cloud Computing"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">111</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"WXY"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">18</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"IT"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Hyderabad"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Network Security"</span>, <span class="hljs-string">"Cryptography"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">112</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"ZAB"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">19</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"ENTC"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Delhi"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Microcontrollers"</span>, <span class="hljs-string">"Embedded Systems"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">113</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"CDE"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">17</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"COMP"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Pune"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Algorithms"</span>, <span class="hljs-string">"Data Mining"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">114</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"FGH"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">18</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"IT"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Mumbai"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Operating System"</span>, <span class="hljs-string">"Computer Networks"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">115</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"IJK"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">19</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"ENTC"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Bangalore"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Digital Signal Processing"</span>, <span class="hljs-string">"VLSI"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">116</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"LMN"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">17</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"COMP"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Chennai"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Database Management"</span>, <span class="hljs-string">"Software Engineering"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">117</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"OPQ"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">18</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"IT"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Hyderabad"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Artificial Intelligence"</span>, <span class="hljs-string">"Machine Learning"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">118</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"RST"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">19</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"ENTC"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Delhi"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Computer Vision"</span>, <span class="hljs-string">"Robotics"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">119</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"UVW"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">17</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"COMP"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Pune"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Web Development"</span>, <span class="hljs-string">"Cloud Computing"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">120</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"XYZ"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">18</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"IT"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Mumbai"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Network Security"</span>, <span class="hljs-string">"Cryptography"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">121</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"ABC"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">19</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"ENTC"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Bangalore"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Microcontrollers"</span>, <span class="hljs-string">"Embedded Systems"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">122</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"DEF"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">17</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"COMP"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Chennai"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Algorithms"</span>, <span class="hljs-string">"Data Mining"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">123</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"GHI"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">18</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"IT"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Hyderabad"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Operating System"</span>, <span class="hljs-string">"Computer Networks"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">124</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"JKL"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">19</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"ENTC"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Delhi"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Digital Signal Processing"</span>, <span class="hljs-string">"VLSI"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">125</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"MNO"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">17</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"COMP"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Pune"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Database Management"</span>, <span class="hljs-string">"Software Engineering"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">126</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"PQR"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">18</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"IT"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Mumbai"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Artificial Intelligence"</span>, <span class="hljs-string">"Machine Learning"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">127</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"STU"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">19</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"ENTC"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Bangalore"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Computer Vision"</span>, <span class="hljs-string">"Robotics"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">128</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"VWX"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">17</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"COMP"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Chennai"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Web Development"</span>, <span class="hljs-string">"Cloud Computing"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">129</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"YZA"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">18</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"IT"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Hyderabad"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Network Security"</span>, <span class="hljs-string">"Cryptography"</span>] },
+  { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">130</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"XYZ"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">18</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"IT"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Mumbai"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"OS"</span>, <span class="hljs-string">"DBMS"</span>] }
+]);
+{
+	<span class="hljs-attr">"acknowledged"</span> : <span class="hljs-literal">true</span>,
+	<span class="hljs-attr">"insertedIds"</span> : [
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfb"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfc"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfd"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfe"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dff"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e00"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e01"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e02"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e03"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e04"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e05"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e06"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e07"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e08"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e09"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0a"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0b"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0c"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0d"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0e"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0f"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e10"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e11"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e12"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e13"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e14"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e15"</span>),
+		ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e16"</span>)
+	]
+}
+&gt; db.st.insertMany([
+      { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">121</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"ABC"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">22</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"CSE"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Mumbai"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Data Structures"</span>, <span class="hljs-string">"Algorithms"</span>] },
+      { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">122</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"DEF"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">23</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"IT"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Chennai"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Computer Networks"</span>, <span class="hljs-string">"Cyber Security"</span>] },
+      { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">123</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"GHI"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">24</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"ECE"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Hyderabad"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Microcontrollers"</span>, <span class="hljs-string">"Embedded Systems"</span>] },
+      { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">124</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"JKL"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">25</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"MECH"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Pune"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Thermodynamics"</span>, <span class="hljs-string">"Mechanics of Solids"</span>] },
+      { <span class="hljs-attr">"studId"</span>: <span class="hljs-number">125</span>, <span class="hljs-attr">"studName"</span>: <span class="hljs-string">"MNO"</span>, <span class="hljs-attr">"studAge"</span>: <span class="hljs-number">26</span>, <span class="hljs-attr">"studBranch"</span>: <span class="hljs-string">"CIVIL"</span>, <span class="hljs-attr">"studCity"</span>: <span class="hljs-string">"Kolkata"</span>, <span class="hljs-attr">"subjects"</span>: [<span class="hljs-string">"Structural Analysis"</span>, <span class="hljs-string">"Building Materials"</span>] }
+    ]);
+{
+	<span class="hljs-attr">"acknowledged"</span> : <span class="hljs-literal">true</span>,
+	<span class="hljs-attr">"insertedIds"</span> : [
+		ObjectId(<span class="hljs-string">"66ee962b1c1ae1dea2db1e18"</span>),
+		ObjectId(<span class="hljs-string">"66ee962b1c1ae1dea2db1e19"</span>),
+		ObjectId(<span class="hljs-string">"66ee962b1c1ae1dea2db1e1a"</span>),
+		ObjectId(<span class="hljs-string">"66ee962b1c1ae1dea2db1e1b"</span>),
+		ObjectId(<span class="hljs-string">"66ee962b1c1ae1dea2db1e1c"</span>)
+	]
+}
+
+</div></code></pre>
+	<h2 id="display-only-studname-and-studbranch">Display only studName and studBranch</h2>
+	<pre class="hljs"><code><div>&gt; db.st.find({},{_id:<span class="hljs-literal">false</span>, studName:<span class="hljs-literal">true</span>, studBranch:<span class="hljs-literal">true</span>});
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"PQR"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"PQR"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"LMN"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"EFG"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"HIJ"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"KLM"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"NOP"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"QRS"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"TUV"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"WXY"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ZAB"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"CDE"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"FGH"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"IJK"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"LMN"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"OPQ"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"RST"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"UVW"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span> }
+Type <span class="hljs-string">"it"</span> for more
+&gt; it
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"DEF"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"GHI"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"JKL"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"MNO"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"PQR"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"STU"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"VWX"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"YZA"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span> }
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span> }
+</div></code></pre>
+	<h2 id="display-info-of-student-102">Display info of student 102</h2>
+	<pre class="hljs"><code><div>&gt; db.st.find({studId:<span class="hljs-number">102</span>}).pretty();
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee924c1c1ae1dea2db1e17"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">102</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"BCD"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">" ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Delhi"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Microcontrollers"</span>,
+		<span class="hljs-string">"Embedded Systems"</span>
+	]
+}
+</div></code></pre>
+	<h2 id="display-id-name-in-decreasing-order-of-age">Display id, name in decreasing order of age.</h2>
+	<pre class="hljs"><code><div>&gt; db.st.find({},{_id:<span class="hljs-number">0</span>, studId:<span class="hljs-number">1</span>, studName:<span class="hljs-number">1</span>}).sort({age:<span class="hljs-number">1</span>});
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">100</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">101</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">103</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"PQR"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">103</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"PQR"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">104</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"LMN"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">105</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"EFG"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">106</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"HIJ"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">107</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"KLM"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">108</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"NOP"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">109</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"QRS"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">110</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"TUV"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">111</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"WXY"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">112</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ZAB"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">113</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"CDE"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">114</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"FGH"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">115</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"IJK"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">116</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"LMN"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">117</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"OPQ"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">118</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"RST"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">119</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"UVW"</span> }
+Type <span class="hljs-string">"it"</span> for more
+&gt; it
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">120</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">121</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">122</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"DEF"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">123</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"GHI"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">124</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"JKL"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">125</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"MNO"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">126</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"PQR"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">127</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"STU"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">128</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"VWX"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">129</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"YZA"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">130</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span> }
+{ <span class="hljs-attr">"studId"</span> : <span class="hljs-number">102</span>, <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"BCD"</span> }
+
+</div></code></pre>
+	<h2 id="display-studname-and-studbranch-having-age-greater-than-25">Display studName and studBranch having age
+		greater than 25</h2>
+	<pre class="hljs"><code><div>&gt; db.st.find({studAge: {$gt:<span class="hljs-number">25</span>}}, {_id:<span class="hljs-number">0</span>, studName:<span class="hljs-number">1</span>, studBranch:<span class="hljs-number">1</span>}).pretty();
+{ <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"MNO"</span>, <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"CIVIL"</span> }
+
+</div></code></pre>
+	<h2 id="display-first-3-documents-in-ascending-order-of-age">Display first 3 documents in ascending order of age
+	</h2>
+	<pre class="hljs"><code><div>&gt; db.st.find().sort({studAge:<span class="hljs-number">1</span>}).limit(<span class="hljs-number">3</span>).pretty();
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee8b501c1ae1dea2db1df8"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">100</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">16</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database"</span>,
+		<span class="hljs-string">"Computer Network"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfc"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">104</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"LMN"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Algorithms"</span>,
+		<span class="hljs-string">"Web Development"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee8c471c1ae1dea2db1df9"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">101</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"DSA"</span>,
+		<span class="hljs-string">"Computer Network"</span>
+	]
+}
+</div></code></pre>
+	<h2 id="display-information-of-student-with-id-101-and-branch-computer">Display information of student with id 101
+		and branch computer</h2>
+	<pre class="hljs"><code><div>&gt; db.st.find({$and:[{studId:<span class="hljs-number">101</span>},{studBranch:<span class="hljs-string">"COMP"</span>}]}).pretty();
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee8c471c1ae1dea2db1df9"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">101</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"DSA"</span>,
+		<span class="hljs-string">"Computer Network"</span>
+	]
+}
+</div></code></pre>
+	<h2 id="display-information-of-student-with-branch-computer-and-age-less-than-22">Display information of student
+		with branch COMPUTER and age less than 22</h2>
+	<pre class="hljs"><code><div>&gt; db.st.find({$and:[{studBranch:<span class="hljs-string">"COMP"</span>}, {studAge: {$lt:<span class="hljs-number">22</span>}}]}).pretty();
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee8b501c1ae1dea2db1df8"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">100</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">16</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database"</span>,
+		<span class="hljs-string">"Computer Network"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee8c471c1ae1dea2db1df9"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">101</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"DSA"</span>,
+		<span class="hljs-string">"Computer Network"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfc"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">104</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"LMN"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Algorithms"</span>,
+		<span class="hljs-string">"Web Development"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dff"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">107</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"KLM"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Data Structures"</span>,
+		<span class="hljs-string">"Database Management"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e02"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">110</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"TUV"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Web Development"</span>,
+		<span class="hljs-string">"Cloud Computing"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e05"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">113</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"CDE"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Algorithms"</span>,
+		<span class="hljs-string">"Data Mining"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e08"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">116</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"LMN"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database Management"</span>,
+		<span class="hljs-string">"Software Engineering"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0b"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">119</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"UVW"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Web Development"</span>,
+		<span class="hljs-string">"Cloud Computing"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0e"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">122</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"DEF"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Algorithms"</span>,
+		<span class="hljs-string">"Data Mining"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e11"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">125</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"MNO"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database Management"</span>,
+		<span class="hljs-string">"Software Engineering"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e14"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">128</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"VWX"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Web Development"</span>,
+		<span class="hljs-string">"Cloud Computing"</span>
+	]
+}
+
+</div></code></pre>
+	<h2 id="display-information-of-student-whose-branch-is-not-civil-and-whose-city-is-not-mumbai">Display information
+		of student whose branch is not civil and whose city is not mumbai</h2>
+	<pre class="hljs"><code><div>db.st.find({$and:[{studBranch:{$ne:<span class="hljs-string">"CIVIL"</span>}},{studCity: {$ne: <span class="hljs-string">"Mumbai"</span>}}]}).pretty();
+
+&gt; db.st.find({$and:[{studBranch:{$ne:<span class="hljs-string">"CIVIL"</span>}},{studCity: {$ne: <span class="hljs-string">"Mumbai"</span>}}]}).pretty();
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee8b501c1ae1dea2db1df8"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">100</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">16</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database"</span>,
+		<span class="hljs-string">"Computer Network"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee8c471c1ae1dea2db1df9"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">101</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"DSA"</span>,
+		<span class="hljs-string">"Computer Network"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee905b1c1ae1dea2db1dfa"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">103</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"PQR"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Bangalore"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Microprocessor"</span>,
+		<span class="hljs-string">"Computer Graphics"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfb"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">103</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"PQR"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Bangalore"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Microprocessor"</span>,
+		<span class="hljs-string">"Computer Graphics"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfc"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">104</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"LMN"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Algorithms"</span>,
+		<span class="hljs-string">"Web Development"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfd"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">105</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"EFG"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Computer Networks"</span>,
+		<span class="hljs-string">"Operating System"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfe"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">106</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"HIJ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Delhi"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Digital Logic"</span>,
+		<span class="hljs-string">"Computer Architecture"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dff"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">107</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"KLM"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Data Structures"</span>,
+		<span class="hljs-string">"Database Management"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e01"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">109</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"QRS"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Bangalore"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Computer Vision"</span>,
+		<span class="hljs-string">"Robotics"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e02"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">110</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"TUV"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Web Development"</span>,
+		<span class="hljs-string">"Cloud Computing"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e03"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">111</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"WXY"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Network Security"</span>,
+		<span class="hljs-string">"Cryptography"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e04"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">112</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ZAB"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Delhi"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Microcontrollers"</span>,
+		<span class="hljs-string">"Embedded Systems"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e05"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">113</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"CDE"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Algorithms"</span>,
+		<span class="hljs-string">"Data Mining"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e07"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">115</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"IJK"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Bangalore"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Digital Signal Processing"</span>,
+		<span class="hljs-string">"VLSI"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e08"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">116</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"LMN"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database Management"</span>,
+		<span class="hljs-string">"Software Engineering"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e09"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">117</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"OPQ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Artificial Intelligence"</span>,
+		<span class="hljs-string">"Machine Learning"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0a"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">118</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"RST"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Delhi"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Computer Vision"</span>,
+		<span class="hljs-string">"Robotics"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0b"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">119</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"UVW"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Web Development"</span>,
+		<span class="hljs-string">"Cloud Computing"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0d"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">121</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Bangalore"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Microcontrollers"</span>,
+		<span class="hljs-string">"Embedded Systems"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0e"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">122</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"DEF"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Algorithms"</span>,
+		<span class="hljs-string">"Data Mining"</span>
+	]
+}
+Type <span class="hljs-string">"it"</span> for more
+&gt; it
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0f"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">123</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"GHI"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Operating System"</span>,
+		<span class="hljs-string">"Computer Networks"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e10"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">124</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"JKL"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Delhi"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Digital Signal Processing"</span>,
+		<span class="hljs-string">"VLSI"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e11"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">125</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"MNO"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database Management"</span>,
+		<span class="hljs-string">"Software Engineering"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e13"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">127</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"STU"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Bangalore"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Computer Vision"</span>,
+		<span class="hljs-string">"Robotics"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e14"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">128</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"VWX"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Web Development"</span>,
+		<span class="hljs-string">"Cloud Computing"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e15"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">129</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"YZA"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Network Security"</span>,
+		<span class="hljs-string">"Cryptography"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee924c1c1ae1dea2db1e17"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">102</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"BCD"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">" ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Delhi"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Microcontrollers"</span>,
+		<span class="hljs-string">"Embedded Systems"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee962b1c1ae1dea2db1e19"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">122</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"DEF"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">23</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Computer Networks"</span>,
+		<span class="hljs-string">"Cyber Security"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee962b1c1ae1dea2db1e1a"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">123</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"GHI"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">24</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ECE"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Microcontrollers"</span>,
+		<span class="hljs-string">"Embedded Systems"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee962b1c1ae1dea2db1e1b"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">124</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"JKL"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">25</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"MECH"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Thermodynamics"</span>,
+		<span class="hljs-string">"Mechanics of Solids"</span>
+	]
+}
+&gt; 
+</div></code></pre>
+	<h2 id="display-information-of-students-whose-age-is-not-greater-than-22">Display information of students whose age
+		is not greater than 22</h2>
+	<pre class="hljs"><code><div>&gt; db.st.find({studAge:{$lte: <span class="hljs-number">22</span>}}).pretty();
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee8b501c1ae1dea2db1df8"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">100</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">16</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database"</span>,
+		<span class="hljs-string">"Computer Network"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee8c471c1ae1dea2db1df9"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">101</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"DSA"</span>,
+		<span class="hljs-string">"Computer Network"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee905b1c1ae1dea2db1dfa"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">103</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"PQR"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Bangalore"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Microprocessor"</span>,
+		<span class="hljs-string">"Computer Graphics"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfb"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">103</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"PQR"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Bangalore"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Microprocessor"</span>,
+		<span class="hljs-string">"Computer Graphics"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfc"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">104</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"LMN"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Algorithms"</span>,
+		<span class="hljs-string">"Web Development"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfd"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">105</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"EFG"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Computer Networks"</span>,
+		<span class="hljs-string">"Operating System"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfe"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">106</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"HIJ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Delhi"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Digital Logic"</span>,
+		<span class="hljs-string">"Computer Architecture"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dff"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">107</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"KLM"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Data Structures"</span>,
+		<span class="hljs-string">"Database Management"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e00"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">108</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"NOP"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Mumbai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Artificial Intelligence"</span>,
+		<span class="hljs-string">"Machine Learning"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e01"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">109</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"QRS"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Bangalore"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Computer Vision"</span>,
+		<span class="hljs-string">"Robotics"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e02"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">110</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"TUV"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Web Development"</span>,
+		<span class="hljs-string">"Cloud Computing"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e03"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">111</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"WXY"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Network Security"</span>,
+		<span class="hljs-string">"Cryptography"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e04"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">112</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ZAB"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Delhi"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Microcontrollers"</span>,
+		<span class="hljs-string">"Embedded Systems"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e05"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">113</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"CDE"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Algorithms"</span>,
+		<span class="hljs-string">"Data Mining"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e06"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">114</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"FGH"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Mumbai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Operating System"</span>,
+		<span class="hljs-string">"Computer Networks"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e07"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">115</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"IJK"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Bangalore"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Digital Signal Processing"</span>,
+		<span class="hljs-string">"VLSI"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e08"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">116</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"LMN"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database Management"</span>,
+		<span class="hljs-string">"Software Engineering"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e09"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">117</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"OPQ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Artificial Intelligence"</span>,
+		<span class="hljs-string">"Machine Learning"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0a"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">118</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"RST"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Delhi"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Computer Vision"</span>,
+		<span class="hljs-string">"Robotics"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0b"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">119</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"UVW"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Web Development"</span>,
+		<span class="hljs-string">"Cloud Computing"</span>
+	]
+}
+Type <span class="hljs-string">"it"</span> for more
+&gt; it
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0c"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">120</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Mumbai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Network Security"</span>,
+		<span class="hljs-string">"Cryptography"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0d"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">121</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Bangalore"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Microcontrollers"</span>,
+		<span class="hljs-string">"Embedded Systems"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0e"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">122</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"DEF"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Algorithms"</span>,
+		<span class="hljs-string">"Data Mining"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0f"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">123</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"GHI"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Operating System"</span>,
+		<span class="hljs-string">"Computer Networks"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e10"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">124</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"JKL"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Delhi"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Digital Signal Processing"</span>,
+		<span class="hljs-string">"VLSI"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e11"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">125</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"MNO"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database Management"</span>,
+		<span class="hljs-string">"Software Engineering"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e12"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">126</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"PQR"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Mumbai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Artificial Intelligence"</span>,
+		<span class="hljs-string">"Machine Learning"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e13"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">127</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"STU"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Bangalore"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Computer Vision"</span>,
+		<span class="hljs-string">"Robotics"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e14"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">128</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"VWX"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Web Development"</span>,
+		<span class="hljs-string">"Cloud Computing"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e15"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">129</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"YZA"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Network Security"</span>,
+		<span class="hljs-string">"Cryptography"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e16"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">130</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Mumbai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"OS"</span>,
+		<span class="hljs-string">"DBMS"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee924c1c1ae1dea2db1e17"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">102</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"BCD"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">" ENTC"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Delhi"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Microcontrollers"</span>,
+		<span class="hljs-string">"Embedded Systems"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee962b1c1ae1dea2db1e18"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">121</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">22</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"CSE"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Mumbai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Data Structures"</span>,
+		<span class="hljs-string">"Algorithms"</span>
+	]
+}
+&gt; 
+</div></code></pre>
+	<h2 id="display-ionformation-of-students-whose-dept-is-comp-or-civil-or-it">Display ionformation of students whose
+		DEPT is <code>COMP</code> or <code>CIVIL</code> or <code>IT</code></h2>
+	<pre class="hljs"><code><div>&gt; db.st.find({$or:[{studBranch:<span class="hljs-string">"COMP"</span>},{studBranch:<span class="hljs-string">"CIVIL"</span>},{studBranch:<span class="hljs-string">"IT"</span>}]}).pretty()
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee8b501c1ae1dea2db1df8"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">100</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">16</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database"</span>,
+		<span class="hljs-string">"Computer Network"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee8c471c1ae1dea2db1df9"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">101</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"DSA"</span>,
+		<span class="hljs-string">"Computer Network"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfc"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">104</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"LMN"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Algorithms"</span>,
+		<span class="hljs-string">"Web Development"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfd"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">105</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"EFG"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Computer Networks"</span>,
+		<span class="hljs-string">"Operating System"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dff"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">107</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"KLM"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Data Structures"</span>,
+		<span class="hljs-string">"Database Management"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e00"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">108</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"NOP"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Mumbai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Artificial Intelligence"</span>,
+		<span class="hljs-string">"Machine Learning"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e02"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">110</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"TUV"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Web Development"</span>,
+		<span class="hljs-string">"Cloud Computing"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e03"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">111</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"WXY"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Network Security"</span>,
+		<span class="hljs-string">"Cryptography"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e05"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">113</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"CDE"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Algorithms"</span>,
+		<span class="hljs-string">"Data Mining"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e06"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">114</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"FGH"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Mumbai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Operating System"</span>,
+		<span class="hljs-string">"Computer Networks"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e08"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">116</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"LMN"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database Management"</span>,
+		<span class="hljs-string">"Software Engineering"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e09"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">117</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"OPQ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Artificial Intelligence"</span>,
+		<span class="hljs-string">"Machine Learning"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0b"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">119</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"UVW"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Web Development"</span>,
+		<span class="hljs-string">"Cloud Computing"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0c"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">120</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Mumbai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Network Security"</span>,
+		<span class="hljs-string">"Cryptography"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0e"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">122</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"DEF"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Algorithms"</span>,
+		<span class="hljs-string">"Data Mining"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0f"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">123</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"GHI"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Operating System"</span>,
+		<span class="hljs-string">"Computer Networks"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e11"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">125</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"MNO"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database Management"</span>,
+		<span class="hljs-string">"Software Engineering"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e12"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">126</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"PQR"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Mumbai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Artificial Intelligence"</span>,
+		<span class="hljs-string">"Machine Learning"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e14"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">128</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"VWX"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Web Development"</span>,
+		<span class="hljs-string">"Cloud Computing"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e15"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">129</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"YZA"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Hyderabad"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Network Security"</span>,
+		<span class="hljs-string">"Cryptography"</span>
+	]
+}
+Type <span class="hljs-string">"it"</span> for more
+&gt; it
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e16"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">130</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Mumbai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"OS"</span>,
+		<span class="hljs-string">"DBMS"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee962b1c1ae1dea2db1e19"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">122</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"DEF"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">23</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Computer Networks"</span>,
+		<span class="hljs-string">"Cyber Security"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee962b1c1ae1dea2db1e1c"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">125</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"MNO"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">26</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"CIVIL"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Kolkata"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Structural Analysis"</span>,
+		<span class="hljs-string">"Building Materials"</span>
+	]
+}
+&gt; 
+</div></code></pre>
+	<h2 id="find-the-information-of-students-interested-in-database-management">Find the information of students
+		interested in database management</h2>
+	<pre class="hljs"><code><div>&gt; db.st.find({subjects:{$in : [<span class="hljs-string">"Database Management"</span>]}}).pretty();
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dff"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">107</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"KLM"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Data Structures"</span>,
+		<span class="hljs-string">"Database Management"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e08"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">116</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"LMN"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database Management"</span>,
+		<span class="hljs-string">"Software Engineering"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e11"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">125</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"MNO"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database Management"</span>,
+		<span class="hljs-string">"Software Engineering"</span>
+	]
+}
+</div></code></pre>
+	<h2 id="display-information-of-student-who-is-having-subject-computer-network-in-2nd-position">Display information
+		of student who is having subject Computer Network in 2nd position</h2>
+	<pre class="hljs"><code><div>&gt; db.st.find({<span class="hljs-attr">"subjects.1"</span>: <span class="hljs-string">"Computer Network"</span>}).pretty();
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee8b501c1ae1dea2db1df8"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">100</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">16</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"Database"</span>,
+		<span class="hljs-string">"Computer Network"</span>
+	]
+}
+{
+	<span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee8c471c1ae1dea2db1df9"</span>),
+	<span class="hljs-attr">"studId"</span> : <span class="hljs-number">101</span>,
+	<span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span>,
+	<span class="hljs-attr">"studAge"</span> : <span class="hljs-number">17</span>,
+	<span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+	<span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+	<span class="hljs-attr">"subjects"</span> : [
+		<span class="hljs-string">"DSA"</span>,
+		<span class="hljs-string">"Computer Network"</span>
+	]
+}
+</div></code></pre>
+	<h2 id="count-number-of-documents">Count number of documents</h2>
+	<pre class="hljs"><code><div>&gt; db.st.find().count();
+<span class="hljs-number">37</span>
+&gt; 
+</div></code></pre>
+	<h2 id="count-of-documents-whose-branch-is-computer-engineering">Count of documents whose branch is
+		<code>Computer Engineering</code></h2>
+	<pre class="hljs"><code><div>&gt; db.st.find({studBranch:<span class="hljs-string">"COMP"</span>}).count();
+<span class="hljs-number">11</span>
+&gt; 
+</div></code></pre>
+	<h2 id="update-studbranch-to-mechanical-engineering">Update studBranch to <code>Mechanical Engineering</code></h2>
+	<pre class="hljs"><code><div>&gt; db.st.update({studId:<span class="hljs-number">102</span>},{$set:{studBranch:<span class="hljs-string">"Mechanical Engineering"</span>}});
+WriteResult({ <span class="hljs-attr">"nMatched"</span> : <span class="hljs-number">1</span>, <span class="hljs-attr">"nUpserted"</span> : <span class="hljs-number">0</span>, <span class="hljs-attr">"nModified"</span> : <span class="hljs-number">1</span> })
+&gt; db.st.find({studId:<span class="hljs-number">102</span>}).pretty();
+{
+        <span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee924c1c1ae1dea2db1e17"</span>),
+        <span class="hljs-attr">"studId"</span> : <span class="hljs-number">102</span>,
+        <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"BCD"</span>,
+        <span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+        <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"Mechanical Engineering"</span>,
+        <span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Delhi"</span>,
+        <span class="hljs-attr">"subjects"</span> : [
+                <span class="hljs-string">"Microcontrollers"</span>,
+                <span class="hljs-string">"Embedded Systems"</span>
+        ]
+}
+&gt; 
+</div></code></pre>
+	<h2 id="update-civil-to-civil-engineering-of-all-documents">Update <code>CIVIL</code> to
+		<code>CIVIL ENGINEERING</code> of all documents</h2>
+	<pre class="hljs"><code><div>&gt; db.st.updateMany({studBranch: <span class="hljs-string">"CIVIL"</span>},{$set:{studBranch:<span class="hljs-string">"Civil Engineering"</span>}});
+{ <span class="hljs-attr">"acknowledged"</span> : <span class="hljs-literal">true</span>, <span class="hljs-attr">"matchedCount"</span> : <span class="hljs-number">1</span>, <span class="hljs-attr">"modifiedCount"</span> : <span class="hljs-number">1</span> }
+&gt; db.st.find({studBranch:<span class="hljs-string">"Civil Engineering"</span>}).pretty();
+{
+        <span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee962b1c1ae1dea2db1e1c"</span>),
+        <span class="hljs-attr">"studId"</span> : <span class="hljs-number">125</span>,
+        <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"MNO"</span>,
+        <span class="hljs-attr">"studAge"</span> : <span class="hljs-number">26</span>,
+        <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"Civil Engineering"</span>,
+        <span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Kolkata"</span>,
+        <span class="hljs-attr">"subjects"</span> : [
+                <span class="hljs-string">"Structural Analysis"</span>,
+                <span class="hljs-string">"Building Materials"</span>
+        ]
+}
+&gt; 
+</div></code></pre>
+	<h2 id="update-studname-and-studage-of-id-104">Update studName and studAge of id 104</h2>
+	<pre class="hljs"><code><div>&gt; db.st.update({studId:<span class="hljs-number">104</span>}, {$set:{studName:<span class="hljs-string">"Suresh"</span>,studAge:<span class="hljs-number">26</span>}});
+WriteResult({ <span class="hljs-attr">"nMatched"</span> : <span class="hljs-number">1</span>, <span class="hljs-attr">"nUpserted"</span> : <span class="hljs-number">0</span>, <span class="hljs-attr">"nModified"</span> : <span class="hljs-number">1</span> })
+&gt; db.st.find({studId:<span class="hljs-number">104</span>}).pretty();
+{
+        <span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1dfc"</span>),
+        <span class="hljs-attr">"studId"</span> : <span class="hljs-number">104</span>,
+        <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"Suresh"</span>,
+        <span class="hljs-attr">"studAge"</span> : <span class="hljs-number">26</span>,
+        <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+        <span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Chennai"</span>,
+        <span class="hljs-attr">"subjects"</span> : [
+                <span class="hljs-string">"Algorithms"</span>,
+                <span class="hljs-string">"Web Development"</span>
+        ]
+}
+&gt; 
+</div></code></pre>
+	<h2 id="rename-field-subject-to-studsub-of-all-documents">Rename field Subject to studSub of all documents</h2>
+	<pre class="hljs"><code><div>&gt; db.st.updateMany({},{$rename:{<span class="hljs-attr">"subjects"</span>:<span class="hljs-string">"studSub"</span>}});
+{ <span class="hljs-attr">"acknowledged"</span> : <span class="hljs-literal">true</span>, <span class="hljs-attr">"matchedCount"</span> : <span class="hljs-number">37</span>, <span class="hljs-attr">"modifiedCount"</span> : <span class="hljs-number">37</span> }
+&gt; 
+</div></code></pre>
+	<h2 id="increment-the-value-of-age-by-3-for-xyz">Increment the value of age by 3 for XYZ</h2>
+	<pre class="hljs"><code><div>&gt; db.st.update({studName:<span class="hljs-string">"XYZ"</span>},{inc:{studAge:<span class="hljs-number">3</span>}});
+WriteResult({ <span class="hljs-attr">"nMatched"</span> : <span class="hljs-number">1</span>, <span class="hljs-attr">"nUpserted"</span> : <span class="hljs-number">0</span>, <span class="hljs-attr">"nModified"</span> : <span class="hljs-number">1</span> })
+&gt; db.st.find({studName:<span class="hljs-string">"XYZ"</span>}).pretty();
+{
+        <span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e0c"</span>),
+        <span class="hljs-attr">"studId"</span> : <span class="hljs-number">120</span>,
+        <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>,
+        <span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+        <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+        <span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Mumbai"</span>,
+        <span class="hljs-attr">"studSub"</span> : [
+                <span class="hljs-string">"Network Security"</span>,
+                <span class="hljs-string">"Cryptography"</span>
+        ]
+}
+{
+        <span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee90871c1ae1dea2db1e16"</span>),
+        <span class="hljs-attr">"studId"</span> : <span class="hljs-number">130</span>,
+        <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"XYZ"</span>,
+        <span class="hljs-attr">"studAge"</span> : <span class="hljs-number">18</span>,
+        <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"IT"</span>,
+        <span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Mumbai"</span>,
+        <span class="hljs-attr">"studSub"</span> : [
+                <span class="hljs-string">"OS"</span>,
+                <span class="hljs-string">"DBMS"</span>
+        ]
+}
+&gt; 
+</div></code></pre>
+	<h2 id="remove-studage-field-of-101">Remove studAge field of 101</h2>
+	<pre class="hljs"><code><div>&gt; db.st.update({studId:<span class="hljs-number">101</span>},{$unset:{<span class="hljs-attr">"studAge"</span>:<span class="hljs-string">""</span>}});
+WriteResult({ <span class="hljs-attr">"nMatched"</span> : <span class="hljs-number">1</span>, <span class="hljs-attr">"nUpserted"</span> : <span class="hljs-number">0</span>, <span class="hljs-attr">"nModified"</span> : <span class="hljs-number">1</span> })
+&gt; db.st.find({studId:<span class="hljs-number">101</span>}).pretty();
+{
+        <span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66f1377ccddfd4482a8fbc3c"</span>),
+        <span class="hljs-attr">"studId"</span> : <span class="hljs-number">101</span>,
+        <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"ABC"</span>,
+        <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"COMP"</span>,
+        <span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Pune"</span>,
+        <span class="hljs-attr">"subjects"</span> : [
+                <span class="hljs-string">"DSA"</span>,
+                <span class="hljs-string">"Computer Network"</span>
+        ]
+}
+</div></code></pre>
+	<h2 id="add-a-new-field-to-all-documents-as-studcontact-personal1234-parents2345">Add a new field to all documents
+		as <code>studContact: {personal:1234, parents:2345}</code></h2>
+	<pre class="hljs"><code><div>&gt; db.st.updateMany({},{$set:{studContact:{personal:<span class="hljs-number">1234</span>,parents:<span class="hljs-number">2345</span>}}});
+{ <span class="hljs-attr">"acknowledged"</span> : <span class="hljs-literal">true</span>, <span class="hljs-attr">"matchedCount"</span> : <span class="hljs-number">39</span>, <span class="hljs-attr">"modifiedCount"</span> : <span class="hljs-number">39</span> }
+&gt; db.st.find().limit(<span class="hljs-number">2</span>).pretty();
+{
+        <span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee8b501c1ae1dea2db1df8"</span>),
+        <span class="hljs-attr">"inc"</span> : {
+                <span class="hljs-attr">"studAge"</span> : <span class="hljs-number">3</span>
+        },
+        <span class="hljs-attr">"studContact"</span> : {
+                <span class="hljs-attr">"personal"</span> : <span class="hljs-number">1234</span>,
+                <span class="hljs-attr">"parents"</span> : <span class="hljs-number">2345</span>
+        }
+}
+{
+        <span class="hljs-attr">"_id"</span> : ObjectId(<span class="hljs-string">"66ee905b1c1ae1dea2db1dfa"</span>),
+        <span class="hljs-attr">"studId"</span> : <span class="hljs-number">103</span>,
+        <span class="hljs-attr">"studName"</span> : <span class="hljs-string">"PQR"</span>,
+        <span class="hljs-attr">"studAge"</span> : <span class="hljs-number">19</span>,
+        <span class="hljs-attr">"studBranch"</span> : <span class="hljs-string">"ENTC"</span>,
+        <span class="hljs-attr">"studCity"</span> : <span class="hljs-string">"Bangalore"</span>,
+        <span class="hljs-attr">"studSub"</span> : [
+                <span class="hljs-string">"Microprocessor"</span>,
+                <span class="hljs-string">"Computer Graphics"</span>
+        ],
+        <span class="hljs-attr">"studContact"</span> : {
+                <span class="hljs-attr">"personal"</span> : <span class="hljs-number">1234</span>,
+                <span class="hljs-attr">"parents"</span> : <span class="hljs-number">2345</span>
+        }
+}
+&gt; 
+</div></code></pre>
+	<h2 id="remove-all-information-of-studid-103">Remove all information of studId 103</h2>
+	<pre class="hljs"><code><div>&gt; db.st.deleteOne({studId:<span class="hljs-number">103</span>});
+{ <span class="hljs-attr">"acknowledged"</span> : <span class="hljs-literal">true</span>, <span class="hljs-attr">"deletedCount"</span> : <span class="hljs-number">1</span> }
+</div></code></pre>
+	<h2 id="remove-all-documents">Remove All documents</h2>
+	<pre class="hljs"><code><div>&gt; db.st.deleteMany({});
+{ <span class="hljs-attr">"acknowledged"</span> : <span class="hljs-literal">true</span>, <span class="hljs-attr">"deletedCount"</span> : <span class="hljs-number">38</span> }
+&gt; 
+</div></code></pre>
+	<h2 id="drop-collection">Drop Collection</h2>
+	<pre class="hljs"><code><div>&gt; db.st.drop();
+<span class="hljs-literal">true</span>
+&gt; 
+</div></code></pre>
+	<p>Drop Database</p>
+	<pre class="hljs"><code><div>&gt; db.dropDatabase();
+{ <span class="hljs-attr">"dropped"</span> : <span class="hljs-string">"db"</span>, <span class="hljs-attr">"ok"</span> : <span class="hljs-number">1</span> }
+&gt; 
+</div></code></pre>
+	<!-- <p>Compute Estimators of the main statistical measures like Mean, Variance, Standard
+Deviation, Covariance, Correlation and Standard error with respect to any example.
+Display graphically the distribution of samples.</p>
+<p>Plot the Normal Distribution for class test result of a particular subject. Identify the
+Skewness and Kurtosis</p>
+<p>Load the dataset: birthwt Risk Factors Associated with Low Infant Birth Weight at
+https://raw.github.com/neurospin/pystatsml/master/datasets/birthwt.csv</p>
+<ol>
+<li>Test the association of mother’s (bwt) age and birth weight using the correlation
+test and linear regeression.</li>
+<li>Test the association of mother’s weight (lwt) and birth weight using the
+correlation testand linear regeression.</li>
+<li>Produce two scatter plot of: (i) age by birth weight; (ii) mother’s weight by birth
+weight. Elaborate the Conclusion</li>
+</ol>
+<p>Apply Basic PCA on the iris dataset. The data set is available at:
+https://raw.github.com/neurospin/pystatsml/master/datasets/iris.csv
+• Describe the data set. Should the dataset been standardized?
+• Describe the structure of correlations among variables.
+• Compute a PCA with the maximum number of components
+.• Compute the cumulative explained variance ratio. Determine the number of
+components𝐾by your computed values.
+• Print the𝐾principal components directions and correlations of the𝐾principal
+compo-nents with the original variables. Interpret the contribution of the original
+variables into the PC.
+• Plot the samples projected into the𝐾first PCs.
+• Color samples by their species.</p> -->
+
+</body>
+
+</html>
