@@ -1,0 +1,49 @@
+SLF4J(W): Class path contains multiple SLF4J providers.
+SLF4J(W): Found provider [scribe.slf4j.ScribeServiceProvider@179e2b60]
+SLF4J(W): Found provider [ch.qos.logback.classic.spi.LogbackServiceProvider@4163ab97]
+SLF4J(W): See https://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J(I): Actual provider is of type [scribe.slf4j.ScribeServiceProvider@179e2b60]
+2024.10.07 19:19:37 WARN  Flyway upgrade recommended: H2 2.3.230 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.220.
+2024.10.07 19:19:39 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:19:39 WARN  no build tool detected in workspace 'D:\Coding-practice\PICT_Practicals\Pict-Practicals'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. 
+2024.10.07 19:19:40 WARN  Build server is not auto-connectable.
+2024.10.07 19:19:40 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:19:45 INFO  time: code lens generation in 5.33s
+2024.10.07 19:19:45 INFO  time: code lens generation in 5.33s
+2024.10.07 19:20:01 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:01 WARN  no build target for: D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java
+2024.10.07 19:20:01 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:01 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:01 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:01 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:01 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:01 WARN  no build target for: D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java
+2024.10.07 19:20:01 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:01 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:01 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:03 INFO  time: code lens generation in 2.45s
+2024.10.07 19:20:04 INFO  time: code lens generation in 2.56s
+2024.10.07 19:20:04 INFO  time: code lens generation in 2.67s
+2024.10.07 19:20:04 INFO  time: code lens generation in 3s
+2024.10.07 19:20:04 INFO  time: code lens generation in 2.98s
+2024.10.07 19:20:04 INFO  time: code lens generation in 3.18s
+2024.10.07 19:20:04 INFO  time: code lens generation in 2.46s
+2024.10.07 19:20:04 INFO  time: code lens generation in 3.11s
+2024.10.07 19:20:04 WARN  no build target for: D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java
+2024.10.07 19:20:04 WARN  no build target for: D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java
+2024.10.07 19:20:28 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:28 WARN  no build target for: D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java
+2024.10.07 19:20:28 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:29 WARN  no build target for: D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java
+2024.10.07 19:20:29 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:34 WARN  no build target for: D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java
+2024.10.07 19:20:34 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:37 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:48 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:50 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:20:53 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:22:07 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:22:51 INFO  no build target found for D:\Coding-practice\PICT_Practicals\Pict-Practicals\assignment12\mongoconnect\src\App.java. Using presentation compiler with project's scala-library version: 3.3.3
+2024.10.07 19:22:51 INFO  Shutting down server
+2024.10.07 19:22:51 INFO  shutting down Metals
+2024.10.07 19:22:51 INFO  Exiting server
