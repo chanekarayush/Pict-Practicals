@@ -1,6 +1,11 @@
 # Pict-Practicals
  This Repository Contains programs of PICT's Practical Term-work
 
+> [!Tip]
+> **DBMS Branch** \
+> This is the DBMS Branch of [Pict-Practicals](https://github.com/chanekarayush/Pict-Practicals) \
+> Please find the [Lab Manual / List of assignments]()
+
 ## SEM - 4
 [Microprocessor Lab](https://github.com/chanekarayush/Pict-Practicals/tree/MPL)
 
