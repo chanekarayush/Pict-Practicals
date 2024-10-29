@@ -4,7 +4,7 @@
 > [!Tip]
 > **DBMS Branch** \
 > This is the DBMS Branch of [Pict-Practicals](https://github.com/chanekarayush/Pict-Practicals) \
-> Please find the [Lab Manual / List of assignments]()
+> Please find the [Lab Manual / List of assignments](https://github.com/chanekarayush/Pict-Practicals/tree/DBMS/Lab%20Manual)
 
 ## SEM - 4
 [Microprocessor Lab](https://github.com/chanekarayush/Pict-Practicals/tree/MPL)
