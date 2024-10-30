@@ -2,7 +2,6 @@ package assignment8;
 
 import java.sql.*;
 import java.util.*;
-import java.sql.*;
 
 @SuppressWarnings("unused")
 public class App {
