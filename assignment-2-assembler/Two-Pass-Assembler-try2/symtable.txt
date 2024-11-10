@@ -1,6 +1,0 @@
-1	 N	  114
-2	 ONE	  116
-3	 TERM	  117
-4	 AGAIN	  104
-5	 TWO	  118
-6	 RESULT	  115
