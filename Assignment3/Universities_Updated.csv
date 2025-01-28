@@ -1,0 +1,199 @@
+,University Name,Program Name,City,Duration,Cost of Tuition (USD),Median Salary After Placement (USD),Application Deadline,State
+0,Stanford University,MS in Computer Science,Stanford,1.5,43000,115000,December 15,CA
+1,Massachusetts Institute of Technology (MIT),MS in Computer Science,Cambridge,2.0,43000,115000,December 15,MA
+2,University of California,MS in Computer Science,Berkeley,2.0,43000,115000,December 15,CA
+3,Carnegie Mellon University,MS in Robotics,Pittsburgh,2.0,44000,115000,December 1,PA
+4,University of Illinois Urbana-Champaign,MS in Computer Science,Urbana,2.0,44000,115000,January 1,IL
+5,University of Washington,MS in Data Science,Seattle,2.0,44000,115000,December 15,WA
+6,California Institute of Technology (Caltech),MS in Applied Physics,Pasadena,2.0,44000,115000,December 1,CA
+7,University of Michigan,MS in Applied Physics,Ann Arbor,2.0,45000,115000,January 1,MI
+8,Georgia Institute of Technology,MS in Computer Science,Atlanta,2.0,45000,115000,December 15,GA
+9,Harvard University,MS in Engineering Sciences,Cambridge,2.0,45000,115000,January 1,MA
+10,University of California,MS in Robotics,Los Angeles,2.0,45000,115000,December 1,CA
+11,Princeton University,MS in Data Science,Princeton,2.0,45000,115000,January 1,NJ
+12,University of Texas at Austin,MS in Computer Science,Austin,2.0,45000,115000,November 15,TX
+13,University of Wisconsin-Madison,MS in Computer Science,Madison,2.0,45000,115000,December 15,WI
+14,Cornell University,MS in Mechanical Engineering,Ithaca,2.0,45000,115000,December 1,NY
+15,University of Southern California,MS in Artificial Intelligence,Los Angeles,2.0,45000,115000,January 1,CA
+16,University of Chicago,MS in Statistics,Chicago,2.0,45000,115000,December 15,IL
+17,University of California,MS in Bioengineering,San Diego,2.0,45000,115000,November 15,CA
+18,University of California,MS in Bioengineering,Irvine,2.0,46000,115000,January 1,CA
+19,Duke University,MS in Bioengineering,Durham,2.0,46000,115000,December 1,NC
+20,University of Maryland,MS in Computer Science,College Park,2.0,46000,118000,December 15,MD
+21,University of Pennsylvania,MS in Mechanical Engineering,Philadelphia,2.0,46000,120000,January 1,PA
+22,Northwestern University,MS in Robotics,Evanston,2.0,46000,120000,December 1,IL
+23,University of California,MS in Chemical Engineering,Santa Barbara,2.0,46000,120000,December 15,CA
+24,University of North Carolina,MS in Chemical Engineering,Chapel Hill,2.0,46000,120000,January 1,NC
+25,Brown University,MS in Data Science,Providence,2.0,46000,120000,December 15,RI
+26,University of Minnesota,MS in Computer Science,Minneapolis,2.0,46000,120000,January 1,MN
+27,University of California,MS in Applied Physics,Santa Cruz,2.0,46000,120000,December 1,CA
+28,Texas A&M University,MS in Computer Science,College Station,2.0,46000,120000,December 15,TX
+29,Purdue University,MS in Robotics,West Lafayette,2.0,46000,120000,January 1,IN
+30,Indiana University,MS in Robotics,Bloomington,2.0,46000,120000,December 15,IN
+31,University of Pittsburgh,MS in Data Science,Pittsburgh,2.0,46000,120000,December 1,PA
+32,University of Arizona,MS in Mechanical Engineering,Tucson,2.0,46000,120000,January 1,AZ
+33,University of Colorado Boulder,MS in Chemical Engineering,Boulder,2.0,46000,120000,December 15,CO
+34,University of Connecticut,MS in Statistics,Storrs,2.0,46000,120000,January 1,CT
+35,Michigan State University,MS in Robotics,East Lansing,2.0,46000,120000,December 1,MI
+36,University of Utah,MS in Computer Science,Salt Lake City,2.0,46000,120000,December 15,UT
+37,University of Miami,MS in Applied Physics,Coral Gables,2.0,46000,120000,January 1,FL
+38,University of Oklahoma,MS in Data Science,Norman,2.0,46000,120000,December 1,OK
+39,University of Kansas,MS in Mechanical Engineering,Lawrence,2.0,46000,120000,January 1,KS
+40,University of South Florida,MS in Robotics,Tampa,2.0,46000,120000,December 15,FL
+41,Ohio State University,MS in Computer Science,Columbus,2.0,46000,120000,January 1,OH
+42,Texas Tech University,MS in Bioengineering,Lubbock,2.0,46000,120000,December 1,TX
+43,University of Delaware,MS in Bioengineering,Newark,2.0,46000,120000,December 15,NJ
+44,University of Nebraska-Lincoln,MS in Robotics,Lincoln,2.0,46000,120000,January 1,NE
+45,University of Kansas,MS in Statistics,Lawrence,2.0,46000,120000,December 1,KS
+46,University of Kentucky,MS in Computer Science,Lexington,2.0,46000,120000,December 15,KY
+47,Florida State University,MS in Mechanical Engineering,Tallahassee,2.0,46000,120000,January 1,FL
+48,University of Miami,MS in Computer Science,Coral Gables,2.0,46000,120000,December 1,FL
+49,University of Missouri,MS in Computer Science,Columbia,2.0,47000,120000,January 1,MO
+50,University of Wisconsin-Milwaukee,MS in Data Science,Milwaukee,2.0,47000,120000,December 15,WI
+51,University of Vermont,MS in Bioengineering,Burlington,2.0,47000,120000,December 1,VT
+52,University of Rhode Island,MS in Mechanical Engineering,Kingston,2.0,47000,120000,December 15,RI
+53,University of North Dakota,MS in Robotics,Grand Forks,2.0,47000,120000,January 1,ND
+54,University of Idaho,MS in Applied Physics,Moscow,2.0,47000,120000,December 1,ID
+55,North Dakota State University,MS in Computer Science,Fargo,2.0,47000,120000,January 1,ND
+56,University of New Mexico,MS in Data Science,Albuquerque,2.0,47000,120000,December 15,NM
+57,University of Miami,MS in Data Science,Coral Gables,2.0,47000,120000,January 1,FL
+58,University of Denver,MS in Robotics,Denver,2.0,47000,120000,December 1,CO
+59,University of Wyoming,MS in Bioengineering,Laramie,2.0,47000,120000,January 1,WY
+60,University of Louisiana at Lafayette,MS in Mechanical Engineering,Lafayette,2.0,47000,120000,December 15,LA
+61,University of Alaska Fairbanks,MS in Applied Physics,Fairbanks,2.0,47000,120000,January 1,AK
+62,University of Hawaii,MS in Applied Physics,Honolulu,2.0,47000,120000,December 1,HI
+63,University of Mississippi,MS in Data Science,Oxford,2.0,47000,120000,January 1,OH
+64,University of Montana,MS in Robotics,Missoula,2.0,47000,120000,December 15,MT
+65,University of Arkansas,MS in Mechanical Engineering,Fayetteville,2.0,47000,120000,January 1,AR
+66,University of Kansas,MS in Bioengineering,Lawrence,2.0,47000,120000,December 1,KS
+67,University of Northern Iowa,MS in Statistics,Cedar Falls,2.0,47000,120000,December 15,IA
+68,University of Vermont,MS in Computer Science,Burlington,2.0,47000,120000,January 1,VT
+69,University of Connecticut,MS in Robotics,Storrs,2.0,47000,120000,December 1,CT
+70,University of Hawaii at Manoa,MS in Mechanical Engineering,Honolulu,2.0,47000,120000,December 15,HI
+71,University of Tulsa,MS in Data Science,Tulsa,2.0,47000,125000,January 1,OK
+72,University of Illinois Chicago,MS in Data Science,Chicago,2.0,47000,125000,December 1,IL
+73,University of Colorado Denver,MS in Bioengineering,Denver,2.0,47000,125000,January 1,CO
+74,University of Akron,MS in Computer Science,Akron,2.0,47000,125000,December 15,OH
+75,University of Kansas City,MS in Robotics,Kansas City,2.0,47000,125000,January 1,MO
+76,University of Central Florida,MS in Mechanical Engineering,Orlando,2.0,47000,125000,December 1,FL
+77,University of California,MS in Mechanical Engineering,San Diego,2.0,47000,125000,December 1,CA
+78,University of Colorado Boulder,MS in Data Science,Boulder,2.0,47000,125000,December 15,CO
+79,University of Georgia,MS in Computer Science,Athens,2.0,48000,125000,December 15,AL
+80,University of Florida,MS in Electrical Engineering,Gainesville,2.0,48000,125000,January 1,FL
+81,University of Washington,MS in Applied Physics,Seattle,2.0,48000,125000,December 1,WA
+82,University of Arizona,MS in Data Science,Tucson,2.0,48000,125000,December 15,AZ
+83,University of California,MS in Mechanical Engineering,Los Angeles,2.0,48000,125000,December 15,CA
+84,University of Southern California,MS in Robotics,Los Angeles,2.0,48000,125000,December 1,CA
+85,University of Illinois Urbana-Champaign,MS in Applied Physics,Urbana,2.0,48000,125000,January 1,IL
+86,University of Michigan,MS in Data Science,Ann Arbor,2.0,48000,125000,December 15,MI
+87,University of Miami,MS in Mechanical Engineering,Coral Gables,2.0,48000,125000,December 1,FL
+88,University of Texas at Austin,MS in Electrical Engineering,Austin,2.0,48000,125000,December 1,TX
+89,University of Chicago,MS in Data Science,Chicago,2.0,48000,125000,January 1,IL
+90,University of Pennsylvania,MS in Robotics,Philadelphia,2.0,48000,125000,January 1,PA
+91,University of California,MS in Statistics,San Francisco,2.0,48000,125000,December 1,CA
+92,Stanford University,MS in Electrical Engineering,Stanford,2.0,48000,125000,January 1,CA
+93,University of North Carolina,MS in Robotics,Chapel Hill,2.0,48000,125000,December 1,NC
+94,Duke University,MS in Computer Science,Durham,2.0,48000,125000,December 1,NC
+95,University of California,MS in Bioengineering,Los Angeles,2.0,48000,125000,January 1,CA
+96,University of Southern California,MS in Data Science,Los Angeles,2.0,48000,125000,December 1,CA
+97,Carnegie Mellon University,MS in Data Science,Pittsburgh,2.0,48000,125000,January 1,PA
+98,Harvard University,MS in Data Science,Cambridge,2.0,48000,125000,January 1,MA
+99,Massachusetts Institute of Technology (MIT),MS in Robotics,Cambridge,2.0,48000,125000,December 1,MA
+100,University of California,MS in Electrical Engineering,Santa Barbara,2.0,48000,125000,December 15,CA
+101,University of Michigan,MS in Bioengineering,Ann Arbor,2.0,48000,125000,January 1,MI
+102,Princeton University,MS in Computer Science,Princeton,2.0,48000,125000,December 1,NJ
+103,University of Texas at Austin,MS in Robotics,Austin,2.0,48000,125000,January 1,TX
+104,University of Washington,MS in Mechanical Engineering,Seattle,2.0,49000,125000,December 15,WA
+105,Northwestern University,MS in Data Science,Evanston,2.0,49000,125000,December 1,IL
+106,University of Illinois Urbana-Champaign,MS in Robotics,Urbana,2.0,49000,125000,January 1,IL
+107,University of California,MS in Data Science,Berkeley,2.0,49000,125000,December 1,CA
+108,California Institute of Technology (Caltech),MS in Data Science,Pasadena,2.0,49000,125000,January 1,CA
+109,University of Colorado Boulder,MS in Robotics,Boulder,2.0,49000,125000,January 1,CO
+110,University of Wisconsin-Madison,MS in Electrical Engineering,Madison,2.0,49000,125000,December 1,WI
+111,University of Texas at Austin,MS in Chemical Engineering,Austin,2.0,49000,127000,December 1,TX
+112,University of California,MS in Engineering Sciences,San Diego,2.0,49000,127000,January 1,CA
+113,University of Southern California,MS in Applied Physics,Los Angeles,2.0,49000,128000,January 1,CA
+114,Georgia Institute of Technology,MS in Mechanical Engineering,Atlanta,2.0,49000,130000,December 15,GA
+115,University of Southern California,MS in Electrical Engineering,Los Angeles,2.0,49000,130000,December 1,CA
+116,University of Illinois Urbana-Champaign,MS in Chemical Engineering,Urbana,2.0,49000,130000,December 15,IL
+117,University of California,MS in Robotics,San Diego,2.0,49000,130000,December 1,CA
+118,University of Arizona,MS in Computer Science,Tucson,2.0,49000,130000,January 1,AZ
+119,Purdue University,MS in Data Science,West Lafayette,2.0,49000,130000,January 1,IN
+120,University of Washington,MS in Chemical Engineering,Seattle,2.0,49000,130000,December 1,WA
+121,California Institute of Technology (Caltech),MS in Bioengineering,Pasadena,2.0,49000,130000,December 15,CA
+122,University of North Carolina,MS in Data Science,Chapel Hill,2.0,49000,130000,December 1,NC
+123,Harvard University,MS in Robotics,Cambridge,2.0,49000,130000,December 1,MA
+124,University of California,MS in Applied Physics,San Diego,2.0,49000,130000,December 1,CA
+125,University of Michigan,MS in Computer Science,Ann Arbor,2.0,49000,130000,January 1,MI
+126,Massachusetts Institute of Technology (MIT),MS in Data Science,Cambridge,2.0,49000,130000,January 1,MA
+127,University of Miami,MS in Chemical Engineering,Coral Gables,2.0,49000,130000,January 1,FL
+128,University of Illinois Urbana-Champaign,MS in Robotics,Urbana,2.0,49000,130000,December 1,IL
+129,Princeton University,MS in Mechanical Engineering,Princeton,2.0,49000,130000,December 15,NJ
+130,Stanford University,MS in Bioengineering,Stanford,2.0,49000,130000,December 1,CA
+131,University of California,MS in Chemical Engineering,Berkeley,2.0,49000,130000,December 1,CA
+132,University of Texas at Austin,MS in Mechanical Engineering,Austin,2.0,50000,130000,December 15,TX
+133,University of Washington,MS in Bioengineering,Seattle,2.0,50000,130000,December 1,WA
+134,University of Miami,MS in Engineering Sciences,Coral Gables,2.0,50000,130000,December 15,FL
+135,University of Wisconsin-Madison,MS in Data Science,Madison,2.0,50000,130000,December 1,WI
+136,University of Southern California,MS in Computer Science,Los Angeles,2.0,50000,130000,December 1,CA
+137,University of Chicago,MS in Engineering Sciences,Chicago,2.0,50000,130000,December 1,IL
+138,University of California,MS in Data Science,Los Angeles,2.0,50000,130000,January 1,CA
+139,University of Michigan,MS in Applied Physics,Ann Arbor,2.0,50000,130000,January 1,MI
+140,University of Washington,MS in Robotics,Seattle,2.0,50000,130000,December 1,WA
+141,University of Southern California,MS in Chemical Engineering,Los Angeles,2.0,50000,130000,December 1,CA
+142,Massachusetts Institute of Technology (MIT),MS in Mechanical Engineering,Cambridge,2.0,50000,130000,January 1,MA
+143,University of Illinois Urbana-Champaign,MS in Data Science,Urbana,2.0,50000,130000,January 1,IL
+144,University of California,MS in Engineering Sciences,San Francisco,2.0,50000,130000,January 1,CA
+145,University of Texas at Austin,MS in Data Science,Austin,2.0,50000,130000,December 1,TX
+146,Stanford University,MS in Applied Physics,Stanford,2.0,50000,130000,January 1,CA
+147,University of Miami,MS in Statistics,Coral Gables,2.0,50000,130000,December 1,FL
+148,University of Southern California,MS in Data Science,Los Angeles,2.0,51000,130000,December 15,CA
+149,University of California,MS in Data Science,Berkeley,2.0,51000,130000,January 1,CA
+150,Harvard University,MS in Computer Science,Cambridge,2.0,51000,130000,December 1,MA
+151,University of Michigan,MS in Electrical Engineering,Ann Arbor,2.0,51000,130000,January 1,MI
+152,University of Wisconsin-Madison,MS in Computer Science,Madison,2.0,51000,130000,January 1,WI
+153,University of Pennsylvania,MS in Computer Science,Philadelphia,2.0,51000,130000,January 1,PA
+154,University of California,MS in Mechanical Engineering,Santa Barbara,2.0,51000,130000,December 15,CA
+155,Carnegie Mellon University,MS in Data Science,Pittsburgh,2.0,51000,130000,December 1,PA
+156,University of Texas at Austin,MS in Applied Physics,Austin,2.0,51000,130000,December 15,TX
+157,University of North Carolina,MS in Computer Science,Chapel Hill,2.0,51000,130000,January 1,NC
+158,University of California,MS in Robotics,Los Angeles,2.0,51000,130000,January 1,CA
+159,University of Southern California,MS in Engineering Sciences,Los Angeles,2.0,51000,135000,December 1,CA
+160,Stanford University,MS in Mechanical Engineering,Stanford,2.0,51000,135000,December 1,CA
+161,University of Chicago,MS in Robotics,Chicago,2.0,51000,135000,December 15,IL
+162,University of Washington,MS in Chemical Engineering,Seattle,2.0,51000,135000,January 1,WA
+163,University of California,MS in Electrical Engineering,San Diego,2.0,51000,135000,December 15,CA
+164,Massachusetts Institute of Technology (MIT),MS in Data Science,Cambridge,2.0,52000,135000,December 1,MA
+165,University of Illinois Urbana-Champaign,MS in Electrical Engineering,Urbana,2.0,52000,135000,December 1,IL
+166,Princeton University,MS in Robotics,Princeton,2.0,52000,135000,January 1,NJ
+167,University of California,MS in Data Science,Santa Barbara,2.0,52000,135000,December 15,CA
+168,University of Southern California,MS in Bioengineering,Los Angeles,2.0,52000,135000,December 1,CA
+169,University of Michigan,MS in Robotics,Ann Arbor,2.0,52000,135000,January 1,MI
+170,University of Wisconsin-Madison,MS in Applied Physics,Madison,2.0,52000,135000,December 1,WI
+171,University of Miami,MS in Robotics,Coral Gables,2.0,52000,135000,January 1,FL
+172,California Institute of Technology (Caltech),MS in Robotics,Pasadena,2.0,52000,135000,January 1,CA
+173,University of Texas at Austin,MS in Engineering Sciences,Austin,2.0,52000,135000,December 1,TX
+174,University of California,MS in Chemical Engineering,Santa Barbara,2.0,53000,135000,December 15,CA
+175,University of Arizona,MS in Data Science,Tucson,2.0,53000,135000,January 1,AZ
+176,University of Pennsylvania,MS in Robotics,Philadelphia,2.0,53000,135000,December 1,PA
+177,University of California,MS in Data Science,Santa Barbara,2.0,53000,135000,December 1,CA
+178,University of Illinois Urbana-Champaign,MS in Bioengineering,Urbana,2.0,53000,137000,January 1,IL
+179,Harvard University,MS in Applied Physics,Cambridge,2.0,53000,140000,December 15,MA
+180,University of California,MS in Computer Science,Santa Barbara,2.0,53000,140000,January 1,CA
+181,University of Michigan,MS in Bioengineering,Ann Arbor,2.0,53000,140000,January 1,MI
+182,University of Southern California,MS in Mechanical Engineering,Los Angeles,2.0,53000,140000,December 1,CA
+183,University of Washington,MS in Bioengineering,Seattle,2.0,53000,140000,January 1,WA
+184,Massachusetts Institute of Technology (MIT),MS in Robotics,Cambridge,2.0,53000,140000,December 15,MA
+185,Stanford University,MS in Data Science,Stanford,2.0,54000,140000,December 15,CA
+186,University of Illinois Urbana-Champaign,MS in Chemical Engineering,Urbana,2.0,54000,140000,January 1,IL
+187,University of Miami,MS in Computer Science,Coral Gables,2.0,54000,140000,December 1,FL
+188,University of Michigan,MS in Data Science,Ann Arbor,2.0,54000,140000,December 1,MI
+189,University of Southern California,MS in Data Science,Los Angeles,2.0,54000,140000,December 15,CA
+190,University of California,MS in Data Science,San Diego,2.0,54000,140000,January 1,CA
+191,University of Washington,MS in Mechanical Engineering,Seattle,2.0,54000,140000,January 1,WA
+192,University of Chicago,MS in Bioengineering,Chicago,2.0,55000,140000,December 1,IL
+193,University of Texas at Austin,MS in Computer Science,Austin,3.55,55000,145000,December 1,TX
+194,University of Southern California,MS in Robotics,Los Angeles,5.1,55000,150000,January 1,CA
+195,University of Illinois Urbana-Champaign,MS in Data Science,Urbana,5.1,55000,150000,December 1,IL
+196,University of Miami,MS in Engineering Sciences,Coral Gables,5.1,55000,150000,December 1,FL
+197,University of California,MS in Robotics,Berkeley,5.1,57000,150000,December 15,CA
