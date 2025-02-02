@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song not found</title>
+
+    <style>
+        /* Global styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            color: #333;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 60px;
+            color: #4CAF50; 
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #555;
+            font-weight: 500;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        img {
+            width: 50vh;
+            height: 50vh;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+
+        /* Button styling */
+        .button {
+            padding: 12px 30px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .button:hover {
+            background-color: #4CAF50;
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Womp Womp</h1>
+    <img src="https://http.cat/404" alt="Song not found">
+    <h2>Looks like we don't have that song yet!</h2>
+    <button class="button" onclick="window.location.href='/'">Go Back Home</button>
+</body>
+</html>

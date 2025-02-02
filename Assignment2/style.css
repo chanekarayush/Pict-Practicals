@@ -1,26 +1,165 @@
+/* External CSS */
 *{
-    box-sizing: border-box;
-    padding: 0;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
-.navbar{
-    position: sticky;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    width: 100vw;
-    height: 10vh;
-    background-color: #111;
-    color: #898989;
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
 }
 
-.navbar ul li{
-    margin: auto 1rem;
+footer {
+    background-color: #222;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.music-player {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Styling Lists */
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+ol {
+    margin-left: 20px;
+}
+
+.list-heading {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #4CAF50;
+}
+
+/* Styling for Descriptive List (Features) */
+dl {
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+dt {
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 8px;
+}
+
+dd {
+    margin-bottom: 12px;
+    color: #666;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+img {
+    width: 100%;
+    border-radius: 10px;
+}
+.audio-player {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: inline-block;
+    width: 300px;
 }
 
-.navbar > * {
-    padding: auto;
-    margin: auto;
+h1 {
+    color: #333;
+}
+
+.play-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.play-button:hover {
+    background-color: #45a049;
+}
+
+.list-genre > * {
+    margin: 10rem;
+}
+
+.genre-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.genre-label {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    padding: 15px 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    transition: all 0.3s;
+    user-select: none;
+    min-width: 100px;
+    font-weight: bold;
+    background-color: white;
+}
+
+.genre-label:hover {
+    background-color: #f0f0f0;
+}
+
+/* Hide the radio buttons */
+input[type="radio"] {
+    display: none;
+}
+
+/* Highlight the selected genre */
+input[type="radio"]:checked + .genre-label {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
 }

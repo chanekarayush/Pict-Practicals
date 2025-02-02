@@ -1,48 +1,221 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Wotify | Better than Spotify</title>
+    <title>Wotify | The Better Spotify</title>
+    <script src="./app.js"></script>
+    <!-- External CSS Link -->
+    <link rel="stylesheet" href="styles.css">
 
     <style>
-        .navbar ul {
-            background-color: #111;
-            color: #898989;
+        /* Internal CSS */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: aliceblue;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.5rem;
+        }
+
+        .main-content {
+            margin: 10px;
+        }
+
+        .music-player {
+            width: 30vw;
+            place-items: center;
+            text-align: center;
+            margin: 0 auto;
+            background-color: #000000;
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .music-player img {
+            width: 20vw;
+            align-self: auto;
+            border-radius: 10px;
+        }
+
+        .play-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .play-button:hover {
+            background-color: #45a049;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+        }
+
+        ul {
+            list-style-type: disc;
+        }
+
+        li {
+            margin-bottom: 8px;
         }
     </style>
-
 </head>
 
 <body>
-    <!-- use section only if they have a header or footer in them, otherwise use a plain div. -->
 
-    <div class="navbar">
-        <img src="https://cdn-icons-png.flaticon.com/512/72/72264.png" alt="Wotify Logo" height="32px" ,
-                    width="32px" style="filter:invert(1); margin: 0.5rem 1rem;">
-        <ul type="None">
-            <li>Home</li>
-            <li>Search / Explore</li>
-        </ul>
-        <div class="profile">
-
-            Profile
-            </div>
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Wotify</h1>
+        <p>Listen to Your Favorite Music Anytime</p>
     </div>
-    <section>
-        this is going to be a grid.
-        this is the parent of the below two sections
-        <section class="sidebar">
-            sidebar goes here.
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+        <div class="music-player">
+            <h2>Now Playing</h2>
+
+            <!-- Displaying Song Info -->
+            <table>
+                <tr>
+                    <td><img src="album-cover.jpg" alt="Album Cover"></td>
+                </tr>
+                <tr>
+                    <td><strong>Song Title:</strong> Shape of You</td>
+                </tr>
+                <tr>
+                    <td><strong>Artist:</strong> Ed Sheeran</td>
+                </tr>
+                <tr>
+                    <td><strong>Album:</strong> ÷ (Divide)</td>
+                </tr>
+            </table>
+
+            <!-- Play Button -->
+            <div class="audio-player">
+                <!-- Audio Element -->
+                <audio controls>
+                    <source src="shape-of-you.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+                <br><br>
+
+                <!-- Play Button (Custom) -->
+                <div style="display: flex;">
+                    <button class="play-button" onclick="document.querySelector('audio').play()"
+                        style="margin: 0.1rem;">Play</button>
+                    <button class="play-button" onclick="document.querySelector('audio').pause()"
+                        style="margin: 0.1rem;">Pause</button>
+                </div>
+            </div>
+
+            <!-- Playlist Section -->
+            <h3>Playlist</h3>
+            <ol>
+                <li>Shape of You - Ed Sheeran</li>
+                <li>Blinding Lights - The Weeknd</li>
+                <li>Levitating - Dua Lipa</li>
+                <li>Save Your Tears - The Weeknd</li>
+            </ol>
+        </div>
+
+        <hr>
+        <section class="list-genre" style="display: flex; flex-direction: row; padding: 1rem; justify-content: center;">
+            <div class="margin1rem"
+                style="margin: 0 1rem; background-color:antiquewhite; padding: 3rem; border-radius: 10px;">
+                <h3 class="list-heading">Genres</h3>
+                <ul>
+                    <li>Pop</li>
+                    <li>Rock</li>
+                    <li>Jazz</li>
+                    <li>Electronic</li>
+                </ul>
+            </div>
+            <div class="margin1rem"
+                style="margin: 0 1rem; background-color:antiquewhite; padding: 3rem; border-radius: 10px;">
+                <h3 class="list-heading">Features</h3>
+                <dl>
+                    <dt>Shuffle Mode</dt>
+                    <dd>Randomize your playlist and keep things fresh.</dd>
+
+                    <dt>Volume Control</dt>
+                    <dd>Adjust the music volume easily to fit your mood.</dd>
+
+                    <dt>Equalizer</dt>
+                    <dd>Adjust bass, treble, and more for optimal sound.</dd>
+                </dl>
+            </div>
         </section>
-        <section class="content-pane">
-            content pane goes here.
-        </section>
-        <footer>
-            This is going to be where the legal stuff goes.
-        </footer>
-    </section>
+
+        <!-- Music Search Form -->
+        <h3>Search for Music</h3>
+        <form action="404.html" method="GET">
+            <fieldset>
+                <legend>Find Your Favorite Music</legend>
+
+                <label for="song-search">Search by Song Title:</label>
+                <input type="text" id="song-search" name="song-search" placeholder="Enter song title" required>
+                <br><br>
+
+                <p>Choose a Genre:</p>
+                <div class="genre-container">
+                    <label>
+                        <input type="radio" name="genre" value="pop" required>
+                        <div class="genre-card">Pop</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="genre" value="rock">
+                        <div class="genre-card">Rock</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="genre" value="jazz">
+                        <div class="genre-card">Jazz</div>
+                    </label>
+                    <label>
+                        <input type="radio" name="genre" value="electronic">
+                        <div class="genre-card">Electronic</div>
+                    </label>
+                </div>
+                <br>
+
+                <button type="submit" class="play-button" onclick="">Search</button>
+            </fieldset>
+        </form>
+
+        <!-- External Links -->
+        <h3>External Resources</h3>
+        <p>Learn more about music:</p>
+        <ul>
+            <li><a href="https://www.spotify.com" target="_blank">Spotify</a></li>
+            <li><a href="https://www.apple.com/music/" target="_blank">Apple Music</a></li>
+        </ul>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <p>&copy; 2025 Music Player Website | <a href="#">Privacy Policy</a></p>
+    </div>
+
 </body>
 
 </html>
