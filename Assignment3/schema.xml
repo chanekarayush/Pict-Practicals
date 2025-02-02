@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Song Duration is in seconds -->
+<album title="low kii savage" artist="Kiiara" songNumber="6" img_url="https://upload.wikimedia.org/wikipedia/en/8/88/Kiiara_-_Low_Kii_Savage.png">
+    <song title="Gold" duration="225" url=""></song>
+    <song title="Feels" duration="182" url=""></song>
+    <song title="Tennessee" duration="260" url=""></song>
+    <song title="Intention" duration="229" url=""></song>
+    <song title="Say Anymore" duration="168" url=""></song>
+    <song title="Hang Up Tha Phone" duration="220" url=""></song>
+</album>
+
+<singles>
+    <song id="1" 
+          title="Death Bed"
+          artist="Powfu"
+          artwork="https://samplesongs.netlify.app/album-arts/death-bed.jpg"
+          url="https://samplesongs.netlify.app/Death%20Bed.mp3">
+    </song>
+    
+    <song id="2" 
+          title="Bad Liar"
+          artist="Imagine Dragons"
+          artwork="https://samplesongs.netlify.app/album-arts/bad-liar.jpg"
+          url="https://samplesongs.netlify.app/Bad%20Liar.mp3">
+    </song>
+
+    <song id="3" 
+          title="Faded"
+          artist="Alan Walker"
+          artwork="https://samplesongs.netlify.app/album-arts/faded.jpg"
+          url="https://samplesongs.netlify.app/Faded.mp3">
+    </song>
+
+    <song id="4" 
+          title="Hate Me"
+          artist="Ellie Goulding"
+          artwork="https://samplesongs.netlify.app/album-arts/hate-me.jpg"
+          url="https://samplesongs.netlify.app/Hate%20Me.mp3">
+    </song>
+
+    <song id="5" 
+          title="Solo"
+          artist="Clean Bandit"
+          artwork="https://samplesongs.netlify.app/album-arts/solo.jpg"
+          url="https://samplesongs.netlify.app/Solo.mp3">
+    </song>
+
+    <song id="6" 
+          title="Without Me"
+          artist="Halsey"
+          artwork="https://samplesongs.netlify.app/album-arts/without-me.jpg"
+          url="https://samplesongs.netlify.app/Without%20Me.mp3">
+    </song>
+</singles>
