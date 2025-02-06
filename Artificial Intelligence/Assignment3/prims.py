@@ -15,7 +15,7 @@ def primsMst(adjList: dict):
     min_edge = None
 
     for node in adjList:
-        for cost, nei in adjList[node]:
+        for nei, cost in adjList[node]:
             if not min_edge or cost < min_edge[0]:
                 min_edge = (cost, node, nei)
     # push the min edge to the heap and then start with adding sequential level ke nodes
