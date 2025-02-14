@@ -4,7 +4,9 @@ It takes inputs and returns an adjacency List and returns ab MST according to Kr
 """
 import heapq
 from collections import defaultdict
-import readfile 
+
+import readfile
+
 
 class UnionFind:
     def __init__(self, nodes):
@@ -48,14 +50,22 @@ def kruskal(adjList: dict) -> dict:
         if component.find(node1) != component.find(node2):
             component.union(node1, node2)
             mst[node1].append((node2, cost))
-            mst[node2].append((node1, cost))
+
             totalcost += cost
-            print(f"{node1}->{node2}->", end="")
+            print(f"({node1}->{node2})->", end="")
     print("end")
     print(f"totalcost={totalcost}")
     print("Union and Find operations take O(1) time as they are implemented as a hashmap\nVisiting all nodes-> O(n) or O(V+E) operations")
     return mst
 
+
 adjList = readfile.readfileinput()
 
-kruskal(adjList)
+mst = kruskal(adjList)
+
+print("Displaying MST")
+for node in mst:
+    print(f'{node} : ', end="")
+    for nei, _ in mst[node]:
+        print(f'{nei},', end="")
+    print()

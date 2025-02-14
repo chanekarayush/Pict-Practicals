@@ -1,5 +1,6 @@
 import heapq
 import readfile
+import sys
 
 def dijkstra(graph, start):
     # Number of vertices in the graph
@@ -28,16 +29,30 @@ def dijkstra(graph, start):
             if distance < distances[neighbor]:
                 distances[neighbor] = distance
                 heapq.heappush(pq, (distance, neighbor))
+            else:
+                print(f"Path rejected:{current_node}->{neighbor}, {distance}")
     
     return distances
 
-# Find shortest paths from 'A'
-adjList = readfile.readfileinput()
-start_node = 1
-shortest_paths = dijkstra(adjList, start_node)
+def main():
+    verbose = False
+    if len(sys.argv) > 2:
+        for arg in sys.argv[1:]:
+            if arg == "--verbose":
+                print("Verbose enabled")
+                verbose = True
 
-# Print the shortest paths
-print(f"Shortest paths from {start_node}:")
-for node, distance in shortest_paths.items():
-    print(f"Distance to {node}: {distance}")
-print("Overall Time Complexity -> O(nlog(n)) or O(V + Elog(V))")
+    # Find shortest paths from '1'
+    adjList = dict(readfile.readfileinput(verbose=verbose))
+    print(adjList.keys())
+    start_node = int(input("Enter the source node:")) 
+    shortest_paths = dijkstra(adjList, start_node)
+
+    # Print the shortest paths
+    print(f"Shortest paths from {start_node}:")
+    for node, distance in shortest_paths.items():
+        print(f"Distance to {node}: {distance}")
+    print("Overall Time Complexity -> O(nlog(n)) or O(V + Elog(V))")
+
+if __name__ == "__main__":
+    main()

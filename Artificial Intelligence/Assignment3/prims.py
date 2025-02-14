@@ -13,11 +13,8 @@ def primsMst(adjList: dict):
     mst = defaultdict(list)
     edgecost = []
     visited = set()
-    min_edge = (float('inf'), float('inf'), float('inf'))
+    min_edge = (-1, 0, 0)
 
-    for node in adjList:
-        for nei, cost in adjList[node]:
-            min_edge = min(min_edge, (cost, node, nei))
     # push the min edge to the heap and then start with adding sequential level ke nodes
 
     def add_edges(node):
@@ -31,10 +28,11 @@ def primsMst(adjList: dict):
     while edgecost:
         cost, node, nei = heapq.heappop(edgecost)
         if nei not in visited:
-            mst[node].append(nei)
-            mst[nei].append(node)
-            totalcost += cost
             add_edges(nei)
+            if cost != -1:
+                mst[node].append(nei)
+                totalcost += cost
+                print(f"({node}->{nei})->", end="")
 
     print("end")
     print(f"Total Cost of MST is: {totalcost}")
