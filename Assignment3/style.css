@@ -1,0 +1,67 @@
+music {
+  display: block;
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+album,
+singles {
+  display: block;
+  border: 2px solid #444;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #e6e6e6;
+  border-radius: 5px;
+}
+
+songs {
+  display: block;
+  margin: 10px 0;
+}
+
+song {
+  display: block;
+  padding: 5px;
+  margin: 5px 0;
+  border-bottom: 1px solid #bbb;
+  background-color: #dcdcdc;
+  border-radius: 3px;
+}
+
+song title {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #222;
+}
+
+song artist {
+  font-style: italic;
+  color: #666;
+}
+
+song duration,
+song url,
+song artwork {
+  display: block;
+  font-size: 0.9em;
+  color: #888;
+  margin-top: 3px;
+}
+
+img_url,
+artwork {
+  display: block;
+  margin-top: 5px;
+  background-color: #ccc;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+img_url::before,
+artwork::before {
+  content: "Image: ";
+  font-weight: bold;
+  color: #444;
+}
