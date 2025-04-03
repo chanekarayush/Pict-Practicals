@@ -1,5 +1,5 @@
 """
-Contraints:
+Constraints:
 1. No 2 queens share the same row
 2. No 2 queens share the same column
 3. No 2 queens share the same diagonal
@@ -20,12 +20,23 @@ def solve_n_queens_BnB(n, col, left_diag, right_diag, cols, board):
             
             if solve_n_queens_BnB(n, col + 1, left_diag, right_diag, cols, board):
                 return True
-            
+            print_board(board, n) 
             # Backtrack
             board[row][col] = 0
             cols[row] = left_diag[row + col] = right_diag[row - col + n - 1] = False
 
     return False
+
+def print_board(board:list[list], N):
+    print("_"*(2*N+1))
+    for row in board:
+        print('|', end="")
+        for x in row:
+            print(x, end="|")
+        #print(f"\n{'-'*(2*N+1)}")
+        print()
+    print("¯"*(2*N+1))
+
 
 def n_queens_BnB(n):
     board = [[0] * n for _ in range(n)]
@@ -41,5 +52,18 @@ def n_queens_BnB(n):
         print(row)
 
 
-n_queens_BnB(int(input("Enter the number of square for N queens problem")))
+n_queens_BnB(int(input("Enter the number of square for N queens problem ")))
 
+time_complexity = """
+Worst-Case Time Complexity: O(N!)
+Average-Case Time Complexity (With Pruning): O(N²) to O(N^1.5)
+Best-Case Complexity (If a Solution is Found Early): O(N)
+"""
+
+space_complexity = """
+O(N²) (if storing the board) -> This implementation
+O(N) (if storing only column positions and using boolean arrays for pruning)
+
+"""
+
+print("Time Complexity\n" , time_complexity, "\nSpace Complexity\n", space_complexity)
