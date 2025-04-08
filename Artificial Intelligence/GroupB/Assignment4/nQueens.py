@@ -8,9 +8,11 @@ Now here we will only check the left side of the board i.e. all the rows and col
 as we are placing the queens left to right.
 """
 
-def solve_n_queens_BnB(n, col, left_diag, right_diag, cols, board):
+def solve_n_queens_BnB(n, col, left_diag, right_diag, cols, board, solutions):
     if col >= n:
-        return True  # Solution found
+        # Store the solution when found
+        solutions.append([row[:] for row in board])  # Deep copy of the board
+        return  # Continue searching for other solutions
 
     for row in range(n):
         if not cols[row] and not left_diag[row + col] and not right_diag[row - col + n - 1]:
@@ -18,41 +20,41 @@ def solve_n_queens_BnB(n, col, left_diag, right_diag, cols, board):
             board[row][col] = 1
             cols[row] = left_diag[row + col] = right_diag[row - col + n - 1] = True
             
-            if solve_n_queens_BnB(n, col + 1, left_diag, right_diag, cols, board):
-                return True
-            print_board(board, n) 
+            # Recur to place the next queen
+            solve_n_queens_BnB(n, col + 1, left_diag, right_diag, cols, board, solutions)
+            
             # Backtrack
             board[row][col] = 0
             cols[row] = left_diag[row + col] = right_diag[row - col + n - 1] = False
 
-    return False
-
-def print_board(board:list[list], N):
-    print("_"*(2*N+1))
+def print_board(board, N):
+    print("_" * (2 * N + 1))
     for row in board:
         print('|', end="")
         for x in row:
-            print(x, end="|")
-        #print(f"\n{'-'*(2*N+1)}")
+            print('Q' if x else '.', end="|")
         print()
-    print("¯"*(2*N+1))
-
+    print("¯" * (2 * N + 1))
 
 def n_queens_BnB(n):
     board = [[0] * n for _ in range(n)]
     cols = [False] * n
     left_diag = [False] * (2 * n - 1)
     right_diag = [False] * (2 * n - 1)
+    solutions = []  # List to store all solutions
 
-    if not solve_n_queens_BnB(n, 0, left_diag, right_diag, cols, board):
+    solve_n_queens_BnB(n, 0, left_diag, right_diag, cols, board, solutions)
+
+    if not solutions:
         print("No solution exists.")
         return
-    
-    for row in board:
-        print(row)
 
+    print(f"Total solutions found: {len(solutions)}")
+    #for idx, solution in enumerate(solutions, start=1):
+        #print(f"\nSolution {idx}:")
+        # print_board(solution, n)
 
-n_queens_BnB(int(input("Enter the number of square for N queens problem ")))
+n_queens_BnB(int(input("Enter the number of squares for the N-Queens problem: ")))
 
 time_complexity = """
 Worst-Case Time Complexity: O(N!)
@@ -63,7 +65,6 @@ Best-Case Complexity (If a Solution is Found Early): O(N)
 space_complexity = """
 O(N²) (if storing the board) -> This implementation
 O(N) (if storing only column positions and using boolean arrays for pruning)
-
 """
 
-print("Time Complexity\n" , time_complexity, "\nSpace Complexity\n", space_complexity)
+print("Time Complexity\n", time_complexity, "\nSpace Complexity\n", space_complexity)
