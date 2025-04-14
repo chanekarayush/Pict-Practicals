@@ -1,0 +1,16 @@
++-----------------------------------------------+---------------------------------------------------------------+
+| Column                                        | Description                                                   |
++-----------------------------------------------+---------------------------------------------------------------+
+| REF_DATE                                     | Reference year                                                 |
+| GEO                                          | Province label                                                 |
+| Statistic                                    | Statistic category                                             |
+| Before-tax household income quintile        | Income level grouping before tax                                |
+| Household expenditures, summary-level categories | Expenditure category                                       |
+| UOM                                          | Unit of measurement (e.g., dollars)                            |
+| COORDINATE                                   | Coordinate label (unique ID per data point)                    |
+| Expense                                      | Household expenditure amount                                   |
+| Family type                                  | Type of family (e.g., couple, lone parent)                     |
+| Age of older adult                           | Age category of the older adult in the family                  |
+| Family income                                | Family income level                                            |
+| Income                                       | Household income amount                                        |
++-----------------------------------------------+---------------------------------------------------------------+
