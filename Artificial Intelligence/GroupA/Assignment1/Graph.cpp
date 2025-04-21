@@ -274,7 +274,6 @@ public:
     //     if (bfs_queue.empty()) { 
     //         return;
     //     }
-
     //     string current_node = bfs_queue.front();
     //     bfs_queue.pop();
     //     cout << "Visited the node " << current_node << endl;
