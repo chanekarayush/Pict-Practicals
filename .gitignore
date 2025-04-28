@@ -1,3 +1,5 @@
 # python venv
 /env/
 /.venv/
+
+./ml-logistic-regression.ipynb
