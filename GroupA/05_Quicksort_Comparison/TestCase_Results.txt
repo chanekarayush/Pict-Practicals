@@ -1,0 +1,27 @@
+TestCase 1:
+Enter the last number for the array to be sorted: 9999
+Sorting Using Normal QuickSort…
+Normal QuickSort Performed 19997 Comparisons
+Sorting using Random QuickSort...
+Randomized QuickSort Performed 13333 Comparisons
+
+TestCase 2:
+Enter the last number for the array to be sorted: 999
+Sorting Using Normal QuickSort…
+Normal QuickSort Performed 1997 Comparisons
+Sorting using Random QuickSort...
+Randomized QuickSort Performed 1337 Comparisons
+
+TestCase 3:
+Enter the last number for the array to be sorted: 1000
+Sorting Using Normal QuickSort…
+Normal QuickSort Performed 1999 Comparisons
+Sorting using Random QuickSort...
+Randomized QuickSort Performed 1329 Comparisons
+
+TestCase 4:
+Enter the last number for the array to be sorted: 10000
+Sorting Using Normal QuickSort…
+Normal QuickSort Performed 19999 Comparisons
+Sorting using Random QuickSort...
+Randomized QuickSort Performed 13385 Comparisons
