@@ -50,10 +50,10 @@ def quicksort_random(arr: list, low: int, high: int) -> None:
 
 
 if __name__ == "__main__":
-    # array1 = array2 = list(map(int, input("Enter an array to sort (space separated)").split()))
-    N = int(input("Enter the last number for the array to be sorted: "))
-    array1 = array2 = [x for x in range(N)]
-    
+    array1 = array2 = list(map(int, input("Enter an array to sort (space separated)").split()))
+    # N = int(input("Enter the last number for the array to be sorted: "))
+    # array1 = array2 = [x for x in range(N)]
+    N = len(array1)
     print("Sorting Using Normal QuickSort...")
     quicksort_normal(array1, 0, N-1)
     print(f"Sorted Array: {array1}")
