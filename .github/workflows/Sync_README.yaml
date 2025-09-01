@@ -1,0 +1,32 @@
+# .github/workflows/sync-readme.yml
+name: Sync README
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - README.md
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Set Git user
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Sync README to all branches
+        run: |
+          for branch in $(git branch -r | grep -v main | sed 's/origin\///'); do
+            git checkout $branch
+            git checkout main -- README.md
+            git commit -am "Sync README from main" || echo "No changes in $branch"
+            git push origin $branch
+          done
+
