@@ -18,3 +18,9 @@ This Repository Contains programs of PICT's Practical Term-work
 - [WTL Lab](https://github.com/chanekarayush/Pict-Practicals/tree/WTL)
 - [LP-2](https://github.com/chanekarayush/Pict-Practicals/tree/LP2)
 - [DSBDAL](https://github.com/chanekarayush/Pict-Practicals/tree/DSBDAL)
+
+## SEM - 7
+
+- [LP3](https://github.com/chanekarayush/Pict-Practicals/tree/LP3)
+- [LP4](https://github.com/chanekarayush/Pict-Practicals/tree/LP4)
+- [Machine Learning (Honours in AIML)](https://github.com/chanekarayush/Pict-Practicals/tree/Machine-Learning)
