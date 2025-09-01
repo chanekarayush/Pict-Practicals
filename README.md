@@ -11,7 +11,7 @@ This Repository Contains programs of PICT's Practical Term-work
 - [CNSL Lab](https://github.com/chanekarayush/Pict-Practicals/tree/CNSL)
 - [DBMS Lab](https://github.com/chanekarayush/Pict-Practicals/tree/DBMS)
 - [LP-1](https://github.com/chanekarayush/Pict-Practicals/tree/LP1)
-- [Honours Course Lab (AIML)](https://github.com/chanekarayush/Pict-Practicals/tree/Computational-Statistics)
+- [Computational-Statistics (Honours in AIML)](https://github.com/chanekarayush/Pict-Practicals/tree/Computational-Statistics)
 
 ## SEM - 6
 
