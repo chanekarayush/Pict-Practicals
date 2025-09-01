@@ -22,5 +22,5 @@ This Repository Contains programs of PICT's Practical Term-work
 ## SEM - 7
 
 - [LP3](https://github.com/chanekarayush/Pict-Practicals/tree/LP3)
-- [LP4](https://github.com/chanekarayush/Pict-Practicals/tree/LP4)
+- [LP4](https://github.com/chanekarayush/Pict-Practicals)
 - [Machine Learning (Honours in AIML)](https://github.com/chanekarayush/Pict-Practicals/tree/Machine-Learning)
