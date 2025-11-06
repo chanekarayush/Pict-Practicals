@@ -1,0 +1,93 @@
+Delivered-To: chanekarayush@gmail.com
+Received: by 2002:aa6:cace:0:b0:2c7:35d7:3341 with SMTP id e14csp6774433lky;
+        Sun, 6 Jul 2025 23:13:52 -0700 (PDT)
+X-Received: by 2002:a17:90a:d40c:b0:312:639:a06a with SMTP id 98e67ed59e1d1-31aba8e77b3mr10245715a91.31.1751868832687;
+        Sun, 06 Jul 2025 23:13:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751868832; cv=none;
+        d=google.com; s=arc-20240605;
+        b=IY3ctqJJLctGb1PNrxAv+WEdfoYjoTYS0x5getv+CWkMY1/9vjbxwj6coQ+bpD6k/t
+         efNLOiBaJU84m3d6oZE8xXBTt2rghHC46DjGTHWjStAnXHl6W6VDeIOtF7EeFFItK2rE
+         8EXH/RIHmsU7K5kUlCVklTeQqHyUfs1uIoitRH1PJPflWHJdnmnNdydaKupQnHydppoC
+         ksyMWnVgFbEGMlK+CJkOnBMbgg2bgag2PfiSuoi9pSRoboPTCZVKGs6DoOUy+446coXo
+         gojpJps2H1f5qKtRaSuK4AFzMxfZcvLEJREFbh4UhZEXse/zjy1X2pmTTcZJxfRcqAlJ
+         A7bA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=zcbIEQxJWyg56FdOns2z1AxXUaup2OkdednvpV0mtEE=;
+        fh=K9dl6m1v+yNR5oHxm/PGTLgmr3+UbArC1SkveAQi3bA=;
+        b=VA5KEJejk6ocZ8b21iqPy2RZnJ9/uCLU/WH/s5xVGd2/E/xIzI11fqNwpUBvFrmGsB
+         N/nnQYnNlbnxmxTUjxlEc/p4g4rP7DlvsZJBJc/LV1bk71rfpyE01PwMDIwzVYe0gEYW
+         Z6Pe8m1LQ75r4WFXf5ftr9i33uVNPf0b9SWsMq1X0OPrP+fbAhkoKdc65G5y8LjNHg2z
+         mA+X5pt49RGYMNoSEkKUa+hgRuZeTBo/pyj5nLImH3UWNGwDOzus8r0okgRArvO76rUP
+         qfMnO6GGXGJzyzEJDJfunYj42SS9XqPuKCWqReLT5Ko0Pvi39bs6fVjgUneH1DFKUUbr
+         HDfA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fsVDFX6K;
+       spf=pass (google.com: domain of royan123890@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=royan123890@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <royan123890@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 98e67ed59e1d1-31aaacf8ffdsor3304619a91.0.2025.07.06.23.13.52
+        for <chanekarayush@gmail.com>
+        (Google Transport Security);
+        Sun, 06 Jul 2025 23:13:52 -0700 (PDT)
+Received-SPF: pass (google.com: domain of royan123890@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=fsVDFX6K;
+       spf=pass (google.com: domain of royan123890@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=royan123890@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1751868832; x=1752473632; dara=google.com;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=zcbIEQxJWyg56FdOns2z1AxXUaup2OkdednvpV0mtEE=;
+        b=fsVDFX6KwtokJBsbE9A+hNPMBg6XN0TsGIKXbM7A5I84cFJv9Le2vm0k0QP0m7PsN2
+         DHqt56K++01F6dLWEJlfXNc3VZoS8fGfOMUbZ3BEAfSoNOEoOWIArSZIqreOWt+IPy3R
+         y2E/DI9BdavM7JVLrSTIlUSDe0dkJvx+vqbNcAkwSjBWADRxAV6+1rOoiyLopCiDIu8F
+         unAuqUOsTagmPNyAie9AJjRRciah12mU3d5R+SQWX6NvoD7oYby6VylXc3IuB26Q8jN+
+         fZmwUNPTVcXZKlEFZ5jGS+XQ5jhZZlP4ODRKN4s6xBdU7/UuXa6rI0Kp5YM0oT2gsf7Y
+         h85Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1751868832; x=1752473632;
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=zcbIEQxJWyg56FdOns2z1AxXUaup2OkdednvpV0mtEE=;
+        b=iTqLVcQ565CRN8ovrEbgua6B8Ue1f1XZzk/JKaIbdTQJoyx94923lWJHl3J8oGScbR
+         zYhuIW8XnXaD7GnRkWQtU7Y3p+czloQKjIrkpE4FMOt1goCWI82zR7hjpYUKSvFD8ByM
+         Rq2sRuSP91byKbT7RtdFvOzToldOHkQRlXWSKNkPe2d6F0aAa/FlTmLSeshV5TA3CcYa
+         idzf/LMHTQ+5Cuac33V7/42LWnH4h6a06eyuts6/wj0AzMQfGsrRIa4oaYaDkVGVA4Jk
+         ln4qIMOjnUKzXlcMlWi+6mcGcJTu4SH45+7RcvThdZER1E5De+4dWq9FUfeZaS2YYz9/
+         RJfw==
+X-Gm-Message-State: AOJu0Yzh+X7cuStgJYta4gWOPkTeTGikQAHzVEXw/3GCta3aZAMNRwud BQWSPIjcHZJ6E71pHrBrvqg1jOAEAJXYzwL75ob6IAyx93cQ9ZPha4iUYppMHFncukxxb4yZvy5 ece5zVvnzlI9prfv6ZOVySa7ZxTkVU73JCg==
+X-Gm-Gg: ASbGncvUESoREKTgXcuCtQC0d/JZ8XtCKyIODSVxXwzMXte+pSigmS85oqlpJiKCZR9 UwcsLIDiWtRrRC0Dw1V6THhVc50QiJgy9TEf0Z6muD422fANIdVFErsvkbMcWWCzfBNBn8KsO9t gktz7cgR225YFUCTBAlf32kCcVz0Tm/xLevB/2h3db7Svl
+X-Google-Smtp-Source: AGHT+IHe95wF/kIFpbTgUOjtQ2pHpMw3Z9oAzPQOiuWy9AM3f2nYnxMphSXTYX4xOb7fHQ+scHIzkXhuPHjtdaxb+T4=
+X-Received: by 2002:a17:90b:3851:b0:311:f99e:7f4e with SMTP id 98e67ed59e1d1-31aba8c4a90mr12387334a91.16.1751868831877; Sun, 06 Jul 2025 23:13:51 -0700 (PDT)
+MIME-Version: 1.0
+From: Royan <royan123890@gmail.com>
+Date: Mon, 7 Jul 2025 11:43:41 +0530
+X-Gm-Features: Ac12FXxkNfta7nwd5mqxXPdISR5vEwlO5i-yoc2PxdVhl2ThnWLE3WOwJvIk2Lg
+Message-ID: <CACamd=jcOR-+K74r0yGeMgs6nRMJPG_EH_2nAc=U+Pm0dT7MgQ@mail.gmail.com>
+Subject: greetings
+To: Ayush Chanekar <chanekarayush@gmail.com>
+Content-Type: multipart/alternative; boundary="0000000000006ad4c4063950bf79"
+
+--0000000000006ad4c4063950bf79
+Content-Type: text/plain; charset="UTF-8"
+
+hello Ayush,
+i hope your edging streak is going hard. Stay hydrated man .
+
+Happy Gooning
+
+--0000000000006ad4c4063950bf79
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">hello=C2=A0Ayush,<div>i hope your edging streak is going h=
+ard. Stay hydrated man .</div><div><br></div><div>Happy Gooning</div><div><=
+br></div></div>
+
+--0000000000006ad4c4063950bf79--
