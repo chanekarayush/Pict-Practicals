@@ -1,3 +1,5 @@
+from collections import Counter
+
 class Node:
     def __init__(self, char=None, freq=0):
         self.char = char
@@ -8,12 +10,9 @@ class Node:
 nodes = []
 
 def calculate_frequencies(word):
-    frequencies = {}
-    for char in word:
-        if char not in frequencies:
-            freq = word.count(char)
-            frequencies[char] = freq
-            nodes.append(Node(char, freq))
+    frequencies = dict(Counter(word))
+    for char, freq in frequencies.items():
+        nodes.append(Node(char, freq))
 
 def build_huffman_tree():
     while len(nodes) > 1:
