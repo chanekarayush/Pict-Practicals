@@ -2,6 +2,10 @@
 
 This Repository Contains programs of PICT's Practical Term-work
 
+## Assignment Writer Skill
+Writes assignments based on the Lab Manual format for PICT
+[Pict Assignment Writer](https://github.com/chanekarayush/Pict-Practicals/tree/written-assignments-help)
+
 ## SEM - 4
 
 [Microprocessor Lab](https://github.com/chanekarayush/Pict-Practicals/tree/MPL)
