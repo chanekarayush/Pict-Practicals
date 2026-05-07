@@ -1,0 +1,8 @@
+env/
+.agents/
+.github/
+CLAUDE.md
+GEMINI.md
+learn-by-doing.md
+skills-lock.json
+
