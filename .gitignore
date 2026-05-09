@@ -3,6 +3,11 @@ env/
 .github/
 CLAUDE.md
 GEMINI.md
-learn-by-doing.md
 skills-lock.json
-
+learn-by-doing/
+*.exe
+*.log
+app
+dfs
+parallel_sort
+min_max_avg
