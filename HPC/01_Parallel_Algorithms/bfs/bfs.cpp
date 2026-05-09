@@ -76,42 +76,28 @@ vector<int> parallelBFS(vector<vector<int>> &graph, int source){
 int main (int argc, char *argv[]) {
 
     // Defaults
-    int n_threads=4;
-    int n = 100000, degree = 10, seed = 41313;
+    int n_threads = 4;
+    int n = 10000, degree = 5, seed = 41313;
 
-
-    string input;
-    cout<<"Enter the number of threads you would like to use (default 4): ";
-    preserve_default_input(n);
+    cout << "Enter the number of threads you would like to use (default 4): ";
+    preserve_default_input(n_threads);
 
     omp_set_num_threads(n_threads);
 
-
     // Graph Generation
-    cout<<"Please Enter the number of vertices for the graph to be generated: ";
-    preserve_default_input(n, true);
+    cout << "Please Enter the number of vertices for the graph to be generated (default 10000): ";
+    preserve_default_input(n);
 
-    cout<<"Please Enter the Average Degree of Each Node: ";
-    preserve_default_input(degree, true);
+    cout << "Please Enter the Average Degree of Each Node (default 5): ";
+    preserve_default_input(degree);
 
-    cout<<"Please Enter the Random Seed (default = 41313)";
+    cout << "Please Enter the Random Seed (default = 41313): ";
     preserve_default_input(seed);
 
-    cout<<"---------- Generating Graph ----------"<<endl;
-    // vector<vector<int>> graph = generateRandomGraph(n, degree, seed);
-
-    vector<vector<int>> graph = {
-        {1, 2},           // 0 -> 1, 2
-        {0, 2, 5},        // 1 -> 0, 2, 5
-        {0, 1, 3},        // 2 -> 0, 1, 3
-        {2, 4},           // 3 -> 1, 2, 4
-        {3, 7},           // 4 -> 3, 5
-        {4, 6},           // 5 -> 4, 6
-        {5, 7},           // 6 -> 5, 7
-        {6, 7}            // 7 -> 6
-    };
+    cout << "---------- Generating Graph ----------" << endl;
+    vector<vector<int>> graph = generateRandomGraph(n, degree, seed);
     
-    cout<<"Graph Successfully generated!"<<endl;
+    cout << "Graph Successfully generated!" << endl;
    
 
     // Comparison
