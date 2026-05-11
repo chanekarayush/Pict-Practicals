@@ -60,7 +60,7 @@ std::vector<int> parallel_dfs(std::vector<std::vector<int>> &graph, int source)
 
     // Use atomic flags so multiple threads can claim nodes lock-free
     std::vector<std::atomic<bool>> visited(n);
-    for (int i = 0; i < n; ++i) visited[i].store(false, std::memory_order_relaxed);
+    // for (int i = 0; i < n; ++i) visited[i].store(false, std::memory_order_relaxed);
 
     // Global shared pool seeded with the source
     std::vector<int> global_pool;
@@ -187,8 +187,11 @@ vector<int> parallelBFS(vector<vector<int>>& graph, int source) {
 
     // Use atomic ints so threads can claim nodes without a lock
     vector<atomic<int>> level(n);
-    for (int i = 0; i < n; ++i)
+
+    #pragma omp parallel for
+    for (int i = 0; i < n; ++i){
         level[i].store(-1, memory_order_relaxed);
+    }
 
     level[source].store(0, memory_order_relaxed);
     vector<int> frontier;
