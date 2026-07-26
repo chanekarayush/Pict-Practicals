@@ -1,20 +1,20 @@
-#include <iostream>
-#include <queue>
-#include <vector>
-#include <stack>
+#include <algorithm>
 #include <atomic>
 #include <chrono>
-#include <random>
-#include <algorithm>
 #include <iomanip>
+#include <iostream>
 #include <omp.h>
+#include <queue>
+#include <random>
+#include <stack>
+#include <vector>
 using namespace std;
 
 // ─────────────────────────────────────────────
 //  Sequential DFS
 //  Returns elements in DFS traversal order
 // ─────────────────────────────────────────────
-std::vector<int> sequential_dfs(std::vector<std::vector<int>> &graph, int source)
+std::vector<int> sequential_dfs(std::vector<std::vector<int>>& graph, int source)
 {
     int n = static_cast<int>(graph.size());
     std::vector<bool> visited(n, false);
@@ -24,11 +24,13 @@ std::vector<int> sequential_dfs(std::vector<std::vector<int>> &graph, int source
     std::stack<int> stk;
     stk.push(source);
 
-    while (!stk.empty()) {
+    while (!stk.empty())
+    {
         int node = stk.top();
         stk.pop();
 
-        if (visited[node]) continue;
+        if (visited[node])
+            continue;
         visited[node] = true;
         order.push_back(node);
 
@@ -54,7 +56,7 @@ std::vector<int> sequential_dfs(std::vector<std::vector<int>> &graph, int source
 //
 //  Returns elements in (per-thread) DFS traversal order.
 // ─────────────────────────────────────────────
-std::vector<int> parallel_dfs(std::vector<std::vector<int>> &graph, int source)
+std::vector<int> parallel_dfs(std::vector<std::vector<int>>& graph, int source)
 {
     int n = static_cast<int>(graph.size());
 
@@ -67,45 +69,50 @@ std::vector<int> parallel_dfs(std::vector<std::vector<int>> &graph, int source)
     global_pool.reserve(512);
 
     bool expected = false;
-    if (visited[source].compare_exchange_strong(expected, true,
-                                                std::memory_order_acq_rel))
+    if (visited[source].compare_exchange_strong(expected, true, std::memory_order_acq_rel))
         global_pool.push_back(source);
 
     int num_threads = omp_get_max_threads();
     // Per-thread results collected here
     std::vector<std::vector<int>> thread_results(num_threads);
 
-    #pragma omp parallel shared(graph, visited, global_pool)
+#pragma omp parallel shared(graph, visited, global_pool)
     {
         int tid = omp_get_thread_num();
         std::stack<int> local_stk;
-        std::vector<int> &local_result = thread_results[tid];
+        std::vector<int>& local_result = thread_results[tid];
         local_result.reserve(n / num_threads + 64);
 
-        while (true) {
+        while (true)
+        {
             // ── Try to refill local stack from the global pool ──────────
-            if (local_stk.empty()) {
-                #pragma omp critical(pool_access)
+            if (local_stk.empty())
+            {
+#pragma omp critical(pool_access)
                 {
                     // Steal up to STEAL_BATCH nodes at once
                     constexpr int STEAL_BATCH = 64;
-                    int steal = std::min(STEAL_BATCH,
-                                        static_cast<int>(global_pool.size()));
-                    for (int i = 0; i < steal; ++i) {
+                    int steal = std::min(STEAL_BATCH, static_cast<int>(global_pool.size()));
+                    for (int i = 0; i < steal; ++i)
+                    {
                         local_stk.push(global_pool.back());
                         global_pool.pop_back();
                     }
                 }
             }
 
-            if (local_stk.empty()) {
+            if (local_stk.empty())
+            {
                 // Check if any other thread is still producing work
                 bool anyone_working = false;
-                // A short spin-wait: if pool stays empty, we're done
-                #pragma omp critical(pool_access)
-                { anyone_working = !global_pool.empty(); }
+// A short spin-wait: if pool stays empty, we're done
+#pragma omp critical(pool_access)
+                {
+                    anyone_working = !global_pool.empty();
+                }
 
-                if (!anyone_working) break; // all threads will exit soon
+                if (!anyone_working)
+                    break; // all threads will exit soon
                 continue;
             }
 
@@ -117,21 +124,23 @@ std::vector<int> parallel_dfs(std::vector<std::vector<int>> &graph, int source)
 
             // Explore neighbours
             std::vector<int> newly_claimed;
-            for (int nb : graph[node]) {
+            for (int nb : graph[node])
+            {
                 bool exp = false;
-                if (visited[nb].compare_exchange_strong(exp, true,
-                                                        std::memory_order_acq_rel))
+                if (visited[nb].compare_exchange_strong(exp, true, std::memory_order_acq_rel))
                     newly_claimed.push_back(nb);
             }
 
-            if (newly_claimed.empty()) continue;
+            if (newly_claimed.empty())
+                continue;
 
             // Keep first neighbour for local DFS (depth-first behaviour)
             local_stk.push(newly_claimed[0]);
 
             // Donate the rest to the global pool so other threads can help
-            if (newly_claimed.size() > 1) {
-                #pragma omp critical(pool_access)
+            if (newly_claimed.size() > 1)
+            {
+#pragma omp critical(pool_access)
                 {
                     for (int i = 1; i < static_cast<int>(newly_claimed.size()); ++i)
                         global_pool.push_back(newly_claimed[i]);
@@ -143,7 +152,7 @@ std::vector<int> parallel_dfs(std::vector<std::vector<int>> &graph, int source)
     // ── Merge per-thread results ──────────────────────────────────────────
     std::vector<int> result;
     result.reserve(n);
-    for (auto &tr : thread_results)
+    for (auto& tr : thread_results)
         result.insert(result.end(), tr.begin(), tr.end());
 
     return result;
@@ -153,19 +162,23 @@ std::vector<int> parallel_dfs(std::vector<std::vector<int>> &graph, int source)
 //  Sequential BFS
 //  Returns level[] array: level[i] = BFS depth from source, -1 if unreachable
 // ─────────────────────────────────────────────
-vector<int> sequentialBFS(vector<vector<int>>& graph, int source) {
+vector<int> sequentialBFS(vector<vector<int>>& graph, int source)
+{
     int n = static_cast<int>(graph.size());
     vector<int> level(n, -1);
     level[source] = 0;
     queue<int> q;
     q.push(source);
 
-    while (!q.empty()) {
+    while (!q.empty())
+    {
         int node = q.front();
         q.pop();
 
-        for (int nei : graph[node]) {
-            if (level[nei] == -1) {
+        for (int nei : graph[node])
+        {
+            if (level[nei] == -1)
+            {
                 level[nei] = level[node] + 1;
                 q.push(nei);
             }
@@ -182,14 +195,16 @@ vector<int> sequentialBFS(vector<vector<int>>& graph, int source) {
 //    1. Uses std::atomic<int> instead of GCC-specific __sync_bool_compare_and_swap
 //    2. Loop index is size_t to avoid signed/unsigned comparison warning
 // ─────────────────────────────────────────────
-vector<int> parallelBFS(vector<vector<int>>& graph, int source) {
+vector<int> parallelBFS(vector<vector<int>>& graph, int source)
+{
     int n = static_cast<int>(graph.size());
 
     // Use atomic ints so threads can claim nodes without a lock
     vector<atomic<int>> level(n);
 
-    #pragma omp parallel for
-    for (int i = 0; i < n; ++i){
+#pragma omp parallel for
+    for (int i = 0; i < n; ++i)
+    {
         level[i].store(-1, memory_order_relaxed);
     }
 
@@ -198,32 +213,34 @@ vector<int> parallelBFS(vector<vector<int>>& graph, int source) {
     frontier.push_back(source);
 
     int curr_level = 0;
-    while (!frontier.empty()) {
+    while (!frontier.empty())
+    {
         vector<int> next_frontier;
 
-        #pragma omp parallel
+#pragma omp parallel
         {
             vector<int> local_next;
 
-            // FIX 2: use size_t to avoid signed/unsigned comparison warning
-            #pragma omp for nowait
-            for (size_t i = 0; i < frontier.size(); i++) {
+// FIX 2: use size_t to avoid signed/unsigned comparison warning
+#pragma omp for nowait
+            for (size_t i = 0; i < frontier.size(); i++)
+            {
                 int node = frontier[i];
-                for (int nei : graph[node]) {
+                for (int nei : graph[node])
+                {
                     int expected = -1;
                     // FIX 1: portable C++11 atomic instead of GCC __sync builtin
-                    if (level[nei].compare_exchange_strong(
-                            expected, curr_level + 1,
-                            memory_order_acq_rel)) {
+                    if (level[nei].compare_exchange_strong(expected, curr_level + 1,
+                                                           memory_order_acq_rel))
+                    {
                         local_next.push_back(nei);
                     }
                 }
             }
 
-            #pragma omp critical
+#pragma omp critical
             {
-                next_frontier.insert(next_frontier.end(),
-                                     local_next.begin(), local_next.end());
+                next_frontier.insert(next_frontier.end(), local_next.begin(), local_next.end());
             }
         }
 
@@ -243,25 +260,28 @@ vector<int> parallelBFS(vector<vector<int>>& graph, int source) {
 //  Random graph generator (undirected)
 // ─────────────────────────────────────────────
 std::vector<std::vector<int>> generate_large_graph(int num_nodes, int avg_degree,
-                                                    unsigned seed = 42)
+                                                   unsigned seed = 42)
 {
     std::vector<std::vector<int>> graph(num_nodes);
     std::mt19937 rng(seed);
     std::uniform_int_distribution<int> node_dist(0, num_nodes - 1);
 
     long long edge_count = static_cast<long long>(num_nodes) * avg_degree / 2;
-    for (long long e = 0; e < edge_count; ++e) {
+    for (long long e = 0; e < edge_count; ++e)
+    {
         int u = node_dist(rng);
         int v = node_dist(rng);
-        if (u == v) continue;
+        if (u == v)
+            continue;
         graph[u].push_back(v);
         graph[v].push_back(u);
     }
 
-    // Remove duplicate edges
-    #pragma omp parallel for schedule(dynamic, 512)
-    for (int i = 0; i < num_nodes; ++i) {
-        auto &adj = graph[i];
+// Remove duplicate edges
+#pragma omp parallel for schedule(dynamic, 512)
+    for (int i = 0; i < num_nodes; ++i)
+    {
+        auto& adj = graph[i];
         std::sort(adj.begin(), adj.end());
         adj.erase(std::unique(adj.begin(), adj.end()), adj.end());
     }
@@ -272,13 +292,13 @@ std::vector<std::vector<int>> generate_large_graph(int num_nodes, int avg_degree
 // ─────────────────────────────────────────────
 //  Benchmark helper
 // ─────────────────────────────────────────────
-struct BenchResult {
+struct BenchResult
+{
     std::vector<int> order;
     double time_ms;
 };
 
-template<typename Fn>
-BenchResult benchmark(Fn &&fn)
+template <typename Fn> BenchResult benchmark(Fn&& fn)
 {
     auto t0 = std::chrono::high_resolution_clock::now();
     auto order = fn();
@@ -299,14 +319,20 @@ int main()
     std::cout << "OpenMP threads available : " << omp_get_max_threads() << "\n\n";
 
     // ── Test configurations ──────────────────────────────────────────────
-    struct Config { int nodes; int avg_deg; const char* label; };
+    struct Config
+    {
+        int nodes;
+        int avg_deg;
+        const char* label;
+    };
     std::vector<Config> configs = {
-        { 100'000,  10, "Small  (100K nodes, deg 10)" },
-        { 500'000,  15, "Medium (500K nodes, deg 15)" },
-        {1'000'000, 20, "Large  (  1M nodes, deg 20)" },
+        {100'000, 10, "Small  (100K nodes, deg 10)"},
+        {500'000, 15, "Medium (500K nodes, deg 15)"},
+        {1'000'000, 20, "Large  (  1M nodes, deg 20)"},
     };
 
-    for (auto &cfg : configs) {
+    for (auto& cfg : configs)
+    {
         std::cout << "── " << cfg.label << " ──────────────────────────\n";
         std::cout << "  Generating graph... " << std::flush;
 
@@ -317,13 +343,13 @@ int main()
 
         // Sequential
         std::cout << "  Sequential DFS... " << std::flush;
-        auto seq = benchmark([&]{ return sequential_dfs(graph, source); });
-        std::cout << std::fixed << std::setprecision(2)
-                  << seq.time_ms << " ms  (visited " << seq.order.size() << " nodes)\n";
+        auto seq = benchmark([&] { return sequential_dfs(graph, source); });
+        std::cout << std::fixed << std::setprecision(2) << seq.time_ms << " ms  (visited "
+                  << seq.order.size() << " nodes)\n";
 
         // Parallel
         std::cout << "  Parallel   DFS... " << std::flush;
-        auto par = benchmark([&]{ return parallel_dfs(graph, source); });
+        auto par = benchmark([&] { return parallel_dfs(graph, source); });
         std::cout << par.time_ms << " ms  (visited " << par.order.size() << " nodes)\n";
 
         double speedup = seq.time_ms / par.time_ms;
@@ -344,7 +370,8 @@ int main()
     auto dseq = sequential_dfs(demo_graph, 0);
     auto dpar = parallel_dfs(demo_graph, 0);
 
-    auto print20 = [](const std::vector<int> &v, const char* label) {
+    auto print20 = [](const std::vector<int>& v, const char* label)
+    {
         std::cout << "  " << label << ": [";
         int lim = std::min(20, static_cast<int>(v.size()));
         for (int i = 0; i < lim; ++i)
@@ -355,7 +382,6 @@ int main()
     print20(dseq, "Sequential");
     print20(dpar, "Parallel  ");
 
-
     std::cout << "╔══════════════════════════════════════════════════════╗\n";
     std::cout << "║         Parallel BFS Benchmark  (OpenMP)             ║\n";
     std::cout << "╚══════════════════════════════════════════════════════╝\n\n";
@@ -363,7 +389,8 @@ int main()
     std::cout << "OpenMP threads available : " << omp_get_max_threads() << "\n\n";
 
     // ── Test configurations ──────────────────────────────────────────────
-    for (auto &cfg : configs) {
+    for (auto& cfg : configs)
+    {
         std::cout << "── " << cfg.label << " ──────────────────────────\n";
         std::cout << "  Generating graph... " << std::flush;
 
@@ -374,22 +401,21 @@ int main()
 
         // Sequential
         std::cout << "  Sequential BFS... " << std::flush;
-        auto seq = benchmark([&]{ return sequentialBFS(graph, source); });
-        std::cout << std::fixed << std::setprecision(2)
-                  << seq.time_ms << " ms  (visited " << seq.order.size() << " nodes)\n";
+        auto seq = benchmark([&] { return sequentialBFS(graph, source); });
+        std::cout << std::fixed << std::setprecision(2) << seq.time_ms << " ms  (visited "
+                  << seq.order.size() << " nodes)\n";
 
         // Parallel
         std::cout << "  Parallel   BFS... " << std::flush;
-        auto par = benchmark([&]{ return parallelBFS(graph, source); });
+        auto par = benchmark([&] { return parallelBFS(graph, source); });
         std::cout << par.time_ms << " ms  (visited " << par.order.size() << " nodes)\n";
 
         double speedup = seq.time_ms / par.time_ms;
         std::cout << "  Speedup          : " << std::setprecision(2) << speedup << "x\n";
 
         // Helper: count nodes actually visited (level != -1)
-        auto visited_count = [](const vector<int>& lvl) {
-            return count_if(lvl.begin(), lvl.end(), [](int x){ return x != -1; });
-        };
+        auto visited_count = [](const vector<int>& lvl)
+        { return count_if(lvl.begin(), lvl.end(), [](int x) { return x != -1; }); };
 
         // In your benchmark loop, replace the print lines with:
         cout << seq.time_ms << " ms  (visited " << visited_count(seq.order) << " nodes)\n";
@@ -410,9 +436,9 @@ int main()
     auto bseq = sequentialBFS(demo_graph, 0);
     auto bpar = parallelBFS(demo_graph, 0);
 
-    print20(numarr,"Index     ");
-    print20(bseq,  "Sequential");
-    print20(bpar,  "Parallel  ");
+    print20(numarr, "Index     ");
+    print20(bseq, "Sequential");
+    print20(bpar, "Parallel  ");
 
     std::cout << "\nDone.\n";
     return 0;
